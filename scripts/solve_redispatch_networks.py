@@ -8,8 +8,6 @@ import numpy as np
 import pickle as pkl
 import glob
 
-from sklearn_extra.cluster import KMedoids
-
 
 def set_parameters_from_optimized(n, n_optim):
     '''
@@ -285,6 +283,7 @@ def build_redispatch_network(network, network_dispatch):
                                    efficiency=network.generators.loc[generator]["efficiency"],
                                    marginal_cost=0,
                                    capital_cost=0,
+                                   carrier=network.generators.loc[generator]["carrier"],
                                    p_max_pu=(network_dispatch.generators_t.p[generator] /
                                              network_dispatch.generators.loc[generator]["p_nom"]).tolist(),
                                    p_min_pu=(network_dispatch.generators_t.p[generator] /
@@ -298,6 +297,7 @@ def build_redispatch_network(network, network_dispatch):
                                    efficiency=network.generators.loc[generator]["efficiency"],
                                    marginal_cost=network.generators.loc[generator]["marginal_cost"],
                                    capital_cost=0,
+                                   carrier=network.generators.loc[generator]["carrier"],
                                    p_max_pu=(1 - network_dispatch.generators_t.p[generator] /
                                              network_dispatch.generators.loc[generator]["p_nom"]).tolist(),
                                    p_min_pu=0,
@@ -314,6 +314,7 @@ def build_redispatch_network(network, network_dispatch):
                                                       network_dispatch.generators.loc[generator]["bus"]]).tolist(),
                                    capital_cost=0,
                                    p_max_pu=0,
+                                   carrier=network.generators.loc[generator]["carrier"],
                                    p_min_pu=(- network_dispatch.generators_t.p[generator] /
                                              network_dispatch.generators.loc[generator]["p_nom"]).tolist(),
                                    )
@@ -327,6 +328,7 @@ def build_redispatch_network(network, network_dispatch):
                                    efficiency=network.generators.loc[generator]["efficiency"],
                                    marginal_cost=0,
                                    capital_cost=0,
+                                   carrier=network.generators.loc[generator]["carrier"],
                                    p_max_pu=(network_dispatch.generators_t.p[generator] /
                                              network_dispatch.generators.loc[generator]["p_nom"]).tolist(),
                                    p_min_pu=(network_dispatch.generators_t.p[generator] /
@@ -344,6 +346,7 @@ def build_redispatch_network(network, network_dispatch):
                                                       network_dispatch.generators.loc[generator]["bus"]]).tolist(),
                                    capital_cost=0,
                                    p_max_pu=0,
+                                   carrier=network.generators.loc[generator]["carrier"],
                                    p_min_pu=(- network_dispatch.generators_t.p[generator] /
                                              network_dispatch.generators.loc[generator]["p_nom"]).tolist(),
                                    )
@@ -573,11 +576,15 @@ def solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1, flex_store=True)
     Function to run the redispatch workflow for all networks in the networks_redispatch folder.
     """
 
-    folder = r'\cluster\home\wlaumen\Euler\pypsa-eur\networks_redispatch'
-    for filepath in glob.iglob(folder + '\*.nc'):
-        filename = filepath.split('\\')[-1].split(".")[0]
+    folder = r'/cluster/home/wlaumen/Euler/pypsa-eur/networks_redispatch'
+    print("foldertest")
+    for filepath in glob.iglob(folder + '/*.nc'):
+        print(filepath)
+        print("filepathtest")
+        filename = filepath.split('/')[-1].split(".")[0]
+        print(filename)
         path_n = filepath
-        path_n_optim = folder + "\solved\\" + filename + ".nc"
+        path_n_optim = folder + "/solved/" + filename + ".nc"
         # Define network and network_optim
         n = pypsa.Network(path_n)
         n_optim = pypsa.Network(path_n_optim)
@@ -586,14 +593,14 @@ def solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1, flex_store=True)
         n_d, n_rd, dict_obj_d, dict_obj_rd = redispatch_workflow(n, n_optim, scenario="no bat",
                                                                  c_rate=0.25, flex_share=0.1, flex_store=True)
         # export solved dispatch & redispatch workflow as well as objective value list
-        export_path = folder + r"\results"
-        n_d.export_to_netcdf(path=export_path + r"\dispatch\\" + filename + ".nc",
+        export_path = folder + r"/results"
+        n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + ".nc",
                              export_standard_types=False, least_significant_digit=None)
-        n_rd.export_to_netcdf(path=export_path + r"\redispatch\\" + filename + ".nc",
+        n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + ".nc",
                               export_standard_types=False, least_significant_digit=None)
-        with open(export_path + r"\dispatch\objective\\" + filename + r".pickle", "wb") as f:
+        with open(export_path + r"/dispatch/" + filename + r".pickle", "wb") as f:
             pkl.dump(dict_obj_d, f)
-        with open(export_path + r"\redispatch\objective\\" + filename + r".pickle", "wb") as f:
+        with open(export_path + r"/redispatch/" + filename + r".pickle", "wb") as f:
             pkl.dump(dict_obj_rd, f)
         gc.collect()
 
@@ -602,14 +609,14 @@ def solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1, flex_store=True)
                                                                                  c_rate=0.25, flex_share=0.1,
                                                                                  flex_store=True)
         # export solved dispatch & redispatch workflow as well as objective value list
-        n_rd_bat.export_to_netcdf(path=export_path + r"\redispatch\\" + filename + "_bat.nc",
+        n_rd_bat.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat.nc",
                                   export_standard_types=False, least_significant_digit=None)
-        with open(export_path + r"\redispatch\objective\\" + filename + r"_bat.pickle", "wb") as f:
+        with open(export_path + r"/redispatch/" + filename + r"_bat.pickle", "wb") as f:
             pkl.dump(dict_obj_rd_bat, f)
         gc.collect()
 
 def main():
     solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1, flex_store=True)
-
+    print("Test")
 if __name__ == "__main__":
     main()

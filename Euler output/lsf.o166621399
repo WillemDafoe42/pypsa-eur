@@ -1,0 +1,33 @@
+foldertest
+/cluster/home/wlaumen/Euler/pypsa-eur/networks_redispatch/elec_s300_16_ec_lcopt_1H.nc
+filepathtest
+elec_s300_16_ec_lcopt_1H
+INFO:pypsa.io:Imported network elec_s300_16_ec_lcopt_1H.nc has buses, carriers, generators, lines, links, loads, storage_units
+INFO:pypsa.io:Imported network elec_s300_16_ec_lcopt_1H.nc has buses, carriers, generators, lines, links, loads, storage_units
+INFO:numexpr.utils:Note: detected 72 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO:numexpr.utils:Note: NumExpr detected 72 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+INFO:pypsa.linopf:Prepare linear problem
+INFO:pypsa.linopf:Total preparation time: 0.25s
+INFO:pypsa.linopf:Solve linear problem using Cbc solver
+Traceback (most recent call last):
+  File "solve_redispatch_networks.py", line 622, in <module>
+    main()
+  File "solve_redispatch_networks.py", line 619, in main
+    solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1, flex_store=True)
+  File "solve_redispatch_networks.py", line 593, in solve_all_redispatch_workflows
+    n_d, n_rd, dict_obj_d, dict_obj_rd = redispatch_workflow(n, n_optim, scenario="no bat",
+  File "solve_redispatch_networks.py", line 545, in redispatch_workflow
+    n_dispatch.lopf(solver_name="cbc", pyomo=False, formulation="kirchhoff")
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/components.py", line 510, in lopf
+    return network_lopf_lowmem(self, **args)
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/linopf.py", line 918, in network_lopf
+    res = solve(n, problem_fn, solution_fn, solver_logfile,
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/linopt.py", line 576, in run_and_read_cbc
+    result = subprocess.run(command.split(' '), stdout=subprocess.PIPE)
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/subprocess.py", line 489, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/subprocess.py", line 854, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/subprocess.py", line 1702, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'cbc'

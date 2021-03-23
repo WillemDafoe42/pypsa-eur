@@ -1,0 +1,46 @@
+foldertest
+/cluster/home/wlaumen/Euler/pypsa-eur/networks_redispatch/elec_s300_16_ec_lcopt_1H.nc
+filepathtest
+elec_s300_16_ec_lcopt_1H
+INFO:pypsa.io:Imported network elec_s300_16_ec_lcopt_1H.nc has buses, carriers, generators, lines, links, loads, storage_units
+Traceback (most recent call last):
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/backends/file_manager.py", line 199, in _acquire_with_cache_info
+    file = self._cache[self._key]
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/backends/lru_cache.py", line 53, in __getitem__
+    value = self._cache[key]
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/cluster/home/wlaumen/Euler/pypsa-eur/networks_redispatch/solved/elec_s300_16_ec_lcopt_1H.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False))]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "solve_redispatch_networks.py", line 622, in <module>
+    main()
+  File "solve_redispatch_networks.py", line 619, in main
+    solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1, flex_store=True)
+  File "solve_redispatch_networks.py", line 590, in solve_all_redispatch_workflows
+    n_optim = pypsa.Network(path_n_optim)
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/components.py", line 285, in __init__
+    self.import_from_netcdf(import_name)
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/io.py", line 496, in import_from_netcdf
+    with ImporterNetCDF(path=path) as importer:
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/io.py", line 200, in __init__
+    self.ds = xr.open_dataset(path)
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/backends/api.py", line 554, in open_dataset
+    store = opener(filename_or_obj, **extra_kwargs, **backend_kwargs)
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/backends/netCDF4_.py", line 378, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/backends/netCDF4_.py", line 326, in __init__
+    self.format = self.ds.data_model
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/backends/netCDF4_.py", line 387, in ds
+    return self._acquire()
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/backends/netCDF4_.py", line 381, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/backends/file_manager.py", line 187, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/backends/file_manager.py", line 205, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+  File "src/netCDF4/_netCDF4.pyx", line 2330, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 1948, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/cluster/home/wlaumen/Euler/pypsa-eur/networks_redispatch/solved/elec_s300_16_ec_lcopt_1H.nc'

@@ -1,0 +1,26 @@
+foldertest
+/cluster/home/wlaumen/Euler/pypsa-eur/networks_redispatch/elec_s300_16_ec_lcopt_1H.nc
+filepathtest
+elec_s300_16_ec_lcopt_1H
+INFO:pypsa.io:Imported network elec_s300_16_ec_lcopt_1H.nc has buses, carriers, generators, lines, links, loads, storage_units
+INFO:pypsa.io:Imported network elec_s300_16_ec_lcopt_1H.nc has buses, carriers, generators, lines, links, loads, storage_units
+INFO:numexpr.utils:Note: NumExpr detected 48 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+INFO:pypsa.linopf:Prepare linear problem
+INFO:pypsa.linopf:Total preparation time: 0.49s
+INFO:pypsa.linopf:Solve linear problem using Gurobi solver
+Traceback (most recent call last):
+  File "solve_redispatch_networks.py", line 617, in <module>
+    main()
+  File "solve_redispatch_networks.py", line 614, in main
+    solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1, flex_store=True)
+  File "solve_redispatch_networks.py", line 589, in solve_all_redispatch_workflows
+    c_rate=0.25, flex_share=0.1, flex_store=True)
+  File "solve_redispatch_networks.py", line 540, in redispatch_workflow
+    n_dispatch.lopf(solver_name="gurobi", pyomo=False, formulation="kirchhoff")
+  File "/cluster/home/wlaumen/.local/lib/python3.7/site-packages/pypsa/components.py", line 510, in lopf
+    return network_lopf_lowmem(self, **args)
+  File "/cluster/home/wlaumen/.local/lib/python3.7/site-packages/pypsa/linopf.py", line 919, in network_lopf
+    solver_options, warmstart, store_basis)
+  File "/cluster/home/wlaumen/.local/lib/python3.7/site-packages/pypsa/linopt.py", line 747, in run_and_read_gurobi
+    raise ModuleNotFoundError("Optional dependency 'gurobipy' not found. "
+ModuleNotFoundError: Optional dependency 'gurobipy' not found. Install via 'conda install -c gurobi gurobi'  or follow the instructions on the documentation page https://www.gurobi.com/documentation/

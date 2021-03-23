@@ -1,0 +1,32 @@
+/cluster/home/wlaumen/Euler/pypsa-eur/miniconda3/envs/pypsa-eur/lib/python3.8/site-packages/pypsa/io.py:771: FutureWarning: Index.__or__ operating as a set operation is deprecated, in the future this will be a logical operation matching Series.__or__.  Use index.union(other) instead
+  pnl[attr] = pnl[attr].reindex(columns=(pnl[attr].columns | columns))
+INFO:pypsa.io:Imported network elec_s300_16_ec_lcopt_1H.nc has buses, carriers, generators, lines, links, loads, storage_units
+/cluster/home/wlaumen/Euler/pypsa-eur/miniconda3/envs/pypsa-eur/lib/python3.8/site-packages/pypsa/io.py:769: FutureWarning: Index.__or__ operating as a set operation is deprecated, in the future this will be a logical operation matching Series.__or__.  Use index.union(other) instead
+  pnl[attr] = pnl[attr].reindex(columns=df.index | columns, fill_value=default)
+INFO:pypsa.io:Imported network elec_s300_16_ec_lcopt_1H.nc has buses, carriers, generators, lines, links, loads, storage_units
+INFO:numexpr.utils:Note: detected 128 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO:numexpr.utils:Note: NumExpr detected 128 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+INFO:pypsa.linopf:Prepare linear problem
+/cluster/home/wlaumen/Euler/pypsa-eur/miniconda3/envs/pypsa-eur/lib/python3.8/site-packages/pypsa/linopf.py:85: FutureWarning: Index.__or__ operating as a set operation is deprecated, in the future this will be a logical operation matching Series.__or__.  Use index.union(other) instead
+  ext_i = ext_i | n.generators.query('committable').index
+/cluster/home/wlaumen/Euler/pypsa-eur/miniconda3/envs/pypsa-eur/lib/python3.8/site-packages/pypsa/linopf.py:185: FutureWarning: Index.__and__ operating as a set operation is deprecated, in the future this will be a logical operation matching Series.__and__.  Use index.intersection(other) instead
+  if not (ext_i & com_i).empty:
+INFO:pypsa.linopf:Total preparation time: 0.19s
+INFO:pypsa.linopf:Solve linear problem using Gurobi solver
+Traceback (most recent call last):
+  File "solve_redispatch_networks.py", line 618, in <module>
+    main()
+  File "solve_redispatch_networks.py", line 615, in main
+    solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1, flex_store=True)
+  File "solve_redispatch_networks.py", line 589, in solve_all_redispatch_workflows
+    n_d, n_rd, dict_obj_d, dict_obj_rd = redispatch_workflow(n, n_optim, scenario="no bat",
+  File "solve_redispatch_networks.py", line 542, in redispatch_workflow
+    n_dispatch.lopf(solver_name="gurobi", pyomo=False, formulation="kirchhoff")
+  File "/cluster/home/wlaumen/Euler/pypsa-eur/miniconda3/envs/pypsa-eur/lib/python3.8/site-packages/pypsa/components.py", line 510, in lopf
+    return network_lopf_lowmem(self, **args)
+  File "/cluster/home/wlaumen/Euler/pypsa-eur/miniconda3/envs/pypsa-eur/lib/python3.8/site-packages/pypsa/linopf.py", line 918, in network_lopf
+    res = solve(n, problem_fn, solution_fn, solver_logfile,
+  File "/cluster/home/wlaumen/Euler/pypsa-eur/miniconda3/envs/pypsa-eur/lib/python3.8/site-packages/pypsa/linopt.py", line 764, in run_and_read_gurobi
+    m.optimize()
+  File "src/gurobipy/model.pxi", line 847, in gurobipy.Model.optimize
+gurobipy.GurobiError: Model too large for size-limited license; visit https://www.gurobi.com/free-trial for a full license

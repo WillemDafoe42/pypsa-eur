@@ -1,0 +1,16 @@
+foldertest
+/cluster/home/wlaumen/Euler/pypsa-eur/networks_redispatch/elec_s300_16_ec_lcopt_1H.nc
+filepathtest
+elec_s300_16_ec_lcopt_1H
+Traceback (most recent call last):
+  File "solve_redispatch_networks.py", line 617, in <module>
+    main()
+  File "solve_redispatch_networks.py", line 614, in main
+    solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1, flex_store=True)
+  File "solve_redispatch_networks.py", line 584, in solve_all_redispatch_workflows
+    n = pypsa.Network(path_n)
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/components.py", line 285, in __init__
+    self.import_from_netcdf(import_name)
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/io.py", line 493, in import_from_netcdf
+    assert has_xarray, "xarray must be installed for netCDF support."
+AssertionError: xarray must be installed for netCDF support.
