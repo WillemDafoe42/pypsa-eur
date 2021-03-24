@@ -1,0 +1,32 @@
+# -------------
+# ETH Euler Job scripts
+
+env2lmod
+module load gcc/6.3.0 python/3.8.5 hdf5/1.10.1 proj/6.3.1 geos/3.6.2 gdal/3.1.2 glpk/4.65 gurobi/9.1.1 netcdf/4.6.0
+
+bsub -n 16 -R "rusage[mem=4096]" -W 10:00 -J "redispatch" -N -B -u wlaumen@student.ethz.ch "python -u solve_redispatch_networks.py"
+
+# -------------
+# RWTH Cluster Job scripts
+
+module load MATH
+module load gurobi
+module load python
+conda env create -f environment.yaml
+conda activate pypsa-eur 
+conda install -c conda-forge ipopt 
+
+####
+
+
+$ sbatch < jobscript.sh
+
+#!/usr/local_rwth/bin/zsh
+ 
+### #SBATCH directives need to be in the first part of the jobscript
+ 
+### your code goes here, the second part of the jobscript
+ 
+### !!! DON'T MIX THESE PARTS !!!
+
+snakemake --cluster sbash -j <n cores>

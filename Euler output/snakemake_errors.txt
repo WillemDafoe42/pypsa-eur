@@ -1,0 +1,338 @@
+# ---------------
+# Here I tried to execute snakemake job in the command line:
+# ---------------
+
+[wlaumen@eu-login-34 pypsa-eur]$ snakemake -j 8 solve_all_networks
+Using license file /cluster/apps/nss/gurobi/9.1.1/x86_64/gurobi.lic
+Set parameter TokenServer to value lic-gurobi.ethz.ch
+No parameters matching '_test' found
+Building DAG of jobs...
+Using shell: /cluster/apps/sfos/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job counts:
+        count   jobs
+        1       solve_all_networks
+        8       solve_network
+        9
+
+[Wed Mar 24 11:48:50 2021]
+rule solve_network:
+    input: networks/elec_s300_190_ec_lcopt_1H.nc
+    output: results/networks/elec_s300_190_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_190_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_190_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_190_ec_lcopt_1H_memory.log
+    jobid: 7
+    benchmark: benchmarks/solve_network/elec_s300_190_ec_lcopt_1H
+    wildcards: simpl=300, clusters=190, ll=copt, opts=1H
+    threads: 4
+    resources: mem=141150
+
+[Wed Mar 24 11:48:50 2021]
+rule solve_network:
+    input: networks/elec_s300_200_ec_lcopt_1H.nc
+    output: results/networks/elec_s300_200_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_200_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_200_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_200_ec_lcopt_1H_memory.log
+    jobid: 8
+    benchmark: benchmarks/solve_network/elec_s300_200_ec_lcopt_1H
+    wildcards: simpl=300, clusters=200, ll=copt, opts=1H
+    threads: 4
+    resources: mem=147000
+
+Using license file /cluster/apps/nss/gurobi/9.1.1/x86_64/gurobi.lic
+Set parameter TokenServer to value lic-gurobi.ethz.ch
+No parameters matching '_test' found
+Using license file /cluster/apps/nss/gurobi/9.1.1/x86_64/gurobi.lic
+Set parameter TokenServer to value lic-gurobi.ethz.ch
+No parameters matching '_test' found
+Job counts:
+        count   jobs
+        1       solve_network
+        1
+Job counts:
+        count   jobs
+        1       solve_network
+        1
+INFO:pypsa.io:Imported network elec_s300_190_ec_lcopt_1H.nc has buses, carriers, generators, lines, links, loads, storage_units
+INFO:pypsa.linopf:Prepare linear problem
+INFO:pypsa.io:Imported network elec_s300_200_ec_lcopt_1H.nc has buses, carriers, generators, lines, links, loads, storage_units
+INFO:pypsa.linopf:Prepare linear problem
+INFO:pypsa.linopf:Total preparation time: 109.02s
+INFO:pypsa.linopf:Solve linear problem using Gurobi solver
+Using license file /cluster/apps/nss/gurobi/9.1.1/x86_64/gurobi.lic
+Set parameter TokenServer to value lic-gurobi.ethz.ch
+INFO:pypsa.linopf:Total preparation time: 116.91s
+INFO:pypsa.linopf:Solve linear problem using Gurobi solver
+Using license file /cluster/apps/nss/gurobi/9.1.1/x86_64/gurobi.lic
+Set parameter TokenServer to value lic-gurobi.ethz.ch
+/cluster/apps/sfos/bin/bash: line 1: 19999 Killed                  /cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/bin/python3.8 /cluster/scratch/wlaumen/pypsa-eur/.snakemake/shadow/tmpjv7hjwf9/.snakemake/scripts/tmp1c2wk401.solve_network.py
+[Wed Mar 24 11:52:26 2021]
+Error in rule solve_network:
+    jobid: 0
+    output: results/networks/elec_s300_190_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_190_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_190_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_190_ec_lcopt_1H_memory.log (check log file(s) for error message)
+
+RuleException:
+CalledProcessError in line 319 of /cluster/scratch/wlaumen/pypsa-eur/Snakefile:
+Command 'set -euo pipefail;  /cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/bin/python3.8 /cluster/scratch/wlaumen/pypsa-eur/.snakemake/shadow/tmpjv7hjwf9/.snakemake/scripts/tmp1c2wk401.solve_network.py' returned non-zero exit status 137.
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 2154, in run_wrapper
+  File "/cluster/scratch/wlaumen/pypsa-eur/Snakefile", line 319, in __rule_solve_network
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 551, in _callback
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/concurrent/futures/thread.py", line 57, in run
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 537, in cached_or_run
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 2239, in run_wrapper
+Exiting because a job execution failed. Look above for error message
+Read LP format model from file /tmp/pypsa-problem-gtpzpwgc.lp
+Reading time = 91.31 seconds
+obj: 22346760 rows, 9855696 columns, 47682399 nonzeros
+Changed value of parameter threads to 4
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter method to 2
+   Prev: -1  Min: -1  Max: 5  Default: -1
+Changed value of parameter crossover to 0
+   Prev: -1  Min: -1  Max: 5  Default: -1
+Changed value of parameter BarConvTol to 1e-05
+   Prev: 1e-08  Min: 0.0  Max: 1.0  Default: 1e-08
+Parameter FeasibilityTol unchanged
+   Value: 1e-06  Min: 1e-09  Max: 0.01  Default: 1e-06
+Changed value of parameter AggFill to 0
+   Prev: -1  Min: -1  Max: 2000000000  Default: -1
+Changed value of parameter PreDual to 0
+   Prev: -1  Min: -1  Max: 2  Default: -1
+Changed value of parameter GURO_PAR_BARDENSETHRESH to 200
+   Prev: -1  Min: -1  Max: 2000000000  Default: -1
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (linux64)
+Thread count: 4 physical cores, 8 logical processors, using up to 4 threads
+Optimize a model with 22346760 rows, 9855696 columns and 47682399 nonzeros
+Model fingerprint: 0x860abfe6
+Coefficient statistics:
+  Matrix range     [1e-02, 5e+01]
+  Objective range  [9e-03, 2e+05]
+  Bounds range     [2e+00, 6e+09]
+  RHS range        [4e-03, 2e+05]
+Warning: Model contains large bounds
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve removed 12399118 rows and 1370579 columns (presolve time = 7s) ...
+Presolve removed 12399118 rows and 1370579 columns (presolve time = 13s) ...
+Presolve removed 12439099 rows and 1410560 columns (presolve time = 15s) ...
+/cluster/apps/sfos/bin/bash: line 1: 19998 Killed                  /cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/bin/python3.8 /cluster/scratch/wlaumen/pypsa-eur/.snakemake/shadow/tmp_dis6vq4/.snakemake/scripts/tmp0qt3177z.solve_network.py
+[Wed Mar 24 11:53:05 2021]
+Error in rule solve_network:
+    jobid: 0
+    output: results/networks/elec_s300_200_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_200_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_200_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_200_ec_lcopt_1H_memory.log (check log file(s) for error message)
+
+RuleException:
+CalledProcessError in line 319 of /cluster/scratch/wlaumen/pypsa-eur/Snakefile:
+Command 'set -euo pipefail;  /cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/bin/python3.8 /cluster/scratch/wlaumen/pypsa-eur/.snakemake/shadow/tmp_dis6vq4/.snakemake/scripts/tmp0qt3177z.solve_network.py' returned non-zero exit status 137.
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 2154, in run_wrapper
+  File "/cluster/scratch/wlaumen/pypsa-eur/Snakefile", line 319, in __rule_solve_network
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 551, in _callback
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/concurrent/futures/thread.py", line 57, in run
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 537, in cached_or_run
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 2239, in run_wrapper
+Exiting because a job execution failed. Look above for error message
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /cluster/scratch/wlaumen/pypsa-eur/.snakemake/log/2021-03-24T114848.050777.snakemake.log
+
+
+# ---------------
+# Here I tried to submit the snakemake job to the cluster:
+# ---------------
+
+[wlaumen@eu-login-34 pypsa-eur]$ snakemake --cluster bsub -j 8 solve_all_networks
+Using license file /cluster/apps/nss/gurobi/9.1.1/x86_64/gurobi.lic
+Set parameter TokenServer to value lic-gurobi.ethz.ch
+No parameters matching '_test' found
+Building DAG of jobs...
+Using shell: /cluster/apps/sfos/bin/bash
+Provided cluster nodes: 8
+Job counts:
+        count   jobs
+        1       solve_all_networks
+        8       solve_network
+        9
+
+[Wed Mar 24 12:04:28 2021]
+rule solve_network:
+    input: networks/elec_s300_140_ec_lcopt_1H.nc
+    output: results/networks/elec_s300_140_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_140_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_140_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_140_ec_lcopt_1H_memory.log
+    jobid: 2
+    benchmark: benchmarks/solve_network/elec_s300_140_ec_lcopt_1H
+    wildcards: simpl=300, clusters=140, ll=copt, opts=1H
+    threads: 4
+    resources: mem=111900
+
+Generic job.
+Submitted job 2 with external jobid 'Job <166915272> is submitted to queue <normal.4h>.'.
+
+[Wed Mar 24 12:04:29 2021]
+rule solve_network:
+    input: networks/elec_s300_150_ec_lcopt_1H.nc
+    output: results/networks/elec_s300_150_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_150_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_150_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_150_ec_lcopt_1H_memory.log
+    jobid: 3
+    benchmark: benchmarks/solve_network/elec_s300_150_ec_lcopt_1H
+    wildcards: simpl=300, clusters=150, ll=copt, opts=1H
+    threads: 4
+    resources: mem=117750
+
+Generic job.
+Submitted job 3 with external jobid 'Job <166915273> is submitted to queue <normal.4h>.'.
+
+[Wed Mar 24 12:04:29 2021]
+rule solve_network:
+    input: networks/elec_s300_170_ec_lcopt_1H.nc
+    output: results/networks/elec_s300_170_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_170_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_170_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_170_ec_lcopt_1H_memory.log
+    jobid: 5
+    benchmark: benchmarks/solve_network/elec_s300_170_ec_lcopt_1H
+    wildcards: simpl=300, clusters=170, ll=copt, opts=1H
+    threads: 4
+    resources: mem=129450
+
+Generic job.
+Submitted job 5 with external jobid 'Job <166915274> is submitted to queue <normal.4h>.'.
+
+[Wed Mar 24 12:04:29 2021]
+rule solve_network:
+    input: networks/elec_s300_190_ec_lcopt_1H.nc
+    output: results/networks/elec_s300_190_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_190_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_190_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_190_ec_lcopt_1H_memory.log
+    jobid: 7
+    benchmark: benchmarks/solve_network/elec_s300_190_ec_lcopt_1H
+    wildcards: simpl=300, clusters=190, ll=copt, opts=1H
+    threads: 4
+    resources: mem=141150
+
+Generic job.
+Submitted job 7 with external jobid 'Job <166915275> is submitted to queue <normal.4h>.'.
+
+[Wed Mar 24 12:04:29 2021]
+rule solve_network:
+    input: networks/elec_s300_160_ec_lcopt_1H.nc
+    output: results/networks/elec_s300_160_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_160_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_160_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_160_ec_lcopt_1H_memory.log
+    jobid: 4
+    benchmark: benchmarks/solve_network/elec_s300_160_ec_lcopt_1H
+    wildcards: simpl=300, clusters=160, ll=copt, opts=1H
+    threads: 4
+    resources: mem=123600
+
+Generic job.
+Submitted job 4 with external jobid 'Job <166915276> is submitted to queue <normal.4h>.'.
+
+[Wed Mar 24 12:04:30 2021]
+rule solve_network:
+    input: networks/elec_s300_130_ec_lcopt_1H.nc
+    output: results/networks/elec_s300_130_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_130_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_130_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_130_ec_lcopt_1H_memory.log
+    jobid: 1
+    benchmark: benchmarks/solve_network/elec_s300_130_ec_lcopt_1H
+    wildcards: simpl=300, clusters=130, ll=copt, opts=1H
+    threads: 4
+    resources: mem=106050
+
+Generic job.
+Submitted job 1 with external jobid 'Job <166915277> is submitted to queue <normal.4h>.'.
+
+[Wed Mar 24 12:04:31 2021]
+rule solve_network:
+    input: networks/elec_s300_180_ec_lcopt_1H.nc
+    output: results/networks/elec_s300_180_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_180_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_180_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_180_ec_lcopt_1H_memory.log
+    jobid: 6
+    benchmark: benchmarks/solve_network/elec_s300_180_ec_lcopt_1H
+    wildcards: simpl=300, clusters=180, ll=copt, opts=1H
+    threads: 4
+    resources: mem=135300
+
+Generic job.
+Submitted job 6 with external jobid 'Job <166915278> is submitted to queue <normal.4h>.'.
+
+[Wed Mar 24 12:04:31 2021]
+rule solve_network:
+    input: networks/elec_s300_200_ec_lcopt_1H.nc
+    output: results/networks/elec_s300_200_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_200_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_200_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_200_ec_lcopt_1H_memory.log
+    jobid: 8
+    benchmark: benchmarks/solve_network/elec_s300_200_ec_lcopt_1H
+    wildcards: simpl=300, clusters=200, ll=copt, opts=1H
+    threads: 4
+    resources: mem=147000
+
+Generic job.
+Submitted job 8 with external jobid 'Job <166915279> is submitted to queue <normal.4h>.'.
+
+# These are the error messages I get afterwards:
+
+[Wed Mar 24 12:06:48 2021]
+Error in rule solve_network:
+    jobid: 2
+    output: results/networks/elec_s300_140_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_140_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_140_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_140_ec_lcopt_1H_memory.log (check log file(s) for error message)
+    cluster_jobid: Job <166915272> is submitted to queue <normal.4h>.
+
+Error executing rule solve_network on cluster (jobid: 2, external: Job <166915272> is submitted to queue <normal.4h>., jobscript: /cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.awvutpbb/snakejob.solve_network.2.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Wed Mar 24 12:06:49 2021]
+Error in rule solve_network:
+    jobid: 1
+    output: results/networks/elec_s300_130_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_130_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_130_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_130_ec_lcopt_1H_memory.log (check log file(s) for error message)
+    cluster_jobid: Job <166915277> is submitted to queue <normal.4h>.
+
+Error executing rule solve_network on cluster (jobid: 1, external: Job <166915277> is submitted to queue <normal.4h>., jobscript: /cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.awvutpbb/snakejob.solve_network.1.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Wed Mar 24 12:06:59 2021]
+Error in rule solve_network:
+    jobid: 3
+    output: results/networks/elec_s300_150_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_150_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_150_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_150_ec_lcopt_1H_memory.log (check log file(s) for error message)
+    cluster_jobid: Job <166915273> is submitted to queue <normal.4h>.
+
+Error executing rule solve_network on cluster (jobid: 3, external: Job <166915273> is submitted to queue <normal.4h>., jobscript: /cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.awvutpbb/snakejob.solve_network.3.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Wed Mar 24 12:06:59 2021]
+Error in rule solve_network:
+    jobid: 4
+    output: results/networks/elec_s300_160_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_160_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_160_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_160_ec_lcopt_1H_memory.log (check log file(s) for error message)
+    cluster_jobid: Job <166915276> is submitted to queue <normal.4h>.
+
+Error executing rule solve_network on cluster (jobid: 4, external: Job <166915276> is submitted to queue <normal.4h>., jobscript: /cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.awvutpbb/snakejob.solve_network.4.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Wed Mar 24 12:07:09 2021]
+Error in rule solve_network:
+    jobid: 5
+    output: results/networks/elec_s300_170_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_170_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_170_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_170_ec_lcopt_1H_memory.log (check log file(s) for error message)
+    cluster_jobid: Job <166915274> is submitted to queue <normal.4h>.
+
+Error executing rule solve_network on cluster (jobid: 5, external: Job <166915274> is submitted to queue <normal.4h>., jobscript: /cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.awvutpbb/snakejob.solve_network.5.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Wed Mar 24 12:07:19 2021]
+Error in rule solve_network:
+    jobid: 7
+    output: results/networks/elec_s300_190_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_190_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_190_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_190_ec_lcopt_1H_memory.log (check log file(s) for error message)
+    cluster_jobid: Job <166915275> is submitted to queue <normal.4h>.
+
+Error executing rule solve_network on cluster (jobid: 7, external: Job <166915275> is submitted to queue <normal.4h>., jobscript: /cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.awvutpbb/snakejob.solve_network.7.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Wed Mar 24 12:07:19 2021]
+Error in rule solve_network:
+    jobid: 6
+    output: results/networks/elec_s300_180_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_180_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_180_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_180_ec_lcopt_1H_memory.log (check log file(s) for error message)
+    cluster_jobid: Job <166915278> is submitted to queue <normal.4h>.
+
+Error executing rule solve_network on cluster (jobid: 6, external: Job <166915278> is submitted to queue <normal.4h>., jobscript: /cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.awvutpbb/snakejob.solve_network.6.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Wed Mar 24 12:07:29 2021]
+Error in rule solve_network:
+    jobid: 8
+    output: results/networks/elec_s300_200_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_200_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_200_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_200_ec_lcopt_1H_memory.log (check log file(s) for error message)
+    cluster_jobid: Job <166915279> is submitted to queue <normal.4h>.
+
+Error executing rule solve_network on cluster (jobid: 8, external: Job <166915279> is submitted to queue <normal.4h>., jobscript: /cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.awvutpbb/snakejob.solve_network.8.sh). For error details see the cluster log and the log files of the involved rule(s).
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /cluster/scratch/wlaumen/pypsa-eur/.snakemake/log/2021-03-24T120426.261789.snakemake.log
+[wlaumen@eu-login-34 pypsa-eur]$

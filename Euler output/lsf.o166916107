@@ -1,0 +1,102 @@
+Sender: LSF System <lsfadmin@eu-ms-008-28>
+Subject: Job 166916107: </cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.mbhxt9eb/snakejob.solve_network.8.sh> in cluster <euler> Exited
+
+Job </cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.mbhxt9eb/snakejob.solve_network.8.sh> was submitted from host <eu-login-34> by user <wlaumen> in cluster <euler> at Wed Mar 24 12:22:41 2021
+Job was executed on host(s) <eu-ms-008-28>, in queue <normal.4h>, as user <wlaumen> in cluster <euler> at Wed Mar 24 12:22:57 2021
+</cluster/home/wlaumen> was used as the home directory.
+</cluster/scratch/wlaumen/pypsa-eur> was used as the working directory.
+Started at Wed Mar 24 12:22:57 2021
+Terminated at Wed Mar 24 12:25:31 2021
+Results reported at Wed Mar 24 12:25:31 2021
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.mbhxt9eb/snakejob.solve_network.8.sh
+------------------------------------------------------------
+
+TERM_MEMLIMIT: job killed after reaching LSF memory usage limit.
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   147.68 sec.
+    Max Memory :                                 3536 MB
+    Average Memory :                             2351.57 MB
+    Total Requested Memory :                     1024.00 MB
+    Delta Memory :                               -2512.00 MB
+    Max Swap :                                   -
+    Max Processes :                              7
+    Max Threads :                                11
+    Run time :                                   154 sec.
+    Turnaround time :                            170 sec.
+
+The output (if any) follows:
+
+Using license file /cluster/apps/nss/gurobi/9.1.1/x86_64/gurobi.lic
+Set parameter TokenServer to value lic-gurobi.ethz.ch
+No parameters matching '_test' found
+Building DAG of jobs...
+Using shell: /cluster/apps/sfos/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	solve_network
+	1
+
+[Wed Mar 24 12:22:58 2021]
+rule solve_network:
+    input: networks/elec_s300_200_ec_lcopt_1H.nc
+    output: results/networks/elec_s300_200_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_200_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_200_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_200_ec_lcopt_1H_memory.log
+    jobid: 0
+    benchmark: benchmarks/solve_network/elec_s300_200_ec_lcopt_1H
+    wildcards: simpl=300, clusters=200, ll=copt, opts=1H
+    threads: 2
+    resources: mem=147000
+
+Changing to shadow directory: /cluster/scratch/wlaumen/pypsa-eur/.snakemake/shadow/tmp_67wwobc
+INFO:pypsa.io:Imported network elec_s300_200_ec_lcopt_1H.nc has buses, carriers, generators, lines, links, loads, storage_units
+INFO:pypsa.linopf:Prepare linear problem
+INFO:pypsa.linopf:Total preparation time: 113.06s
+INFO:pypsa.linopf:Solve linear problem using Gurobi solver
+Using license file /cluster/apps/nss/gurobi/9.1.1/x86_64/gurobi.lic
+Set parameter TokenServer to value lic-gurobi.ethz.ch
+Error reading LP format file /scratch/166916107.tmpdir/pypsa-problem-0_1a38je.lp at line 62735320
+Malformed term in expression
+Neighboring tokens: " 0.000000 x179 78 <= +0.000000 c12441804: "
+
+Unable to read file
+Traceback (most recent call last):
+  File "/cluster/scratch/wlaumen/pypsa-eur/.snakemake/shadow/tmp_67wwobc/.snakemake/scripts/tmpbk6m8fzy.solve_network.py", line 289, in <module>
+    n = solve_network(n, config=snakemake.config, solver_dir=tmpdir,
+  File "/cluster/scratch/wlaumen/pypsa-eur/.snakemake/shadow/tmp_67wwobc/.snakemake/scripts/tmpbk6m8fzy.solve_network.py", line 264, in solve_network
+    ilopf(n, solver_name=solver_name, solver_options=solver_options,
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/linopf.py", line 1027, in ilopf
+    status, termination_condition = network_lopf(n, snapshots, **kwargs)
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/linopf.py", line 918, in network_lopf
+    res = solve(n, problem_fn, solution_fn, solver_logfile,
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/linopt.py", line 755, in run_and_read_gurobi
+    m = gurobipy.read(problem_fn)
+  File "src/gurobipy/gurobi.pxi", line 3293, in gurobipy.read
+  File "src/gurobipy/gurobi.pxi", line 86, in gurobipy.gurobi.read
+gurobipy.GurobiError: Unable to read model
+[Wed Mar 24 12:25:31 2021]
+Error in rule solve_network:
+    jobid: 0
+    output: results/networks/elec_s300_200_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_200_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_200_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_200_ec_lcopt_1H_memory.log (check log file(s) for error message)
+
+RuleException:
+CalledProcessError in line 319 of /cluster/scratch/wlaumen/pypsa-eur/Snakefile:
+Command 'set -euo pipefail;  /cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/bin/python3.8 /cluster/scratch/wlaumen/pypsa-eur/.snakemake/shadow/tmp_67wwobc/.snakemake/scripts/tmpbk6m8fzy.solve_network.py' returned non-zero exit status 1.
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 2154, in run_wrapper
+  File "/cluster/scratch/wlaumen/pypsa-eur/Snakefile", line 319, in __rule_solve_network
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 551, in _callback
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/concurrent/futures/thread.py", line 57, in run
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 537, in cached_or_run
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 2239, in run_wrapper
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message

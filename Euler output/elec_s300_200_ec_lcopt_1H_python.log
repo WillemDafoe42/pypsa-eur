@@ -1,0 +1,4 @@
+INFO:pypsa.io:Imported network elec_s300_200_ec_lcopt_1H.nc has buses, carriers, generators, lines, links, loads, storage_units
+INFO:pypsa.linopf:Prepare linear problem
+INFO:pypsa.linopf:Total preparation time: 102.16s
+INFO:pypsa.linopf:Solve linear problem using Gurobi solver
