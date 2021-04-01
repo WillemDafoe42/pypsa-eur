@@ -208,6 +208,11 @@ def enforce_autarky(n, only_crossborder=False):
     n.mremove("Line", lines_rm)
     n.mremove("Link", links_rm)
 
+def enforce_noextension(n):
+    n.lines.s_nom_extendable = False
+    if not n.links.empty:
+        n.links.loc[n.links.carrier=="DC","p_nom_extendable"] = False
+
 def set_line_nom_max(n):
     s_nom_max_set = snakemake.config["lines"].get("s_nom_max,", np.inf)
     p_nom_max_set = snakemake.config["links"].get("p_nom_max", np.inf)
@@ -278,5 +283,7 @@ if __name__ == "__main__":
         enforce_autarky(n)
     elif "ATKc" in opts:
         enforce_autarky(n, only_crossborder=True)
+    if "noex" in opts:
+        enforce_noextension(n)
 
     n.export_to_netcdf(snakemake.output[0])

@@ -134,8 +134,6 @@ def add_BESS_loadflexibility(network, network_year, flex_potential=10000, c_rate
         else:
             p_flex = 0
 
-        print("p_flex = " + str(p_flex))
-
         # add additional bus solely for representation of battery at location of previous bus
         network.add("Bus",
                     name=battery_bus,
@@ -143,56 +141,36 @@ def add_BESS_loadflexibility(network, network_year, flex_potential=10000, c_rate
                     y=network.buses.loc[bus_name, "y"],
                     carrier="battery")
         # add store
-        network.add("Store", name="BESS_{}".format(i),
-                    bus=battery_bus,
-                    e_nom=p_flex / c_rate,
-                    e_nom_extendable=False,
-                    e_min_pu=0,
-                    e_max_pu=1,
-                    e_initial=0.5,
-                    e_cyclic=True,
-                    p_set=p_flex,
-                    q_set=0.05,
-                    marginal_cost=0,
-                    capital_cost=0,
-                    standing_loss=0)
+        network.add("Store", name="BESS_{}".format(i), bus=battery_bus,
+                    e_nom=p_flex / c_rate, e_nom_extendable=False,
+                    e_min_pu=0, e_max_pu=1, e_initial=0.5, e_cyclic=False,
+                    p_set=p_flex, q_set=0.05, marginal_cost=0,
+                    capital_cost=0, standing_loss=0)
         # discharge link
         network.add("Link",
                     name="BESS_{}_discharger".format(i + 1),
-                    bus0=battery_bus,
-                    bus1=bus_name,
-                    capital_cost=0,
-                    p_nom=p_flex,
-                    p_nom_extendable=False,
-                    p_max_pu=1,
-                    p_min_pu=0,
-                    marginal_cost=0,
-                    efficiency=0.96)
+                    bus0=battery_bus, bus1=bus_name, capital_cost=0,
+                    p_nom=p_flex, p_nom_extendable=False, p_max_pu=1, p_min_pu=0,
+                    marginal_cost=0, efficiency=0.96)
         # charge link
         network.add("Link",
                     name="BESS_{}_charger".format(i + 1),
-                    bus0=bus_name,
-                    bus1=battery_bus,
-                    capital_cost=0,
-                    p_nom=p_flex,
-                    p_nom_extendable=False,
-                    p_max_pu=1,
-                    p_min_pu=0,
-                    marginal_cost=0,
-                    efficiency=0.96)
+                    bus0=bus_name, bus1=battery_bus, capital_cost=0,
+                    p_nom=p_flex, p_nom_extendable=False, p_max_pu=1, p_min_pu=0,
+                    marginal_cost=0, efficiency=0.96)
     network.name = str(network.name) + " BESS loadflexibility"
 
 
-def add_BESS(network):
+def add_BESS_plant(network):
     '''
-    Adds static battery storages (fixed capacity) to the base network
-    Removes previously added batteries (links and stores) from the network
+    Adds static battery storages (fixed capacity) to the base network at locations where large central powerplants
+    are located. Battery storage capacity is added based on the generation capacity at a specific network bus. These
+    batteries are solely used for redispatch purposes. The investments in those batteries is only used for redispatch.
 
     A battery is added to the network by combining a link for discharge, and one for charge (representing inverter operations)
     and a store unit representing the battery capacity
     '''
     # Clean up all previously saved battery components
-    clean_batteries(network)
 
     bus_names = network.buses.index.tolist()
     for i in range(len(bus_names)):
@@ -395,17 +373,14 @@ def solve_redispatch_network(network, network_dispatch):
     Parameters:
     network: network from dispatch optimization
     '''
-    #### TODO: add extra functionality that only pos OR negative can be =! 0 during 1 snapshot
-
     network_redispatch = build_redispatch_network(network, network_dispatch)
     # Solve new network
-    network_redispatch.lopf(solver_name="gurobi", pyomo=False,
-                            formulation="kirchhoff")
+    network_redispatch.lopf(solver_name="gurobi", pyomo=False, formulation="kirchhoff")
     return network_redispatch
 
 
 # Redispatch workflow with batteries
-def build_redispatch_network_with_bat(network, network_dispatch, network_year, c_rate, flex_share, flex_store=True):
+def build_redispatch_network_with_bat(network, network_dispatch, network_year, c_rate, flex_share):
     '''
     Uses predefined component building functions for building the redispatch network and adds batteries.
     -----
@@ -414,15 +389,12 @@ def build_redispatch_network_with_bat(network, network_dispatch, network_year, c
     '''
     network_redispatch_bat = build_redispatch_network(network, network_dispatch)
     # Adding a battery at every node
-    if flex_store == True:
-        add_BESS_loadflexibility(network_redispatch_bat, network_year, c_rate, flex_share)
-    else:
-        add_BESS(network_redispatch_bat)
+    add_BESS_loadflexibility(network_redispatch_bat, network_year, c_rate, flex_share)
 
     return network_redispatch_bat
 
 
-def solve_redispatch_network_with_bat(network, network_dispatch, network_year, c_rate, flex_share, flex_store=True):
+def solve_redispatch_network_with_bat(network, network_dispatch, network_year, c_rate, flex_share):
     '''
     Calls redispatch building function and solves the network.
     -----
@@ -433,7 +405,7 @@ def solve_redispatch_network_with_bat(network, network_dispatch, network_year, c
     #### TODO: add extra functionality that only pos OR negative can be =! 0 during 1 snapshot
 
     network_redispatch_bat = build_redispatch_network_with_bat(network, network_dispatch, network_year, c_rate,
-                                                               flex_share, flex_store=True, )
+                                                               flex_share)
     # Solve new network
     network_redispatch_bat.lopf(solver_name="gurobi", pyomo=False, formulation="kirchhoff")
 
@@ -507,7 +479,7 @@ def concat_network(list_networks, ignore_standard_types=False):
 
 
 def redispatch_workflow(network, network_optim, scenario="no bat",
-                        c_rate=0.25, flex_share=0.1, flex_store=True):
+                        c_rate=0.25, flex_share=0.1):
     '''
     Function for executing the whole redispatch workflow.
 
@@ -524,8 +496,6 @@ def redispatch_workflow(network, network_optim, scenario="no bat",
     l_networks_24 = []
     l_networks_dispatch = []
     l_networks_redispatch = []
-    dict_obj_d = {}
-    dict_obj_rd = {}
 
     # Generate operative pypsa-eur network without investment problem
     network = set_parameters_from_optimized(network, network_optim)
@@ -549,8 +519,7 @@ def redispatch_workflow(network, network_optim, scenario="no bat",
         if scenario == "no bat":
             n_redispatch = solve_redispatch_network(n_24, n_dispatch)
         elif scenario == "bat":
-            n_redispatch = solve_redispatch_network_with_bat(n_24, n_dispatch, network_year, c_rate=0.25,
-                                                             flex_share=0.1, flex_store=True)
+            n_redispatch = solve_redispatch_network_with_bat(n_24, n_dispatch, network_year, c_rate=0.25,flex_share=0.1)
 
         # Append networks to corresponding yearly lists
         # ---------------
@@ -558,31 +527,23 @@ def redispatch_workflow(network, network_optim, scenario="no bat",
         l_networks_dispatch.append(n_dispatch)
         l_networks_redispatch.append(n_redispatch)
 
-        # Create output list for the daily objective values dispatch & redispatch
-        # ---------------
-        dict_obj_d[n_dispatch.snapshots[0].day] = n_dispatch.objective
-        dict_obj_rd[n_redispatch.snapshots[0].day] = n_redispatch.objective
+    # For each results list: Create a network out of daily networks for dispatch & redispatch
+    # ---------------
+    network_dispatch = concat_network(l_networks_dispatch)
+    network_redispatch = concat_network(l_networks_redispatch)
 
-        # For each results list: Create a network out of daily networks for dispatch & redispatch
-        # ---------------
-        network_dispatch = concat_network(l_networks_dispatch)
-        network_redispatch = concat_network(l_networks_redispatch)
-
-    return network_dispatch, network_redispatch, dict_obj_d, dict_obj_rd
+    return network_dispatch, network_redispatch
 
 
-def solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1, flex_store=True):
+def solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1):
     """
     Function to run the redispatch workflow for all networks in the networks_redispatch folder.
     """
 
     folder = r'/cluster/home/wlaumen/Euler/pypsa-eur/networks_redispatch'
-    print("foldertest")
     for filepath in glob.iglob(folder + '/*.nc'):
-        print(filepath)
-        print("filepathtest")
         filename = filepath.split('/')[-1].split(".")[0]
-        print(filename)
+        print(filename + "\n\n\n\n\n\n")
         path_n = filepath
         path_n_optim = folder + "/solved/" + filename + ".nc"
         # Define network and network_optim
@@ -590,33 +551,26 @@ def solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1, flex_store=True)
         n_optim = pypsa.Network(path_n_optim)
 
         # Run redispatch w/o batteries & export files
-        n_d, n_rd, dict_obj_d, dict_obj_rd = redispatch_workflow(n, n_optim, scenario="no bat",
-                                                                 c_rate=0.25, flex_share=0.1, flex_store=True)
+        n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat",
+                                                                 c_rate=0.25, flex_share=0.1)
         # export solved dispatch & redispatch workflow as well as objective value list
         export_path = folder + r"/results"
         n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + ".nc",
                              export_standard_types=False, least_significant_digit=None)
         n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + ".nc",
                               export_standard_types=False, least_significant_digit=None)
-        with open(export_path + r"/dispatch/" + filename + r".pickle", "wb") as f:
-            pkl.dump(dict_obj_d, f)
-        with open(export_path + r"/redispatch/" + filename + r".pickle", "wb") as f:
-            pkl.dump(dict_obj_rd, f)
         gc.collect()
 
         # Run redispatch with batteries & export files
-        n_d_bat, n_rd_bat, dict_obj_d_bat, dict_obj_rd_bat = redispatch_workflow(n, n_optim, scenario="bat",
-                                                                                 c_rate=0.25, flex_share=0.1,
-                                                                                 flex_store=True)
+        n_d_bat, n_rd_bat = redispatch_workflow(n, n_optim, scenario="bat",
+                                                                                 c_rate=0.25, flex_share=0.1)
         # export solved dispatch & redispatch workflow as well as objective value list
         n_rd_bat.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat.nc",
                                   export_standard_types=False, least_significant_digit=None)
-        with open(export_path + r"/redispatch/" + filename + r"_bat.pickle", "wb") as f:
-            pkl.dump(dict_obj_rd_bat, f)
         gc.collect()
 
 def main():
-    solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1, flex_store=True)
+    solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1)
     print("Test")
 if __name__ == "__main__":
     main()

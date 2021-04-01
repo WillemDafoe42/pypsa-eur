@@ -5,6 +5,7 @@
       <change afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/PyPSA/pypsa/redispatch.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/PyPSA/pypsa/redispatch.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/PyPSA/pypsa/redispatch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.gitattributes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.github/ISSUE_TEMPLATE/bug_report.md" beforeDir="false" />
@@ -24,6 +25,7 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/Logs.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/Snakefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/config.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/elec_s300_140_ec_lcopt_1H_python.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/elec_s300_160_ec_lcopt_1H_memory.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/elec_s300_200_ec_lcopt_1H_memory.log" beforeDir="false" />
@@ -59,6 +61,7 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Pypsa-eur analysis.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Redispatch Daten Analyse.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Stomata plot.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Time Series Clustering.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Untitled1.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/l_networks.pickle" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/multi_obj_all_points.p" beforeDir="false" />
@@ -72,6 +75,8 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/borg-it" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/borg-it" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/config.default.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/config.default.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/config.tutorial.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/config.tutorial.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/configs/config.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/agg_p_nom_minmax.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/costs.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/custom_powerplants.csv" beforeDir="false" />
@@ -276,6 +281,7 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/Logs.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/Snakefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/config.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/elec_s300_140_ec_lcopt_1H_python.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/elec_s300_160_ec_lcopt_1H_memory.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/elec_s300_200_ec_lcopt_1H_memory.log" beforeDir="false" />
@@ -311,6 +317,7 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Pypsa-eur analysis.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Redispatch Daten Analyse.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Stomata plot.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Time Series Clustering.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Untitled1.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/l_networks.pickle" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/multi_obj_all_points.p" beforeDir="false" />
@@ -324,6 +331,8 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/borg-it" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/borg-it" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/config.default.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/config.default.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/config.tutorial.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/config.tutorial.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/configs/config.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/agg_p_nom_minmax.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/costs.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/custom_powerplants.csv" beforeDir="false" />
@@ -510,12 +519,20 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/solve_operations_network.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/solve_redispatch_networks.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/test/config.test1.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Euler output/.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Euler+RWTH_jobscripts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Euler+RWTH_jobscripts.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter Notebook/Analysis Notebook.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter Notebook/Analysis Notebook.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter Notebook/ERA5 cdsapi test.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter Notebook/ERA5 cdsapi test.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Jupyter Notebook/Pypsa-eur analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter Notebook/Pypsa-eur analysis.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter Notebook/Time Series Clustering.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter Notebook/Time Series Clustering.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PyPSA/pypsa/components.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyPSA/pypsa/components.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PyPSA/pypsa/opf.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyPSA/pypsa/opf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/networks_redispatch/results/dispatch/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" afterPath="$PROJECT_DIR$/networks_redispatch/results/dispatch/elec_s300_50_ec_lcopt_1H.nc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/networks_redispatch/results/redispatch/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" afterPath="$PROJECT_DIR$/networks_redispatch/results/redispatch/elec_s300_50_ec_lcopt_1H.nc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/networks_redispatch/results/redispatch/elec_s300_50_ec_lcopt_1H_bat.nc" beforeDir="false" afterPath="$PROJECT_DIR$/networks_redispatch/results/redispatch/elec_s300_50_ec_lcopt_1H_bat.nc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/prepare_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/prepare_network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/solve_redispatch_networks.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/solve_redispatch_networks.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -581,7 +598,9 @@
       <workItem from="1616420653976" duration="1461000" />
       <workItem from="1616485189167" duration="3000" />
       <workItem from="1616502207133" duration="821000" />
-      <workItem from="1616512686692" duration="761000" />
+      <workItem from="1616512686692" duration="1969000" />
+      <workItem from="1616845873542" duration="7469000" />
+      <workItem from="1617031541097" duration="5022000" />
     </task>
     <servers />
   </component>

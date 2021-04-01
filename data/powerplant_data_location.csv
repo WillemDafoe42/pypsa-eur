@@ -1,0 +1,550 @@
+;name;latitude;longitude
+0;ADS-Anlage;50.0918;8.5311
+1;ANeunkirchen;49.3386;7.17
+2;AMK - Abfallentsorgungsgesellschaft des MÃ¤rkischen Kreises mbH;51.3971;7.6967
+3;AVA GmbH;48.4011;10.9356
+4;AVA Velsen;49.2139;6.8345
+5;Abfallentsorgungszentrum Asdonkshof;51.5224;6.5747
+6;Ahrensfelde;52.5895;13.5587
+7;Altbach;48.7176;9.3749
+8;Altheim;51.5365;14.3829
+9;Alzwerke GmbH;48.1769;12.8405
+10;Audorf;54.2907;9.7228
+11;Aufkirchen;48.3067;11.8588
+12;BEG;53.5478;8.6179
+13;BHKW;49.0475;8.2816
+14;BH.120;51.2545;6.7865
+15;BLudwigshafen;49.4531;8.4336
+16;BObere Viehweide;48.5109;9.0715
+17;Ban Klinkerweg;51.2169;6.9473
+18;BHKW-HauffstraÃe;48.4939;9.1856
+19;BKF;50.1294;8.7679
+20;BMHKW-BinderHolz;48.7912;11.5068
+21;BMHKW-RE Recklinghausen;51.604;7.2508
+22;BMK LÃ¼nen;51.614;7.4813
+23;BMKW Bergkamen;51.637;7.6188
+24;BMKW FlÃ¶rsheim Wicker;50.0226;8.3772
+25;BMKW KÃ¶nigs Wusterhausen;52.3048;13.636
+26;BMKW Mannheim;49.5164;8.4602
+27;BP Werk Lingen;52.5606;7.2952
+28;BROKDORF;53.8506;9.345
+29;Bergheim;48.7508;11.2732
+30;Bergkamen;51.637;7.6191
+31;Berlin-Moabit;52.5374;13.3461
+32;Berlin-Reuter;52.5321;13.2461
+33;Berlin-Reuter-West;52.5351;13.2426
+34;Bertoldsheim;48.7359;11.0209
+35;Bigge;51.0932;7.8627
+36;Bio Herbrechtingen;48.6285;10.2009
+37;BioEnergie Park Klarsee;53.3;14.25
+38;BioI;48.397;9.9648
+39;Biomass Generator #10;50.4978;11.6562
+40;Biomass Generator #11;53.6183;10.2244
+41;Biomass Generator #12;49.6552;8.3659
+42;Biomass Generator #13;49.6552;8.3659
+43;Biomass Generator #14;51.5439;7.4388
+44;Biomass Generator #15;49.5154;9.3252
+45;Biomass Generator #16;51.9201;11.8018
+46;Biomass Generator #17;51.5152;12.3248
+47;Biomass Generator #19;52.8515;13.7781
+48;Biomass Generator #2;48.6283;10.2008
+49;Biomass Generator #20;49.8587;7.8857
+50;Biomass Generator #20;51.4662;13.5046
+51;Biomass Generator #21;52.1827;14.2584
+52;Biomass Generator #22;51.4901;10.4129
+53;Biomass Generator #23;51.8554;6.8887
+54;Biomass Generator #3;53.1511;12.3771
+55;Biomass Generator #4;51.8848;8.9567
+56;Biomass Generator #5;49.9713;8.0606
+57;Biomass Generator #6;48.4933;11.1766
+58;Biomass Generator #7;51.205;6.7085
+59;Biomass Generator #8;50.7021;8.0732
+60;Biomass Generator #9;49.0115;9.6718
+61;Biomasse-Malchin;53.7419;12.783
+62;Biomasse-Verstromungs-Anlage;51.35;7.45
+63;Biomasseheizkraftwerk Piesteritz;51.8712;12.6185
+64;Biomasseheizkraftwerk Wiesbaden;50.0833;8.25
+65;Biomassekraftwerk Bischofferode;51.4899;10.4131
+66;Bittenbrunn;48.7345;11.1438
+67;Bleiloch;50.5244;11.7144
+68;Blockheizkraftwerk 1;49.9882;9.1558
+69;BoA 2;51.0365;6.6133
+70;Bochum;51.4833;7.2167
+71;Boxberg;51.4163;14.5619
+72;Braunau-Simbach;48.0638;10.1284
+73;Braunkohlekraftwerk Lippendorf;51.1821;12.3733
+74;Bremen-Farge;53.2021;8.5162
+75;BrunsbÃ¼ttel;53.8925;9.2011
+76;Buer;51.6028;7.0094
+77;Buschhaus;52.1724;10.9768
+78;Charlottenburg;52.5219;13.3111
+79;Chemiepark Marl;51.6846;7.1
+80;Chemnitz Nord;50.857;12.9231
+81;Co-Generation;49.6633;8.3589
+82;Coal Plant #1;51.0489;12.1104
+83;Coal Plant #2;48.5272;8.0868
+84;Cologne-Merkenich;51.0178;6.9643
+85;Cottbus CHP;51.7602;14.37
+86;DK Kraftwerk;51.4191;6.7385
+87;DKW Leinau;47.9125;10.6117
+88;DKW Nord;48.0627;10.4866
+89;DT;51.2228;6.8137
+90;Dampfkraftwerk BGH - O1;48.1835;12.8531
+91;Dampfturbinenanlage der EBS-Kessel;51.8026;11.7515
+92;Dessau;47.7393;10.8257
+93;Dessau;51.8269;12.23
+94;Dettingen;48.5275;9.3488
+95;Detzem;49.8109;6.8439
+96;Deuben;51.1119;12.0762
+97;Dingolfing;48.634;12.4837
+98;Dormagen;51.0791;6.8287
+99;Dornau;47.8002;10.9026
+100;Dortmund;51.5197;7.477
+101;Dow Stade;53.6519;9.5079
+102;Duisburg Hamborn;51.491;6.7275
+103;Duisburg Ruhrort;51.4597;6.7306
+104;EBKW Knapsack;50.8577;6.8502
+105;EBS-Rostock;54.1446;12.1412
+106;EBS-Heizkraftwerk;52.1688;14.6408
+107;EEV;53.4852;9.9696
+108;EEW Energy from Waste Hannover GmbH;52.4118;9.853
+109;EEW GroÃrÃ¤schen;51.5929;14.0241
+110;EEW GÃ¶ppingen;48.6823;9.6713
+111;EMSLAND;52.4716;7.3204
+112;ENERTRAG Netz GmbH (UW Bertikow);53.2656;13.95
+113;EVC / GLOBALFOUNDRIES;51.127;13.715
+114;EVE;52.535;12.3626
+115;EZ1;51.0489;12.1104
+116;Egger Briilon 1;51.4067;8.6012
+117;Egger Briilon 2;51.4085;8.5999
+118;Egglfing;48.3206;13.3161
+119;Eitting;48.3586;11.8822
+120;Ellgau;48.5967;10.8789
+121;Emden Biomasse;53.3422;7.2062
+122;Emden;53.3422;7.2062
+123;Emsland;52.4819;7.3067
+124;Energieanlage 3;53.149;12.3797
+125;Energiezentrale;51.5744;7.2979
+126;Energiezentrale 1992;48.3591;11.7903
+127;Energiezentrum Mohn Media;51.9073;8.4088
+128;Enertec Hameln;52.0988;9.3882
+129;Enkirch;49.9767;7.1278
+130;Ering;48.2935;13.1585
+131;Erweiterung Energiezentrale 2003;48.3591;11.7903
+132;Erzhausen;51.8991;9.9245
+133;Ettling;48.6961;12.7978
+134;Ludwigshafen;49.4851;8.4262
+135;FKK;51.2791;9.484
+136;FS-Karton;51.2171;6.6965
+137;Faimingen;48.5584;10.4118
+138;Fankel;50.1239;7.2259
+139;Feldkirchen;47.9609;12.1561
+140;Flensburg;54.8049;9.4324
+141;Fortuna Nord;50.9456;6.6636
+142;Franken 1;49.4208;11.0077
+143;Frimmersdorf;51.0574;6.5771
+144;G-Kraftwerk;51.3689;6.6541
+145;GHD;48.6403;12.4634
+146;Hannover;52.42;9.6486
+147;GKL;52.3729;9.7142
+148;(Mannheim);49.4452;8.4891
+149;GKS;50.0297;10.224
+150;Niederrhein;51.4855;6.8344
+151;Darmstadt;49.8849;8.6501
+152;GUD-Anlage DREWSEN;52.6235;10.2457
+153;Gars;48.154;12.3111
+154;Geesthacht;53.426;10.3359
+155;Geisling;48.9748;12.344
+156;Irsching;48.767;11.58
+157;Gersteinwerk;51.6725;7.7099
+158;GichtNatural Gaskraftwerk Dillingen;49.3548;6.7315
+159;Goldisthal;50.5098;11.0209
+160;Grohnde;52.0356;9.4135
+161;Grubenheizkraftwerk;51.4627;11.714
+162;GuD;51.2214;6.7313
+163;Anlage WVK;48.0202;7.8452
+164;Baunatal  VW WerksgelÃ¤nde;51.2531;9.4379
+165;Bitterfeld;51.6257;12.327
+166;Hillegossen;52.0333;8.5333
+167;Leuna;51.2998;12.0193
+168;Marienehe;54.1255;12.0819
+169;Schwarzheide;51.4762;13.8891
+170;Tiefstack;53.5267;10.0658
+171;GuD-Anlage;49.9882;9.1558
+172;GuD-Anlage RÃ¼sselsheim;49.992;8.4141
+173;GuD-Neubrandenburg;53.5745;13.2951
+174;GuD-Ikw StaÃfurt;51.8655;11.5738
+175;GuD-Kraftwerk;49.5307;8.4709
+176;Gummering;48.6225;12.398
+177;HBB;47.796;12.1193
+178;HBerlin-NeukÃ¶lln;52.4253;13.5173
+179;"""HelmshÃ¤ger Berg""";54.0973;13.385
+180;1;51.4707;6.8616
+181;1 Werk Offstein;49.5991;8.221
+182;2;51.4707;6.8616
+183;Altenstadt;47.7971;10.8587
+184;Bad Salzungen;50.8003;10.2206
+185;Barmen;51.2689;7.2003
+186;BohrhÃ¼gel;50.6315;10.6987
+187;Brandenburg;51.5122;13.9711
+188;Chemnitz  Nord II (Natural Gas);50.857;12.9231
+189;Dresden-Nossener BrÃ¼cke;51.0421;13.7086
+190;Eltmann;49.984;10.6514
+191;Erfurt-Ost;50.9848;11.0299
+192;Erlangen (Coal);49.5928;11.0015
+193;Erlangen (Natural Gas);49.593;11.0016
+194;Fenne  GrubenNatural Gaskraftwerk;49.249;6.8792
+195;Freiberg;48.0056;7.8423
+196;GÃ¶ttingen;51.5534;9.9337
+197;Halle Trotha;51.481;11.9643
+198;Hiltrop;51.508;7.2503
+199;Humboldtstr.;54.3275;10.1267
+200;I;51.4293;6.752
+201;III/B;51.3907;6.7478
+202;Jena;50.8969;11.5857
+203;Karcherstr. (Coal);49.4346;7.7582
+204;Karcherstr. (Natural Gas);49.4347;7.7602
+205;Mannheim;49.5224;8.4529
+206;Merheim;50.9431;7.0852
+207;Merkenich;51.0179;6.964
+208;Merkenich (Natural Gas);51.0178;6.9643
+209;Niederrad;50.0856;8.6279
+210;Niehl 2;50.9749;6.988
+211;Nord;52.4328;10.7861
+212;Nord West;51.2529;9.438
+213;Pfaffenwald;48.7508;9.1103
+214;Potsdam-SÃ¼d;52.3661;13.1125
+215;Sachtleben;51.4409;6.7054
+216;Sandreuth;49.4386;11.0606
+217;Sandreuth;49.4386;11.0606
+218;Schwarza;50.6869;11.3293
+219;Schwerin Lankow;53.6539;11.373
+220;Schwerin SÃ¼d;53.5779;11.3965
+221;SÃ¼dstadt;50.917;6.9573
+222;West;52.4422;10.7645
+223;West;50.0984;8.6531
+224;West;50.0984;8.6531
+225;West ?;50.0985;8.653
+226;Wiesengrund;50.9816;10.2906
+227;WÃ¶rth;49.07;8.307
+228;HKW-Mitte;52.2786;10.5147
+229;HKW-Nord;52.2786;10.5147
+230;HKW-West;52.0262;8.8666
+231;HKW3 UPM Schongau;48.1603;10.1144
+232;Hafen;53.1249;8.7287
+233;Hamburg-Moorburg;53.489;9.949
+234;Hamburger Rieger;51.5201;14.3374
+235;Hastedt;53.0601;8.8733
+236;Hattorf;50.8126;9.978
+237;Heilbronn;49.1773;9.2063
+238;Heimbach;50.6286;6.4518
+239;1;53.5177;9.9508
+240;2;50.0918;8.5311
+241;3;49.249;6.8792
+242;4;48.3751;10.9028
+243;5;49.8828;8.6287
+244;Altbach/Deizisau (Natural Gas);48.7176;9.3749
+245;Bomlitz;52.9;9.65
+246;Evonik Rheinfelden;47.5708;7.8072
+247;FFO;52.346;14.546
+248;Gera-Nord;50.9076;12.061
+249;Hafen;51.9501;7.6413
+250;Hagen-Kabel;51.411;7.4917
+251;KarlstraÃe 1;50.7338;7.0805
+252;KarlstraÃe 2;50.7338;7.0805
+253;Krefeld;51.3388;6.5853
+254;Leipzig-Nord;51.3512;12.3784
+255;MagirusstraÃe;48.397;9.9648
+256;Pforzheim GmbH;48.8971;8.725
+257;Pforzheim GmbH;48.8832;8.6653
+258;Sindelfingen;48.6972;8.9992
+259;Stendal;52.6087;11.8325
+260;Stuttgart-Gaisburg;48.7825;9.2315
+261;West;49.0144;8.3481
+262;der Sappi Stockstadt GmbH;49.9774;9.0687
+263;zur Papierfabrik;52.618;7.8619
+264;Heizkraftwerke an der FriedensbrÃ¼cke;49.8;9.9231
+265;Hemfurth;51.1671;9.0468
+266;Herne;51.5508;7.1875
+267;Heyden;52.3828;8.996
+268;Hkw Offenbach;50.0652;8.769
+269;Hohenwarte;50.6038;11.4752
+270;Holthausen;51.1756;6.838
+271;Huckingen;51.3679;6.7167
+272;Huerth Ville / Berrenrath;50.8614;6.8407
+273;Huntorf;53.1897;8.4087
+274;HÃ¤usern;47.7546;8.1879
+275;HÃ¶chstÃ¤dt;48.6032;10.5827
+276;IAndernach;50.4349;7.4321
+277;IHeidenheim;48.6701;10.1506
+278;IKS PCK Schwedt;53.0982;14.2345
+279;IKW;52.1674;14.627
+280;IKW RÃ¼dersdorf;52.4903;13.8299
+281;ILK-EKT;51.7999;11.7581
+282;ILK-GuD;51.2998;12.0193
+283;INEOS Kraftwerk;51.4693;6.6436
+284;ISAR-2;48.6049;12.2936
+285;IbbenbÃ¼ren-B;52.2888;7.7479
+286;Industrie-Kraftwerk;51.5649;6.5782
+287;Industriekraftwerk Bernburg (IKB);51.8012;11.7544
+288;Industriekraftwerk Breuberg;49.8108;9.0117
+289;Industriekraftwerk Greifswald;54.1379;13.6671
+290;Industriekraftwerk Ludwigshafen;49.4532;8.4336
+291;Industriepark Werk Gendorf;48.1768;12.7306
+292;Ingolstadt;48.7503;11.4122
+293;Itzehoe;53.9664;9.4495
+294;Janschwalde;51.8344;14.459
+295;Jochenstein;48.5196;13.7085
+296;K&N PFK AG EV;51.0513;13.0166
+297;KW Hafen;53.1248;8.7289
+298;KW Kirchlengern;52.1951;8.6482
+299;KW MittelsbÃ¼ren;53.1289;8.6852
+300;KW Rheinfelden;47.5699;7.8101
+301;KW Voerde;51.5765;6.6894
+302;KW Walsum;51.5267;6.7187
+303;KW West;51.5796;6.6789
+304;KW Wyhlen;47.5524;7.6581
+305;KWH;52.3667;9.7167
+306;KWK AOS GmbH;53.6575;9.502
+307;KWK GÃ¼tersloh;51.9154;8.4003
+308;KWK Neumarkt;49.2613;11.4516
+309;KWK-Anlage Barby;51.9832;11.8766
+310;KWK-Anlage Krefeld DT;51.3392;6.6642
+311;KWK-Anlage Krefeld VM;51.3392;6.6642
+312;KWKK Heidelberg;49.4216;8.6728
+313;KWM;52.315;10.0914
+314;Kachlet;48.5797;13.4083
+315;Karnap;51.5154;6.9938
+316;Kaufering;48.084;10.8649
+317;Kernkraft Gundremmingen;48.515;10.4016
+318;Kessel 2;50.777;6.486
+319;Kessel 4;50.777;6.486
+320;Kesselhaus Zuckerfabrik;53.8563;13.7101
+321;Kiel;54.3394;10.1766
+322;KirchmÃ¶ser;52.3942;12.4181
+323;Klingenberg;52.4889;13.497
+324;KlÃ¤ranlage;48.5529;8.4074
+325;Knapsack I;50.8617;6.8424
+326;Koblenz;50.3659;7.5817
+327;Koepchenwerk;51.4105;7.4531
+328;Kohlekraftwerk;50.7055;6.6536
+329;Kombi-HKW;51.2791;9.484
+330;Kombikraftwerk;51.4656;12.592
+331;Kopswerk I;46.9684;10.0599
+332;Kraftwerk;50.9456;6.665
+333;Kraftwerk;50.8305;6.9594
+334;2;50.5691;9.6813
+335;3;48.1539;12.6524
+336;Bexbach;49.3635;7.2371
+337;Ensdorf;49.2932;6.7709
+338;Fulda;50.5664;9.6861
+339;Grenzach-Wyhlen;47.5397;7.7069
+340;Hausham;47.7524;11.8398
+341;II;51.6804;7.0969
+342;III;51.6804;7.0969
+343;L 57;51.3698;6.6615
+344;Mainz;50.0264;8.2379
+345;Meggle;48.0564;12.1852
+346;Mitte;49.5137;8.4316
+347;N 230;51.3698;6.6615
+348;Nord;48.5529;8.4074
+349;Plattling;48.7874;12.8825
+350;Salzgitter;52.1579;10.3958
+351;Schwedt GmbH & Co.KG;53.0831;14.3214
+352;SÃ¼d;49.5136;8.4316
+353;Waldshut;47.6178;8.1926
+354;Walheim;49.0175;9.1574
+355;Werdohl-Elverlingsen;51.2764;7.7057
+356;Kraftwerksgruppe Pfreimd;49.53;12.2848
+357;Landau;48.6679;12.66
+358;Landesbergen Biomasse;52.577;9.1101
+359;Laufenburg;47.5559;8.0494
+360;Lehmen;50.2747;7.459
+361;Leitzach 1;47.8739;11.871
+362;Lichterfelde;52.4252;13.3098
+363;Lippendorf;51.1821;12.3733
+364;LÃ¼nen (KSBG);51.614;7.4643
+365;MHKW;53.1146;8.8182
+366;M WKW;47.8561;12.1341
+367;MBurgkirchen;48.1851;12.7361
+368;MFrankfurt;50.1617;8.636
+369;MMainz;50.0259;8.2418
+370;MPirmasens;49.2282;7.5955
+371;MRothensee;52.1853;11.6791
+372;MKVA Krefeld;51.3804;6.6373
+373;MT  DÃ¼ren;50.7728;6.49
+374;MVA Bielefeld;52.0427;8.6072
+375;MVA Hamm;51.6804;7.7442
+376;MVA Ingolstadt;48.7645;11.4918
+377;MVA Weisweiler;50.8386;6.3212
+378;MVR MÃ¼llverwertung Rugenberger Damm GmbH & Co. KG;53.5209;9.9348
+379;Markersbach;50.5194;12.8798
+380;Meitingen;48.547;10.8651
+381;Merching;48.2704;10.9773
+382;MiRO;49.0608;8.3244
+383;Mitte;52.5117;13.4209
+384;Moabit (Oil);52.5374;13.3461
+385;Modellkraftwerk;49.249;6.8792
+386;MÃ¼den;52.5219;10.3604
+387;MÃ¼hltal;47.9963;11.4854
+388;MÃ¼llheizkraftwerk Kassel;51.2976;9.5241
+389;MÃ¼llheizkraftwerk Offenbach;50.0653;8.769
+390;MÃ¼llheizkraftwerk Wuppertal;51.2251;7.1422
+391;MÃ¼llkraftwerk Schwandorf;49.31;12.0879
+392;MÃ¼llverwertung BorsigstraÃe MVB;53.5319;10.0746
+393;NECKARWESTHEIM-2;49.0408;9.1759
+394;Natural Gas Turbine #1;49.2095;7.936
+395;Natural Gas Turbine #2;51.6627;10.3531
+396;Natural Gas Turbine #3;51.1514;13.9776
+397;Natural Gas Turbine #6;51.2212;6.7319
+398;Natural Gas Turbine #7;49.4059;11.1329
+399;Natural Gas Turbine #8;48.401;10.9358
+400;Natural Gas Turbine #9;50.8305;6.9594
+401;Natural Gas- u. Dampfturbinenanlage SÃ¼draum;49.2137;6.9781
+402;Natural Gasblock;51.2214;6.7313
+403;Natural Gaskraftwerk #1;50.7055;6.6536
+404;Natural Gasmotore;47.8561;12.1341
+405;Neef;50.0874;7.1358
+406;Neurath;51.0395;6.615
+407;NeuÃ¶tting;48.2486;12.6883
+408;Niederaichbach;48.6039;12.3023
+409;Niederaussem;50.993;6.6685
+410;Niederwartha;51.0915;13.6098
+411;Nord 2;48.1805;11.6393
+412;NuÃdorf;47.7447;12.1357
+413;O10;51.0695;6.8467
+414;Oberaudorf-Ebbs;47.6413;12.199
+415;Obernach;47.5547;11.2914
+416;Obernburg;49.8293;9.1482
+417;Oberpeiching;48.6464;10.8791
+418;Oxea GmbH;51.5246;6.8011
+419;P&L Werk Appeldorn;51.7297;6.3586
+420;P&L Werk Euskirchen;50.658;6.8101
+421;P&L Werk JÃ¼lich;50.9152;6.3693
+422;P&L Werk KÃ¶nnern;51.6978;11.7581
+423;P&L Werk Lage;51.9861;8.8073
+424;PD energy GmbH;51.6296;12.2892
+425;PHILIPPSBURG-2;49.2529;8.4364
+426;Kraftwerk;53.4032;8.1282
+427;Langenprozelten;50.0531;9.5814
+428;Vianden;49.9523;6.1783
+429;PWG;47.7895;11.0554
+430;Passau-Ingling;48.5533;13.4337
+431;Perach;47.9536;12.7499
+432;Pforzheim;48.8973;8.7245
+433;Pfrombach;48.4413;11.9923
+434;Pielweichs;49.7943;10.1813
+435;Prem;47.6927;10.7976
+436;Prittriching;48.2106;10.9049
+437;Glems;48.505;9.2869
+438;Pumpspeicherwerk RÃ¶nkhausen;51.2248;7.9928
+439;RADAG;47.5863;8.1321
+440;RAG Anthrazit IbbenbÃ¼ren GmbH;52.2859;7.7461
+441;REMONDIS Thermische Abfallverwertung GmbH;51.8661;11.5763
+442;RMVA KÃ¶ln;51.0003;6.9436
+443;RZR Herten II;51.5573;7.1641
+444;Raffineriekraftwerk;51.2998;12.0193
+445;Raffineriekraftwerk KÃ¶ln Godorf;50.8548;6.9808
+446;Rain;48.6924;10.8978
+447;Reno De Medici;51.3914;8.073
+448;Restabfallbehandlungsanlage;50.6388;10.687
+449;RestmÃ¼ll-Stuttgart-MÃ¼nster (Waste);48.8125;9.2189
+450;RestmÃ¼llheizkraftwerk BÃ¶blingen;48.6855;9.0495
+451;Reuter Waste Facility;52.5321;13.2461
+452;Rheinhafen-Dampfkraftwerk;49.0134;8.3065
+453;Rheinhafen-Dampfkraftwerk;49.013;8.304
+454;Rheinkraftwerk Iffezheim;48.8314;8.1122
+455;Rheinkraftwerk Reckingen;47.5714;8.3383
+456;Rheinkraftwerk Ryburg-SchwÃ¶rstadt;47.5854;7.8327
+457;Rheinkraftwerk SÃ¤ckingen;47.5585;7.9557
+458;Rosenheim;47.8383;12.1533
+459;Rostock;54.1428;12.1329
+460;RoÃhaupten;47.6515;10.7355
+461;Rudolf-Fettweis-Werk 2;48.6732;8.3557
+462;SCA Mannheim;49.5349;8.4636
+463;SITA Abfallverwertung GmbH;51.1816;12.0197
+464;SKW Diesel;47.6835;10.3191
+465;SKWturbine;47.6835;10.3191
+466;STW;50.8741;13.3944
+467;Scheuring;48.1802;10.8833
+468;Schkopau;51.3985;11.9504
+469;Scholven;51.6024;7.0099
+470;Schwabstadl;48.1484;10.867
+471;Schwammenauel;50.6285;6.4791
+472;Schwarze Pumpe;51.5348;14.3531
+473;SchÃ¤rding-Neuhaus;48.4356;13.4415
+474;Serrig;49.567;6.5923
+475;Sigmundshall;52.4185;9.3681
+476;Spitzenlastanlage Barmen;51.2689;7.2003
+477;Spitzenlastkraftwerk GroÃkayna;51.2919;11.9465
+478;Spitzenlastkraftwerk Sermuth;51.1614;12.7815
+479;Spitzenlastkraftwerk Wolfen;51.6431;12.2289
+480;Stammham;48.2493;12.8647
+481;Staudinger;50.0886;8.9534
+482;Steinbeis Energie;53.7818;9.4258
+483;Steinitz;52.83;11.1033
+484;Stora Enso Maxau;49.0393;8.3113
+485;Straubing;48.8966;12.5575
+486;Stuttgart-Muenster;48.8158;9.2211
+487;SÃ¤ckingen;47.5654;7.954
+488;SÃ¼d DT1;48.1351;11.582
+489;SÃ¼d DT60;48.1351;11.582
+490;SÃ¼d GT 61;48.1351;11.582
+491;TREA Breisgau;47.8906;7.6161
+492;TREA Leuna;51.2998;12.0193
+493;TRV Buschhaus;52.1714;10.9764
+494;Tannheim;48.008;10.1185
+495;Teufelsbruck;48.0574;12.2209
+496;Thermische Abfallbehandlung LautaÂ GmbH & Co.Â oHG;51.4507;14.1121
+497;Thyrow;52.2302;13.3019
+498;Tiefstack;53.5262;10.0632
+499;Trianel Kohlekraftwerk LÃ¼nen;51.6124;7.4653
+500;Trianelkraftwerk;51.6739;7.9291
+501;Trier;49.728;6.6245
+502;Turbosatz 1;49.793;9.9941
+503;TÃ¶ging;48.2518;12.5873
+504;UPM Augsburg;48.3801;10.9014
+505;UPM Schongau;47.8032;10.9043
+506;UPM Schwedt;53.0867;14.3194
+507;UTB;52.0778;13.5173
+508;Unterbergen;48.2374;10.9272
+509;Unterbreizbach;50.8132;9.9775
+510;Unteropfingen;48.0613;10.1284
+511;Uppenborn 1;48.4735;11.9548
+512;Uppenborn 2;48.5152;12.101
+513;Urspring;47.716;10.8258
+514;Vohburg;48.7781;11.6012
+515;WKW;47.5985;8.171
+516;Wachtberg;50.8976;6.7931
+517;Waehlitz;51.1666;12.0762
+518;Walchensee;47.6314;11.3371
+519;Waldeck 2;51.1671;9.0468
+520;Waldeck1/Bringhausen;51.1671;9.0468
+521;Walheim;49.0177;9.1577
+522;Wasserburg;48.057;12.2207
+523;Waste Incinerator #1;51.0167;6.9833
+524;Wedel;53.5663;9.7285
+525;Wedel;53.567;9.7244
+526;Wehr;47.6453;7.9182
+527;Weiher;49.3341;7.0314
+528;Weisweiler;50.8392;6.3211
+529;Wendefurth;51.7422;10.9188
+530;Werkskraftwerk Sappi Alfeld 1;51.9848;9.8228
+531;Werkskraftwerk Sappi Alfeld 2;51.9851;9.8225
+532;Werkskraftwerk Sappi Ehingen;48.267;9.7262
+533;Weserkraftwerk Bremen;53.0611;8.8649
+534;Westfalen;51.6805;7.9696
+535;Wi-Biebrich;50.0405;8.2532
+536;Wilhelmshaven (Oil);53.5658;8.1462
+537;Wilhelmshaven;53.5658;8.1462
+538;Wilmersdorf;52.4816;13.3076
+539;Wintershall;50.894;9.9972
+540;Wintrich;49.8798;6.9488
+541;Witznau;47.6879;8.2516
+542;Wuppertal-Elberfeld;51.2484;7.1187
+543;X-Kraftwerk;51.0144;6.9873
+544;ZWSF;52.535;12.3626
+545;Zellstoff Stendal GmbH;52.7271;12.0112
+546;Zeltingen;49.9511;7.0232
+547;Zielitz;52.2985;11.6796
+548;Zolling;48.4554;11.7995

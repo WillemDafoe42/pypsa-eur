@@ -14,8 +14,8 @@ summary_dir: results
 scenario:
   simpl: [300]
   ll: [copt]
-  clusters: [130,140,150,160,170,180,190,200]
-  opts: [1H]
+  clusters: [10,30,50,80,90,100,110,130,140,150,160,170,180,190,200]
+  opts: [1H-noex]
 
 countries: ['DE']
 
@@ -35,8 +35,8 @@ enable:
 
 electricity:
   voltages: [220., 300., 380.]
-  co2limit: 7.75e+7 # 0.05 * 3.1e9*0.5
-  co2base: 3.1e+9 # 1 * 3.1e9*0.5
+  co2limit: 7.75e+12 # 0.05 * 3.1e9*0.5
+  co2base: 3.1e+15 # 1 * 3.1e9*0.5
   agg_p_nom_limits: data/agg_p_nom_minmax.csv
 
   extendable_carriers:
@@ -127,7 +127,7 @@ renewable:
     # Pietzcker, Robert Carl, et al. "Using the sun to decarbonize the power
     # sector: The economic potential of photovoltaics and concentrating solar
     # power." Applied Energy 135 (2014): 704-720.
-    correction_factor: 0.854337
+    correction_factor: 0.85
     corine: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
              14, 15, 16, 17, 18, 19, 20, 26, 31, 32]
     natura: true
@@ -136,7 +136,7 @@ renewable:
   hydro:
     cutout: europe-2018-era5
     carriers: [ror, PHS, hydro]
-    PHS_max_hours: 12
+    PHS_max_hours: 24
     hydro_max_hours: "energy_capacity_totals_by_country" # one of energy_capacity_totals_by_country, estimate_by_large_installations or a float
     clip_min_inflow: 1.0
 
@@ -148,13 +148,13 @@ lines:
   s_max_pu: 0.7
   s_nom_max: .inf
   length_factor: 1.25
-  under_construction: 'zero' # 'zero': set capacity to zero, 'remove': remove, 'keep': with full capacity
+  under_construction: 'remove' # 'zero': set capacity to zero, 'remove': remove, 'keep': with full capacity
 
 links:
   p_max_pu: 1.0
   p_nom_max: .inf
   include_tyndp: true
-  under_construction: 'zero' # 'zero': set capacity to zero, 'remove': remove, 'keep': with full capacity
+  under_construction: 'remove' # 'zero': set capacity to zero, 'remove': remove, 'keep': with full capacity
 
 transformers:
   x: 0.1
@@ -184,9 +184,10 @@ costs:
     co2: 0.
 
 solving:
-  options:
+  # tmpdir: /cluster/scratch/wlaumen/pypsa-eur/tmp
+  options:  
     formulation: kirchhoff
-    load_shedding: false
+    load_shedding: true
     noisy_costs: true
     min_iterations: 4
     max_iterations: 6
