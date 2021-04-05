@@ -5,11 +5,15 @@ env2lmod
 module load gcc/6.3.0 python/3.8.5 hdf5/1.10.1 proj/6.3.1 geos/3.6.2 gdal/3.1.2 glpk/4.65 gurobi/9.1.1 netcdf/4.6.0
 pip install --user vresutils
 
+
+
 bsub -n 16 -R "rusage[mem=8000]" -J "redispatch" -W 120:00 -N -B -u wlaumen@student.ethz.ch "python -u solve_redispatch_networks.py"
 
-snakemake --cluster-config cluster.yaml --cluster "bsub -R {cluster.resources}" -j 1 solve_all_networks
+
 
 snakemake --cluster-config cluster.yaml --cluster "bsub -n {cluster.nCPUs} -R {cluster.resources}" -j 1 results/networks/elec_s300_130_ec_lcopt_1H.nc
+
+snakemake --cluster-config cluster.yaml --cluster "bsub -n {cluster.nCPUs} -R {cluster.resources}" -j 1 solve_all_networks
 
 # -------------
 # RWTH Cluster Job scripts

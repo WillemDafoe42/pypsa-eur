@@ -1,0 +1,25 @@
+elec_s300_90_ec_lcopt_1H-noex
+
+
+
+
+
+
+INFO:pypsa.io:Imported network elec_s300_90_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+INFO:pypsa.io:Imported network elec_s300_90_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+INFO:numexpr.utils:Note: detected 128 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO:numexpr.utils:Note: NumExpr detected 128 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+Traceback (most recent call last):
+  File "solve_redispatch_networks.py", line 576, in <module>
+    main()
+  File "solve_redispatch_networks.py", line 573, in main
+    solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1)
+  File "solve_redispatch_networks.py", line 554, in solve_all_redispatch_workflows
+    n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat",
+  File "solve_redispatch_networks.py", line 501, in redispatch_workflow
+    network = set_parameters_from_optimized(network, network_optim)
+  File "solve_redispatch_networks.py", line 36, in set_parameters_from_optimized
+    links_dc_i = n.links.index[n.links.carrier == 'DC']
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pandas/core/generic.py", line 5139, in __getattr__
+    return object.__getattribute__(self, name)
+AttributeError: 'DataFrame' object has no attribute 'carrier'

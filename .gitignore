@@ -16,6 +16,7 @@ gurobi.log
 /benchmarks
 /logs
 /notebooks
+/networks_redispatch
 /data
 /data/links_p_nom.csv
 /cutouts

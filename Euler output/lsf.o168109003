@@ -1,0 +1,206 @@
+Sender: LSF System <lsfadmin@eu-g1-046-4>
+Subject: Job 168109003: </cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.fyfvfrlc/snakejob.solve_network.12.sh> in cluster <euler> Exited
+
+Job </cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.fyfvfrlc/snakejob.solve_network.12.sh> was submitted from host <eu-login-11> by user <wlaumen> in cluster <euler> at Wed Mar 31 09:44:13 2021
+Job was executed on host(s) <16*eu-g1-046-4>, in queue <bigmem.4h>, as user <wlaumen> in cluster <euler> at Wed Mar 31 09:56:29 2021
+</cluster/home/wlaumen> was used as the home directory.
+</cluster/scratch/wlaumen/pypsa-eur> was used as the working directory.
+Started at Wed Mar 31 09:56:29 2021
+Terminated at Wed Mar 31 10:07:42 2021
+Results reported at Wed Mar 31 10:07:42 2021
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.fyfvfrlc/snakejob.solve_network.12.sh
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   1774.40 sec.
+    Max Memory :                                 12535 MB
+    Average Memory :                             9215.92 MB
+    Total Requested Memory :                     128000.00 MB
+    Delta Memory :                               115465.00 MB
+    Max Swap :                                   -
+    Max Processes :                              7
+    Max Threads :                                15
+    Run time :                                   672 sec.
+    Turnaround time :                            1409 sec.
+
+The output (if any) follows:
+
+Using license file /cluster/apps/nss/gurobi/9.1.1/x86_64/gurobi.lic
+Set parameter TokenServer to value lic-gurobi.ethz.ch
+No parameters matching '_test' found
+Building DAG of jobs...
+Using shell: /cluster/apps/sfos/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	solve_network
+	1
+
+[Wed Mar 31 09:56:31 2021]
+rule solve_network:
+    input: networks/elec_s300_170_ec_lcopt_1H-noex.nc
+    output: results/networks/elec_s300_170_ec_lcopt_1H-noex.nc
+    log: logs/solve_network/elec_s300_170_ec_lcopt_1H-noex_solver.log, logs/solve_network/elec_s300_170_ec_lcopt_1H-noex_python.log, logs/solve_network/elec_s300_170_ec_lcopt_1H-noex_memory.log
+    jobid: 0
+    benchmark: benchmarks/solve_network/elec_s300_170_ec_lcopt_1H-noex
+    wildcards: simpl=300, clusters=170, ll=copt, opts=1H-noex
+    threads: 4
+    resources: mem=129450
+
+Changing to shadow directory: /cluster/scratch/wlaumen/pypsa-eur/.snakemake/shadow/tmpaj86erd8
+INFO:pypsa.io:Imported network elec_s300_170_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+INFO:numexpr.utils:Note: detected 128 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO:numexpr.utils:Note: NumExpr detected 128 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+INFO:pypsa.linopf:Prepare linear problem
+INFO:pypsa.linopf:Total preparation time: 95.81s
+INFO:pypsa.linopf:Solve linear problem using Gurobi solver
+Using license file /cluster/apps/nss/gurobi/9.1.1/x86_64/gurobi.lic
+Set parameter TokenServer to value lic-gurobi.ethz.ch
+Read LP format model from file /scratch/168109003.tmpdir/pypsa-problem-1jwizxzv.lp
+Reading time = 51.53 seconds
+obj: 19902720 rows, 8795386 columns, 40215328 nonzeros
+Changed value of parameter threads to 4
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter method to 2
+   Prev: -1  Min: -1  Max: 5  Default: -1
+Changed value of parameter crossover to 0
+   Prev: -1  Min: -1  Max: 5  Default: -1
+Changed value of parameter BarConvTol to 1e-05
+   Prev: 1e-08  Min: 0.0  Max: 1.0  Default: 1e-08
+Parameter FeasibilityTol unchanged
+   Value: 1e-06  Min: 1e-09  Max: 0.01  Default: 1e-06
+Changed value of parameter AggFill to 0
+   Prev: -1  Min: -1  Max: 2000000000  Default: -1
+Changed value of parameter PreDual to 0
+   Prev: -1  Min: -1  Max: 2  Default: -1
+Changed value of parameter GURO_PAR_BARDENSETHRESH to 200
+   Prev: -1  Min: -1  Max: 2000000000  Default: -1
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (linux64)
+Thread count: 128 physical cores, 128 logical processors, using up to 4 threads
+Optimize a model with 19902720 rows, 8795386 columns and 40215328 nonzeros
+Model fingerprint: 0x50a92948
+Coefficient statistics:
+  Matrix range     [1e-02, 6e+01]
+  Objective range  [9e-03, 2e+05]
+  Bounds range     [2e+00, 4e+09]
+  RHS range        [4e-03, 2e+05]
+Warning: Model contains large bounds
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve removed 15647192 rows and 1162993 columns (presolve time = 9s) ...
+Presolve removed 15654199 rows and 1170000 columns (presolve time = 10s) ...
+Presolve removed 15704387 rows and 1220188 columns (presolve time = 20s) ...
+Presolve removed 15704387 rows and 1220188 columns (presolve time = 20s) ...
+Presolve removed 15704387 rows and 1220188 columns (presolve time = 26s) ...
+Presolve removed 15704387 rows and 1220188 columns
+Presolve time: 26.46s
+Presolved: 4198333 rows, 7575198 columns, 23154060 nonzeros
+Ordering time: 3.24s
+
+Barrier statistics:
+ Dense cols : 345
+ AA' NZ     : 2.251e+07
+ Factor NZ  : 2.049e+08 (roughly 6.0 GBytes of memory)
+ Factor Ops : 4.649e+10 (roughly 2 seconds per iteration)
+ Threads    : 4
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   6.27960925e+11 -1.52879474e+14  1.22e+04 1.16e+02  4.07e+07    46s
+   1   5.48052000e+11 -7.71380962e+13  9.98e+03 1.38e+04  2.41e+07    52s
+   2   4.81635628e+11 -3.75787808e+13  7.93e+03 3.51e+03  1.55e+07    58s
+   3   3.32129535e+11 -1.85670036e+13  4.86e+03 6.52e+02  8.55e+06    66s
+   4   2.15714620e+11 -9.31040359e+12  2.61e+03 6.60e+01  4.21e+06    72s
+   5   1.40247114e+11 -5.56834868e+12  1.18e+03 1.10e+01  1.86e+06    78s
+   6   9.89667655e+10 -3.17245446e+12  4.10e+02 7.68e-06  6.68e+05    84s
+   7   8.53153793e+10 -2.17370077e+12  1.99e+02 6.15e-06  3.46e+05    93s
+   8   7.82297731e+10 -1.44834214e+12  1.24e+02 4.92e-06  2.09e+05   104s
+   9   7.40449947e+10 -1.09263372e+12  9.94e+01 3.34e-06  1.57e+05   112s
+  10   7.18188840e+10 -9.82280992e+11  8.79e+01 2.89e-06  1.38e+05   119s
+  11   7.15124126e+10 -9.42730923e+11  8.65e+01 2.77e-06  1.33e+05   125s
+  12   7.04413355e+10 -8.49158863e+11  8.20e+01 2.44e-06  1.22e+05   132s
+  13   6.99520119e+10 -8.12551525e+11  8.01e+01 2.31e-06  1.18e+05   141s
+  14   6.98763730e+10 -6.03278194e+11  7.91e+01 2.20e-06  1.14e+05   150s
+  15   6.99329330e+10  1.96494292e+12  7.88e+01 9.38e-04  1.13e+05   156s
+  16   6.99506969e+10  1.36170089e+14  7.88e+01 1.05e-02  1.19e+05   163s
+  17   6.99617229e+10  2.52539927e+16  7.88e+01 2.50e+00  8.40e+05   171s
+  18   9.06010251e+11 -1.52879474e+14  1.78e+04 1.16e+02  5.45e+07   186s
+  19   7.70284582e+11 -7.56394581e+13  1.46e+04 6.62e+03  2.83e+07   196s
+  20   4.02353627e+11 -1.06560295e+13  6.70e+03 1.14e+03  4.12e+06   215s
+  21   1.09648981e+11 -1.06704572e+12  1.02e+03 2.57e+02  2.88e+05   227s
+  22   5.76593315e+10 -4.83931201e+11  2.78e+02 1.19e+02  7.49e+04   240s
+  23   4.35249671e+10 -2.17076493e+11  1.45e+02 5.82e+01  3.13e+04   250s
+  24   3.81840639e+10 -9.46477405e+10  1.10e+02 2.97e+01  1.66e+04   258s
+  25   3.68144100e+10 -8.17255595e+10  1.03e+02 2.63e+01  1.48e+04   267s
+  26   3.62035937e+10 -7.54340707e+10  1.00e+02 2.46e+01  1.39e+04   274s
+  27   3.55878439e+10 -6.87026704e+10  9.76e+01 2.28e+01  1.31e+04   281s
+  28   3.45073019e+10 -6.49337888e+10  9.18e+01 2.18e+01  1.23e+04   290s
+  29   3.32983682e+10 -5.76912015e+10  8.61e+01 1.99e+01  1.12e+04   298s
+  30   3.30795211e+10 -5.57499150e+10  8.51e+01 1.99e+01  1.10e+04   306s
+  31   3.26801922e+10 -5.34571707e+10  8.33e+01 2.00e+01  1.06e+04   314s
+  32   3.27063295e+10 -5.53807014e+10  8.27e+01 2.31e+01  1.20e+04   321s
+  33   3.43450928e+10 -5.28617226e+10  8.00e+01 2.20e+01  1.20e+04   328s
+  34   3.47277268e+10 -5.20812366e+10  8.00e+01 2.17e+01  1.25e+04   335s
+  35   3.86150508e+10 -4.43676301e+10  8.02e+01 2.31e+01  1.71e+04   343s
+  36   4.33776028e+10 -4.13080008e+10  7.94e+01 2.30e+01  1.92e+04   350s
+  37   4.38120923e+10 -3.60177643e+10  7.94e+01 2.23e+01  2.38e+04   357s
+  38   4.65178833e+10 -2.47454432e+10  7.94e+01 5.56e+01  3.82e+04   365s
+  39   5.43597007e+10 -1.40287033e+10  7.94e+01 1.38e+02  6.27e+04   374s
+  40   5.94928062e+10  7.71225728e+09  7.93e+01 3.15e+02  1.34e+05   382s
+  41   6.18240195e+10  1.82539901e+10  7.93e+01 4.22e+02  2.05e+05   391s
+  42   6.79690055e+10  3.11569983e+10  7.93e+01 4.01e+02  3.44e+05   398s
+  43   7.29191825e+10  5.44793841e+10  7.93e+01 2.89e+03  7.94e+05   405s
+  44   7.45761999e+10  5.96018388e+10  7.93e+01 3.23e+03  1.13e+06   412s
+  45   7.61927644e+10  6.45792189e+10  7.93e+01 3.57e+03  1.99e+06   421s
+  46   7.83562450e+10  1.10975476e+11  7.93e+01 2.57e+05  1.74e+07   429s
+  47   8.64294987e+10  1.19141235e+11  7.93e+01 1.94e+05  4.41e+07   436s
+  48   9.08796236e+10  1.42370018e+11  7.93e+01 9.62e+04  9.53e+07   442s
+  49   9.19073933e+10  4.41236153e+13  7.93e+01 6.78e+07  1.58e+11   451s
+  50*  9.19073644e+10  4.16400599e+16  8.01e-03 3.09e+07  1.22e+04   459s
+  51*  9.19073643e+10  6.27816173e+23  2.81e-08 2.60e+08  1.49e-01   466s
+  52*  9.19073643e+10 -3.78927594e+28  2.89e-13 2.25e+08  1.59e-06   474s
+  53*  9.19073643e+10 -3.97080153e+33  3.05e-18 1.05e+08  1.76e-11   480s
+  54*  9.16201512e+10  4.60862714e+38  5.96e-23 3.84e+09  7.65e-16   487s
+  55*  9.16202269e+10  2.34875519e+39  6.64e-27 9.30e+05  2.71e-20   493s
+  56*  1.10968270e+11  2.34517220e+39  3.90e-27 9.34e+04  1.69e-21   499s
+  57*  1.10968270e+11  6.78146373e+41  3.90e-27 2.09e+01  1.63e-20   506s
+
+Barrier performed 57 iterations in 505.72 seconds
+Infeasible model
+
+INFO:pypsa.linopt:No model basis stored
+WARNING:pypsa.linopf:Optimization failed with status warning and termination condition infeasible or unbounded
+Traceback (most recent call last):
+  File "/cluster/scratch/wlaumen/pypsa-eur/.snakemake/shadow/tmpaj86erd8/.snakemake/scripts/tmp2tx3xou2.solve_network.py", line 289, in <module>
+    n = solve_network(n, config=snakemake.config, solver_dir=tmpdir,
+  File "/cluster/scratch/wlaumen/pypsa-eur/.snakemake/shadow/tmpaj86erd8/.snakemake/scripts/tmp2tx3xou2.solve_network.py", line 264, in solve_network
+    ilopf(n, solver_name=solver_name, solver_options=solver_options,
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/linopf.py", line 1028, in ilopf
+    assert status == 'ok', (f'Optimization failed with status {status}'
+AssertionError: Optimization failed with status warningand termination infeasible or unbounded
+[Wed Mar 31 10:07:41 2021]
+Error in rule solve_network:
+    jobid: 0
+    output: results/networks/elec_s300_170_ec_lcopt_1H-noex.nc
+    log: logs/solve_network/elec_s300_170_ec_lcopt_1H-noex_solver.log, logs/solve_network/elec_s300_170_ec_lcopt_1H-noex_python.log, logs/solve_network/elec_s300_170_ec_lcopt_1H-noex_memory.log (check log file(s) for error message)
+
+RuleException:
+CalledProcessError in line 319 of /cluster/scratch/wlaumen/pypsa-eur/Snakefile:
+Command 'set -euo pipefail;  /cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/bin/python3.8 /cluster/scratch/wlaumen/pypsa-eur/.snakemake/shadow/tmpaj86erd8/.snakemake/scripts/tmp2tx3xou2.solve_network.py' returned non-zero exit status 1.
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 2154, in run_wrapper
+  File "/cluster/scratch/wlaumen/pypsa-eur/Snakefile", line 319, in __rule_solve_network
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 551, in _callback
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/concurrent/futures/thread.py", line 57, in run
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 537, in cached_or_run
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 2239, in run_wrapper
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message

@@ -1,0 +1,569 @@
+Sender: LSF System <lsfadmin@eu-g1-045-1>
+Subject: Job 167474354: </cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.qw4mkwb_/snakejob.solve_network.7.sh> in cluster <euler> Done
+
+Job </cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.qw4mkwb_/snakejob.solve_network.7.sh> was submitted from host <eu-login-06> by user <wlaumen> in cluster <euler> at Sat Mar 27 11:49:52 2021
+Job was executed on host(s) <16*eu-g1-045-1>, in queue <bigmem.4h>, as user <wlaumen> in cluster <euler> at Sat Mar 27 11:50:14 2021
+</cluster/home/wlaumen> was used as the home directory.
+</cluster/scratch/wlaumen/pypsa-eur> was used as the working directory.
+Started at Sat Mar 27 11:50:14 2021
+Terminated at Sat Mar 27 13:19:01 2021
+Results reported at Sat Mar 27 13:19:01 2021
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.qw4mkwb_/snakejob.solve_network.7.sh
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   12992.92 sec.
+    Max Memory :                                 17234 MB
+    Average Memory :                             12288.62 MB
+    Total Requested Memory :                     128000.00 MB
+    Delta Memory :                               110766.00 MB
+    Max Swap :                                   -
+    Max Processes :                              7
+    Max Threads :                                15
+    Run time :                                   5329 sec.
+    Turnaround time :                            5349 sec.
+
+The output (if any) follows:
+
+Using license file /cluster/apps/nss/gurobi/9.1.1/x86_64/gurobi.lic
+Set parameter TokenServer to value lic-gurobi.ethz.ch
+No parameters matching '_test' found
+Building DAG of jobs...
+Using shell: /cluster/apps/sfos/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	solve_network
+	1
+
+[Sat Mar 27 11:50:17 2021]
+rule solve_network:
+    input: networks/elec_s300_180_ec_lcopt_1H.nc
+    output: results/networks/elec_s300_180_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_180_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_180_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_180_ec_lcopt_1H_memory.log
+    jobid: 0
+    benchmark: benchmarks/solve_network/elec_s300_180_ec_lcopt_1H
+    wildcards: simpl=300, clusters=180, ll=copt, opts=1H
+    threads: 4
+    resources: mem=135300
+
+Changing to shadow directory: /cluster/scratch/wlaumen/pypsa-eur/.snakemake/shadow/tmpd7ej3yg4
+INFO:pypsa.io:Imported network elec_s300_180_ec_lcopt_1H.nc has buses, carriers, generators, lines, links, loads, storage_units
+INFO:numexpr.utils:Note: detected 128 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO:numexpr.utils:Note: NumExpr detected 128 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+INFO:pypsa.linopf:Prepare linear problem
+INFO:pypsa.linopf:Total preparation time: 99.67s
+INFO:pypsa.linopf:Solve linear problem using Gurobi solver
+Using license file /cluster/apps/nss/gurobi/9.1.1/x86_64/gurobi.lic
+Set parameter TokenServer to value lic-gurobi.ethz.ch
+Read LP format model from file /cluster/scratch/wlaumen/pypsa-eur/tmp/pypsa-problem-0ea6i5yl.lp
+Reading time = 51.78 seconds
+obj: 20726160 rows, 9163590 columns, 44658086 nonzeros
+Changed value of parameter threads to 4
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter method to 2
+   Prev: -1  Min: -1  Max: 5  Default: -1
+Changed value of parameter crossover to 0
+   Prev: -1  Min: -1  Max: 5  Default: -1
+Changed value of parameter BarConvTol to 1e-05
+   Prev: 1e-08  Min: 0.0  Max: 1.0  Default: 1e-08
+Parameter FeasibilityTol unchanged
+   Value: 1e-06  Min: 1e-09  Max: 0.01  Default: 1e-06
+Changed value of parameter AggFill to 0
+   Prev: -1  Min: -1  Max: 2000000000  Default: -1
+Changed value of parameter PreDual to 0
+   Prev: -1  Min: -1  Max: 2  Default: -1
+Changed value of parameter GURO_PAR_BARDENSETHRESH to 200
+   Prev: -1  Min: -1  Max: 2000000000  Default: -1
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (linux64)
+Thread count: 128 physical cores, 128 logical processors, using up to 4 threads
+Optimize a model with 20726160 rows, 9163590 columns and 44658086 nonzeros
+Model fingerprint: 0xcf969472
+Coefficient statistics:
+  Matrix range     [1e-02, 6e+01]
+  Objective range  [9e-03, 2e+05]
+  Bounds range     [2e+00, 6e+09]
+  RHS range        [4e-03, 2e+05]
+Warning: Model contains large bounds
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve removed 11700287 rows and 1232180 columns (presolve time = 6s) ...
+Presolve removed 11700287 rows and 1232180 columns (presolve time = 11s) ...
+Presolve removed 11748157 rows and 1280050 columns (presolve time = 23s) ...
+Presolve removed 11748157 rows and 1280050 columns (presolve time = 25s) ...
+Presolve removed 11748157 rows and 1280051 columns (presolve time = 30s) ...
+Presolve removed 11748157 rows and 1280051 columns
+Presolve time: 31.07s
+Presolved: 8978003 rows, 7883539 columns, 31539945 nonzeros
+Elapsed ordering time = 5s
+Ordering time: 5.56s
+
+Barrier statistics:
+ Dense cols : 626
+ Free vars  : 2269189
+ AA' NZ     : 5.168e+07
+ Factor NZ  : 3.756e+08 (roughly 10.0 GBytes of memory)
+ Factor Ops : 1.212e+11 (roughly 3 seconds per iteration)
+ Threads    : 4
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   6.54292336e+12 -2.42190849e+13  1.31e+05 3.96e+02  3.50e+08    66s
+   1   5.86671633e+12 -1.82229477e+13  1.12e+05 1.92e+04  2.32e+08    77s
+   2   4.96896781e+12 -1.96445214e+13  9.14e+04 5.03e+03  1.64e+08    89s
+   3   1.40498260e+12 -1.98946249e+13  2.45e+04 1.04e+03  4.52e+07   102s
+   4   3.44277738e+11 -1.68382143e+13  4.26e+03 2.25e+02  9.01e+06   115s
+   5   1.49084088e+11 -1.22028308e+13  5.56e+02 9.21e+01  1.98e+06   126s
+   6   1.28420787e+11 -3.72802078e+12  2.21e+02 9.98e+00  5.52e+05   138s
+   7   1.15429136e+11 -1.51015980e+12  6.68e+01 2.21e+00  1.77e+05   152s
+   8   1.03604984e+11 -7.50196264e+11  1.57e+01 6.06e-01  7.07e+04   164s
+   9   9.59452593e+10 -4.67671696e+11  1.10e+01 2.17e-01  4.51e+04   174s
+  10   7.76607276e+10 -2.47575976e+11  5.02e+00 5.43e-03  2.42e+04   185s
+  11   6.31571684e+10 -1.64234595e+11  2.66e+00 3.39e-03  1.61e+04   195s
+  12   4.82203492e+10 -1.10994890e+11  1.23e+00 6.46e-03  1.08e+04   207s
+  13   3.26678079e+10 -5.10949417e+10  5.14e-01 4.95e-02  5.52e+03   220s
+  14   3.07082053e+10 -2.96585311e+10  4.67e-01 2.23e-02  3.97e+03   232s
+  15   2.74249309e+10 -1.90107088e+10  3.96e-01 4.20e-03  3.04e+03   242s
+  16   2.28462839e+10 -1.03387974e+10  3.09e-01 3.37e-03  2.16e+03   253s
+  17   2.01716815e+10 -3.95037866e+09  2.62e-01 4.22e-03  1.57e+03   267s
+  18   1.66882422e+10 -4.39929689e+08  2.03e-01 4.23e-03  1.11e+03   283s
+  19   1.38305333e+10  2.08494811e+09  1.56e-01 2.79e-03  7.57e+02   298s
+  20   1.12612902e+10  3.23038817e+09  1.15e-01 2.38e-03  5.16e+02   314s
+  21   9.76790775e+09  4.12546048e+09  8.65e-02 1.97e-03  3.61e+02   330s
+  22   8.89704679e+09  4.50208869e+09  7.05e-02 1.60e-03  2.81e+02   343s
+  23   8.45493153e+09  4.66797514e+09  6.29e-02 1.40e-03  2.42e+02   354s
+  24   8.07117159e+09  4.74788388e+09  5.56e-02 1.60e-03  2.12e+02   364s
+  25   7.64372299e+09  4.87056789e+09  4.78e-02 1.80e-03  1.77e+02   375s
+  26   7.25715534e+09  4.92880432e+09  4.06e-02 1.45e-03  1.48e+02   389s
+  27   6.82452366e+09  5.00515821e+09  3.26e-02 1.23e-03  1.16e+02   403s
+  28   6.64894727e+09  5.07353048e+09  2.91e-02 1.08e-03  1.00e+02   418s
+  29   6.32982317e+09  5.14971781e+09  2.24e-02 8.65e-04  7.50e+01   433s
+  30   6.11016338e+09  5.21976464e+09  1.77e-02 7.33e-04  5.65e+01   447s
+  31   5.94679161e+09  5.26045139e+09  1.40e-02 6.03e-04  4.36e+01   462s
+  32   5.84370301e+09  5.28060555e+09  1.18e-02 5.47e-04  3.57e+01   476s
+  33   5.78849218e+09  5.29481294e+09  1.06e-02 5.04e-04  3.13e+01   491s
+  34   5.72848926e+09  5.30650432e+09  9.09e-03 4.60e-04  2.68e+01   506s
+  35   5.64478093e+09  5.31851561e+09  7.00e-03 5.01e-04  2.07e+01   520s
+  36   5.58794888e+09  5.32841455e+09  5.68e-03 5.01e-04  1.64e+01   536s
+  37   5.54275361e+09  5.34080827e+09  4.54e-03 4.40e-04  1.28e+01   551s
+  38   5.49873776e+09  5.34782151e+09  3.47e-03 3.78e-04  9.56e+00   566s
+  39   5.47539370e+09  5.35360325e+09  2.86e-03 3.10e-04  7.71e+00   581s
+  40   5.45343343e+09  5.35711291e+09  2.32e-03 2.61e-04  6.10e+00   596s
+  41   5.44876907e+09  5.35853315e+09  2.21e-03 2.49e-04  5.71e+00   611s
+  42   5.43753231e+09  5.36113399e+09  1.91e-03 3.12e-04  4.83e+00   625s
+  43   5.42183540e+09  5.36317885e+09  1.49e-03 3.35e-04  3.71e+00   641s
+  44   5.41147416e+09  5.36429220e+09  1.19e-03 3.61e-04  2.99e+00   657s
+  45   5.40827021e+09  5.36479039e+09  1.10e-03 3.64e-04  2.75e+00   670s
+  46   5.40644002e+09  5.36517053e+09  1.05e-03 3.62e-04  2.61e+00   682s
+  47   5.39461783e+09  5.36656564e+09  7.44e-04 2.61e-04  1.77e+00   698s
+  48   5.38995042e+09  5.36755810e+09  6.11e-04 1.94e-04  1.42e+00   716s
+  49   5.38398167e+09  5.36814030e+09  4.26e-04 1.57e-04  1.00e+00   733s
+  50   5.37943423e+09  5.36856136e+09  3.07e-04 1.20e-04  6.88e-01   753s
+  51   5.37774041e+09  5.36909388e+09  2.49e-04 7.31e-05  5.47e-01   771s
+  52   5.37544838e+09  5.36930351e+09  1.76e-04 5.63e-05  3.89e-01   792s
+  53   5.37356000e+09  5.36956019e+09  1.12e-04 4.46e-05  2.53e-01   810s
+  54   5.37244787e+09  5.36976566e+09  7.63e-05 2.97e-05  1.70e-01   827s
+  55   5.37159045e+09  5.36988087e+09  4.87e-05 1.86e-05  1.08e-01   848s
+  56   5.37106253e+09  5.36991862e+09  3.18e-05 1.43e-05  7.24e-02   865s
+  57   5.37065965e+09  5.36993286e+09  2.02e-05 1.26e-05  4.60e-02   879s
+  58   5.37055552e+09  5.36996178e+09  1.67e-05 9.29e-06  3.76e-02   891s
+  59   5.37041048e+09  5.36998375e+09  1.18e-05 7.14e-06  2.70e-02   904s
+  60   5.37035756e+09  5.36999469e+09  1.01e-05 5.93e-06  2.30e-02   916s
+  61   5.37030917e+09  5.37000544e+09  8.47e-06 4.89e-06  1.92e-02   929s
+  62   5.37025342e+09  5.37001565e+09  6.65e-06 3.84e-06  1.51e-02   941s
+  63   5.37020747e+09  5.37002247e+09  5.15e-06 3.37e-06  1.17e-02   953s
+  64   5.37017357e+09  5.37002602e+09  4.03e-06 2.92e-06  9.34e-03   968s
+  65   5.37015425e+09  5.37003339e+09  3.40e-06 2.36e-06  7.65e-03   981s
+  66   5.37013357e+09  5.37003516e+09  2.73e-06 2.30e-06  6.23e-03   994s
+
+Barrier solved model in 66 iterations and 993.86 seconds
+Optimal objective 5.37013357e+09
+
+INFO:pypsa.linopt:No model basis stored
+INFO:pypsa.linopf:Optimization successful. Objective value: 5.37e+09
+INFO:pypsa.linopf:Mean square difference after iteration 1 is 1.1272581380127993
+INFO:pypsa.linopf:Prepare linear problem
+INFO:pypsa.linopf:Total preparation time: 97.64s
+INFO:pypsa.linopf:Solve linear problem using Gurobi solver
+Read LP format model from file /cluster/scratch/wlaumen/pypsa-eur/tmp/pypsa-problem-6t9nmf2x.lp
+Reading time = 49.22 seconds
+obj: 20761200 rows, 9163590 columns, 44955926 nonzeros
+Changed value of parameter threads to 4
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter method to 2
+   Prev: -1  Min: -1  Max: 5  Default: -1
+Changed value of parameter crossover to 0
+   Prev: -1  Min: -1  Max: 5  Default: -1
+Changed value of parameter BarConvTol to 1e-05
+   Prev: 1e-08  Min: 0.0  Max: 1.0  Default: 1e-08
+Parameter FeasibilityTol unchanged
+   Value: 1e-06  Min: 1e-09  Max: 0.01  Default: 1e-06
+Changed value of parameter AggFill to 0
+   Prev: -1  Min: -1  Max: 2000000000  Default: -1
+Changed value of parameter PreDual to 0
+   Prev: -1  Min: -1  Max: 2  Default: -1
+Changed value of parameter GURO_PAR_BARDENSETHRESH to 200
+   Prev: -1  Min: -1  Max: 2000000000  Default: -1
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (linux64)
+Thread count: 128 physical cores, 128 logical processors, using up to 4 threads
+Optimize a model with 20761200 rows, 9163590 columns and 44955926 nonzeros
+Model fingerprint: 0x4ee443ff
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+06]
+  Objective range  [9e-03, 2e+05]
+  Bounds range     [2e+00, 6e+09]
+  RHS range        [4e-03, 2e+05]
+Warning: Model contains large bounds
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve removed 11700287 rows and 1232180 columns (presolve time = 5s) ...
+Presolve removed 11700287 rows and 1232180 columns (presolve time = 10s) ...
+Presolve removed 11746670 rows and 1278563 columns (presolve time = 22s) ...
+Presolve removed 11746670 rows and 1278564 columns (presolve time = 26s) ...
+Presolve removed 11746670 rows and 1278564 columns
+Presolve time: 29.26s
+Presolved: 9014530 rows, 7885026 columns, 31838068 nonzeros
+Elapsed ordering time = 5s
+Ordering time: 5.43s
+
+Barrier statistics:
+ Dense cols : 626
+ Free vars  : 2270676
+ AA' NZ     : 5.314e+07
+ Factor NZ  : 3.824e+08 (roughly 10.0 GBytes of memory)
+ Factor Ops : 1.225e+11 (roughly 3 seconds per iteration)
+ Threads    : 4
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   6.54280233e+12 -2.41888160e+13  1.31e+05 5.29e+02  3.50e+08    64s
+   1   5.86658621e+12 -1.82001514e+13  1.12e+05 1.92e+04  2.32e+08    76s
+   2   4.96868976e+12 -1.95960619e+13  9.14e+04 5.26e+03  1.64e+08    89s
+   3   1.39363526e+12 -2.00868831e+13  2.42e+04 1.01e+03  4.50e+07   104s
+   4   3.04723572e+11 -1.71159949e+13  3.56e+03 2.59e+02  7.89e+06   117s
+   5   1.45078505e+11 -1.19068809e+13  5.22e+02 1.01e+02  1.89e+06   128s
+   6   1.25318473e+11 -3.72351484e+12  2.19e+02 1.73e+01  5.48e+05   140s
+   7   1.12265543e+11 -1.37582192e+12  6.37e+01 3.48e+00  1.63e+05   153s
+   8   1.00509445e+11 -6.78106137e+11  1.40e+01 1.11e+00  6.43e+04   165s
+   9   9.20148170e+10 -4.20894259e+11  9.38e+00 5.14e-01  4.07e+04   175s
+  10   7.22210487e+10 -2.38590510e+11  2.11e+00 1.57e-01  2.19e+04   187s
+  11   5.02163623e+10 -1.37503215e+11  7.07e-01 4.30e-03  1.27e+04   200s
+  12   3.74519734e+10 -9.17578687e+10  3.61e-01 3.26e-03  8.55e+03   211s
+  13   3.27009861e+10 -6.72898025e+10  2.76e-01 3.10e-03  6.57e+03   222s
+  14   2.98569863e+10 -3.79980539e+10  2.38e-01 2.89e-03  4.44e+03   232s
+  15   2.42812022e+10 -2.46100577e+10  1.69e-01 2.92e-03  3.18e+03   244s
+  16   2.11773249e+10 -1.19786949e+10  1.38e-01 4.36e-02  2.14e+03   257s
+  17   1.84428552e+10 -4.11977400e+09  1.15e-01 1.71e-02  1.45e+03   272s
+  18   1.49638405e+10  1.08637947e+07  8.52e-02 2.73e-03  9.57e+02   288s
+  19   1.26710437e+10  2.27917950e+09  6.58e-02 2.38e-03  6.63e+02   304s
+  20   1.06300226e+10  3.27048052e+09  4.84e-02 2.13e-03  4.69e+02   319s
+  21   9.44198346e+09  4.03590836e+09  3.79e-02 1.71e-03  3.44e+02   332s
+  22   8.63723869e+09  4.31571729e+09  3.10e-02 1.50e-03  2.74e+02   343s
+  23   8.24640383e+09  4.45131220e+09  2.74e-02 1.37e-03  2.41e+02   353s
+  24   7.75002638e+09  4.71262372e+09  2.28e-02 1.17e-03  1.93e+02   364s
+  25   7.22965146e+09  4.89422537e+09  1.84e-02 1.19e-03  1.48e+02   377s
+  26   6.83323205e+09  5.01597788e+09  1.48e-02 9.55e-04  1.15e+02   393s
+  27   6.62130889e+09  5.10473984e+09  1.29e-02 8.72e-04  9.61e+01   408s
+  28   6.29809852e+09  5.19049443e+09  1.00e-02 9.24e-04  7.01e+01   424s
+  29   6.08584821e+09  5.25726740e+09  7.86e-03 7.21e-04  5.25e+01   439s
+  30   5.92117553e+09  5.28514008e+09  6.12e-03 5.79e-04  4.03e+01   454s
+  31   5.83308384e+09  5.30498092e+09  5.24e-03 5.20e-04  3.34e+01   470s
+  32   5.75383924e+09  5.31421269e+09  4.44e-03 4.89e-04  2.78e+01   485s
+  33   5.69927455e+09  5.32477070e+09  3.86e-03 4.71e-04  2.37e+01   501s
+  34   5.61894971e+09  5.33395189e+09  2.96e-03 4.62e-04  1.80e+01   516s
+  35   5.55913702e+09  5.34318948e+09  2.31e-03 4.22e-04  1.37e+01   532s
+  36   5.53938458e+09  5.34888825e+09  2.07e-03 3.76e-04  1.20e+01   547s
+  37   5.49593423e+09  5.35220804e+09  1.58e-03 3.44e-04  9.09e+00   563s
+  38   5.47855442e+09  5.35825385e+09  1.38e-03 2.70e-04  7.61e+00   578s
+  39   5.44636063e+09  5.36196360e+09  9.79e-04 3.12e-04  5.34e+00   593s
+  40   5.43313175e+09  5.36392270e+09  8.20e-04 3.55e-04  4.38e+00   609s
+  41   5.41812116e+09  5.36564970e+09  6.35e-04 2.62e-04  3.32e+00   626s
+  42   5.40742397e+09  5.36690458e+09  5.00e-04 2.05e-04  2.56e+00   644s
+  43   5.40337805e+09  5.36718507e+09  4.49e-04 1.92e-04  2.29e+00   660s
+  44   5.39728236e+09  5.36791317e+09  3.76e-04 1.63e-04  1.86e+00   678s
+  45   5.39137093e+09  5.36829467e+09  2.98e-04 1.42e-04  1.46e+00   699s
+  46   5.38688462e+09  5.36874388e+09  2.32e-04 1.12e-04  1.15e+00   722s
+  47   5.38375831e+09  5.36937156e+09  1.88e-04 7.56e-05  9.10e-01   743s
+  48   5.38032988e+09  5.36957984e+09  1.38e-04 6.15e-05  6.80e-01   769s
+  49   5.37843826e+09  5.36985286e+09  1.11e-04 4.39e-05  5.43e-01   791s
+  50   5.37644006e+09  5.36997885e+09  8.19e-05 3.61e-05  4.09e-01   813s
+  51   5.37511008e+09  5.37016207e+09  6.48e-05 2.65e-05  3.13e-01   832s
+  52   5.37338676e+09  5.37028482e+09  3.91e-05 1.91e-05  1.96e-01   850s
+  53   5.37258546e+09  5.37037252e+09  2.75e-05 1.42e-05  1.40e-01   868s
+  54   5.37207776e+09  5.37042521e+09  2.02e-05 1.19e-05  1.05e-01   886s
+  55   5.37162824e+09  5.37050759e+09  1.43e-05 8.22e-06  7.09e-02   907s
+  56   5.37142050e+09  5.37055574e+09  1.15e-05 5.54e-06  5.47e-02   924s
+  57   5.37117032e+09  5.37058406e+09  7.65e-06 3.97e-06  3.71e-02   943s
+  58   5.37103138e+09  5.37060812e+09  5.61e-06 7.08e-06  2.68e-02   960s
+  59   5.37098360e+09  5.37060974e+09  4.91e-06 7.01e-06  2.37e-02   979s
+  60   5.37091194e+09  5.37062603e+09  3.86e-06 3.82e-06  1.81e-02   999s
+  61   5.37089103e+09  5.37063147e+09  3.54e-06 3.31e-06  1.64e-02  1017s
+  62   5.37082517e+09  5.37063922e+09  2.57e-06 2.32e-06  1.18e-02  1041s
+  63   5.37077246e+09  5.37064690e+09  1.75e-06 4.42e-06  7.94e-03  1063s
+  64   5.37073554e+09  5.37065216e+09  1.18e-06 2.70e-06  5.27e-03  1083s
+
+Barrier solved model in 64 iterations and 1082.79 seconds
+Optimal objective 5.37073554e+09
+
+INFO:pypsa.linopt:No model basis stored
+INFO:pypsa.linopf:Optimization successful. Objective value: 5.37e+09
+INFO:pypsa.linopf:Mean square difference after iteration 2 is 0.0
+INFO:pypsa.linopf:Prepare linear problem
+INFO:pypsa.linopf:Total preparation time: 107.68s
+INFO:pypsa.linopf:Solve linear problem using Gurobi solver
+Read LP format model from file /cluster/scratch/wlaumen/pypsa-eur/tmp/pypsa-problem-xv8b30bh.lp
+Reading time = 49.15 seconds
+obj: 20761200 rows, 9163590 columns, 44955926 nonzeros
+Changed value of parameter threads to 4
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter method to 2
+   Prev: -1  Min: -1  Max: 5  Default: -1
+Changed value of parameter crossover to 0
+   Prev: -1  Min: -1  Max: 5  Default: -1
+Changed value of parameter BarConvTol to 1e-05
+   Prev: 1e-08  Min: 0.0  Max: 1.0  Default: 1e-08
+Parameter FeasibilityTol unchanged
+   Value: 1e-06  Min: 1e-09  Max: 0.01  Default: 1e-06
+Changed value of parameter AggFill to 0
+   Prev: -1  Min: -1  Max: 2000000000  Default: -1
+Changed value of parameter PreDual to 0
+   Prev: -1  Min: -1  Max: 2  Default: -1
+Changed value of parameter GURO_PAR_BARDENSETHRESH to 200
+   Prev: -1  Min: -1  Max: 2000000000  Default: -1
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (linux64)
+Thread count: 128 physical cores, 128 logical processors, using up to 4 threads
+Optimize a model with 20761200 rows, 9163590 columns and 44955926 nonzeros
+Model fingerprint: 0x17735cf9
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+06]
+  Objective range  [9e-03, 2e+05]
+  Bounds range     [2e+00, 6e+09]
+  RHS range        [4e-03, 2e+05]
+Warning: Model contains large bounds
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve removed 11700287 rows and 1232180 columns (presolve time = 5s) ...
+Presolve removed 11700287 rows and 1232180 columns (presolve time = 11s) ...
+Presolve removed 11746670 rows and 1278563 columns (presolve time = 23s) ...
+Presolve removed 11746670 rows and 1278564 columns (presolve time = 25s) ...
+Presolve removed 11746670 rows and 1278564 columns
+Presolve time: 29.73s
+Presolved: 9014530 rows, 7885026 columns, 31838068 nonzeros
+Elapsed ordering time = 5s
+Ordering time: 5.88s
+
+Barrier statistics:
+ Dense cols : 626
+ Free vars  : 2270676
+ AA' NZ     : 5.314e+07
+ Factor NZ  : 3.824e+08 (roughly 10.0 GBytes of memory)
+ Factor Ops : 1.225e+11 (roughly 3 seconds per iteration)
+ Threads    : 4
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   6.54280232e+12 -2.41888160e+13  1.31e+05 5.29e+02  3.50e+08    65s
+   1   5.86658139e+12 -1.82001819e+13  1.12e+05 1.92e+04  2.32e+08    77s
+   2   4.96868547e+12 -1.95961687e+13  9.14e+04 5.26e+03  1.64e+08    89s
+   3   1.39416972e+12 -2.00872684e+13  2.43e+04 1.01e+03  4.50e+07   104s
+   4   3.05616694e+11 -1.71212464e+13  3.58e+03 2.60e+02  7.92e+06   116s
+   5   1.44996354e+11 -1.13533090e+13  5.21e+02 9.93e+01  1.85e+06   126s
+   6   1.24471243e+11 -3.55250872e+12  2.03e+02 1.55e+01  5.16e+05   139s
+   7   1.11385992e+11 -1.26448448e+12  5.30e+01 3.12e+00  1.46e+05   153s
+   8   9.98189018e+10 -6.24314657e+11  1.17e+01 1.03e+00  5.94e+04   165s
+   9   8.82067006e+10 -4.41201942e+11  6.41e+00 6.02e-01  4.08e+04   175s
+  10   6.69293921e+10 -2.16491609e+11  1.85e+00 1.59e-01  2.02e+04   186s
+  11   4.68498487e+10 -1.21306909e+11  6.14e-01 4.47e-03  1.14e+04   200s
+  12   3.41820040e+10 -8.10641152e+10  2.93e-01 3.17e-03  7.66e+03   212s
+  13   2.98502886e+10 -5.10400105e+10  2.24e-01 2.82e-03  5.33e+03   222s
+  14   2.92097192e+10 -4.08241642e+10  2.15e-01 2.65e-03  4.60e+03   232s
+  15   2.37101984e+10 -2.43407334e+10  1.51e-01 4.00e-03  3.13e+03   243s
+  16   2.06159019e+10 -2.20783122e+10  1.21e-01 7.01e-02  2.77e+03   256s
+  17   1.97231456e+10 -1.14844567e+10  1.13e-01 3.87e-02  2.02e+03   272s
+  18   1.69234859e+10 -2.71324165e+09  9.04e-02 7.81e-03  1.26e+03   287s
+  19   1.43479734e+10  8.92092187e+08  7.07e-02 3.40e-03  8.61e+02   303s
+  20   1.20234533e+10  2.75662556e+09  5.33e-02 2.89e-03  5.90e+02   318s
+  21   1.03643819e+10  3.90720500e+09  4.00e-02 2.29e-03  4.10e+02   334s
+  22   9.13941883e+09  4.29817010e+09  3.14e-02 1.89e-03  3.07e+02   347s
+  23   8.88420208e+09  4.35065268e+09  2.93e-02 1.82e-03  2.88e+02   358s
+  24   8.40091216e+09  4.50665907e+09  2.55e-02 1.58e-03  2.47e+02   369s
+  25   8.00014425e+09  4.64475891e+09  2.26e-02 1.36e-03  2.13e+02   381s
+  26   7.45521176e+09  4.85935215e+09  1.84e-02 1.31e-03  1.64e+02   395s
+  27   7.01302051e+09  4.98975388e+09  1.47e-02 1.04e-03  1.28e+02   411s
+  28   6.70660992e+09  5.06505738e+09  1.23e-02 1.03e-03  1.04e+02   427s
+  29   6.45335388e+09  5.15766070e+09  1.03e-02 8.82e-04  8.20e+01   442s
+  30   6.16691916e+09  5.20292599e+09  7.83e-03 8.12e-04  6.10e+01   457s
+  31   5.95805053e+09  5.25827181e+09  5.86e-03 7.47e-04  4.43e+01   472s
+  32   5.84192304e+09  5.28170134e+09  4.85e-03 5.93e-04  3.54e+01   488s
+  33   5.77272824e+09  5.29345135e+09  4.23e-03 5.91e-04  3.03e+01   503s
+  34   5.73021179e+09  5.30710193e+09  3.82e-03 5.60e-04  2.68e+01   522s
+  35   5.63757220e+09  5.31804424e+09  2.90e-03 4.98e-04  2.02e+01   538s
+  36   5.59610613e+09  5.32929102e+09  2.51e-03 4.30e-04  1.69e+01   553s
+  37   5.55714376e+09  5.34045855e+09  2.09e-03 3.92e-04  1.37e+01   569s
+  38   5.52379150e+09  5.34601236e+09  1.76e-03 3.65e-04  1.12e+01   586s
+  39   5.48794377e+09  5.35175823e+09  1.38e-03 3.10e-04  8.61e+00   602s
+  40   5.46466905e+09  5.35783495e+09  1.13e-03 2.54e-04  6.76e+00   617s
+  41   5.44778221e+09  5.36107406e+09  9.24e-04 3.22e-04  5.48e+00   631s
+  42   5.42621668e+09  5.36335630e+09  6.85e-04 3.44e-04  3.98e+00   646s
+  43   5.41267993e+09  5.36455341e+09  5.17e-04 2.88e-04  3.04e+00   664s
+  44   5.40737718e+09  5.36543747e+09  4.53e-04 2.48e-04  2.65e+00   677s
+  45   5.40330354e+09  5.36602335e+09  4.04e-04 2.24e-04  2.36e+00   692s
+  46   5.40046303e+09  5.36653171e+09  3.71e-04 2.06e-04  2.15e+00   708s
+  47   5.39931896e+09  5.36700486e+09  3.59e-04 1.88e-04  2.04e+00   726s
+  48   5.39302638e+09  5.36777051e+09  2.87e-04 1.58e-04  1.60e+00   744s
+  49   5.38515035e+09  5.36852828e+09  1.86e-04 1.18e-04  1.05e+00   764s
+  50   5.38191579e+09  5.36896490e+09  1.43e-04 9.45e-05  8.19e-01   787s
+  51   5.37955209e+09  5.36948474e+09  1.13e-04 6.80e-05  6.37e-01   808s
+  52   5.37652887e+09  5.36978174e+09  7.28e-05 5.28e-05  4.27e-01   831s
+  53   5.37426256e+09  5.37030858e+09  4.30e-05 2.85e-05  2.50e-01   855s
+  54   5.37332749e+09  5.37046073e+09  3.08e-05 2.10e-05  1.81e-01   875s
+  55   5.37245331e+09  5.37055549e+09  1.94e-05 1.64e-05  1.20e-01   893s
+  56   5.37197052e+09  5.37067154e+09  1.31e-05 1.06e-05  8.22e-02   909s
+  57   5.37181401e+09  5.37071392e+09  1.11e-05 8.62e-06  6.96e-02   922s
+  58   5.37160577e+09  5.37075035e+09  8.43e-06 6.99e-06  5.41e-02   936s
+  59   5.37140640e+09  5.37077803e+09  5.90e-06 5.80e-06  3.98e-02   950s
+  60   5.37128872e+09  5.37082560e+09  4.41e-06 3.97e-06  2.93e-02   962s
+  61   5.37121985e+09  5.37085333e+09  3.55e-06 2.82e-06  2.32e-02   976s
+  62   5.37116327e+09  5.37087041e+09  2.85e-06 2.12e-06  1.85e-02   989s
+  63   5.37114285e+09  5.37087883e+09  2.60e-06 1.75e-06  1.67e-02  1002s
+  64   5.37106988e+09  5.37089085e+09  1.73e-06 1.35e-06  1.13e-02  1020s
+  65   5.37102153e+09  5.37090094e+09  1.15e-06 1.02e-06  7.63e-03  1039s
+  66   5.37099786e+09  5.37090998e+09  8.59e-07 7.51e-07  5.56e-03  1063s
+
+Barrier solved model in 66 iterations and 1063.44 seconds
+Optimal objective 5.37099786e+09
+
+INFO:pypsa.linopt:No model basis stored
+INFO:pypsa.linopf:Optimization successful. Objective value: 5.37e+09
+INFO:pypsa.linopf:Mean square difference after iteration 3 is 0.0
+INFO:pypsa.linopf:Running last lopf with fixed branches, overwrite p_nom for links and s_nom for lines
+/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/numpy/core/_asarray.py:83: VisibleDeprecationWarning:
+
+Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+
+INFO:pypsa.linopf:Prepare linear problem
+INFO:pypsa.linopf:Total preparation time: 107.5s
+INFO:pypsa.linopf:Solve linear problem using Gurobi solver
+Read LP format model from file /cluster/scratch/wlaumen/pypsa-eur/tmp/pypsa-problem-y6dynvsq.lp
+Reading time = 47.31 seconds
+obj: 20761200 rows, 9163324 columns, 40295606 nonzeros
+Changed value of parameter threads to 4
+   Prev: 0  Min: 0  Max: 1024  Default: 0
+Changed value of parameter method to 2
+   Prev: -1  Min: -1  Max: 5  Default: -1
+Changed value of parameter crossover to 0
+   Prev: -1  Min: -1  Max: 5  Default: -1
+Changed value of parameter BarConvTol to 1e-05
+   Prev: 1e-08  Min: 0.0  Max: 1.0  Default: 1e-08
+Parameter FeasibilityTol unchanged
+   Value: 1e-06  Min: 1e-09  Max: 0.01  Default: 1e-06
+Changed value of parameter AggFill to 0
+   Prev: -1  Min: -1  Max: 2000000000  Default: -1
+Changed value of parameter PreDual to 0
+   Prev: -1  Min: -1  Max: 2  Default: -1
+Changed value of parameter GURO_PAR_BARDENSETHRESH to 200
+   Prev: -1  Min: -1  Max: 2000000000  Default: -1
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (linux64)
+Thread count: 128 physical cores, 128 logical processors, using up to 4 threads
+Optimize a model with 20761200 rows, 9163324 columns and 40295606 nonzeros
+Model fingerprint: 0xf9d7bdd7
+Coefficient statistics:
+  Matrix range     [1e-02, 2e+06]
+  Objective range  [9e-03, 2e+05]
+  Bounds range     [2e+00, 4e+09]
+  RHS range        [4e-03, 2e+05]
+Warning: Model contains large bounds
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve removed 16294494 rows and 1232179 columns (presolve time = 9s) ...
+Presolve removed 16302315 rows and 1240000 columns (presolve time = 10s) ...
+Presolve removed 16348499 rows and 1286184 columns (presolve time = 19s) ...
+Presolve removed 16348499 rows and 1286184 columns (presolve time = 21s) ...
+Presolve removed 16348499 rows and 1286184 columns
+Presolve time: 23.16s
+Presolved: 4412701 rows, 7877140 columns, 22630389 nonzeros
+Ordering time: 3.41s
+
+Barrier statistics:
+ Dense cols : 363
+ AA' NZ     : 2.082e+07
+ Factor NZ  : 1.912e+08 (roughly 7.0 GBytes of memory)
+ Factor Ops : 4.004e+10 (roughly 1 second per iteration)
+ Threads    : 4
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   6.63044963e+11 -1.72401991e+14  1.24e+04 3.04e+02  4.81e+07    43s
+   1   5.77825219e+11 -8.95972067e+13  1.01e+04 1.65e+04  2.89e+07    49s
+   2   4.94144668e+11 -4.62259019e+13  7.85e+03 4.20e+03  1.87e+07    55s
+   3   3.45398283e+11 -2.35263446e+13  4.93e+03 8.73e+02  1.05e+07    63s
+   4   2.19599402e+11 -1.22730626e+13  2.58e+03 1.06e+02  5.12e+06    69s
+   5   1.23799667e+11 -7.39466044e+12  8.28e+02 2.84e+01  1.74e+06    74s
+   6   9.80896021e+10 -3.93873130e+12  3.65e+02 3.49e-05  7.34e+05    80s
+   7   8.17298987e+10 -2.70758558e+12  1.23e+02 1.47e-05  3.22e+05    86s
+   8   7.02322135e+10 -1.26506949e+12  2.81e+01 8.78e-06  1.11e+05    96s
+   9   6.05674667e+10 -5.39179899e+11  9.18e+00 2.54e-06  4.42e+04   103s
+  10   4.95958062e+10 -3.22838050e+11  4.85e+00 1.47e-06  2.63e+04   109s
+  11   4.03576208e+10 -2.42833796e+11  2.30e+00 1.10e-06  1.91e+04   114s
+  12   3.55907786e+10 -1.72779625e+11  1.54e+00 7.81e-07  1.39e+04   120s
+  13   2.69509455e+10 -1.21977826e+11  5.56e-01 7.02e-07  9.67e+03   126s
+  14   1.87222261e+10 -5.74975666e+10  1.64e-01 3.35e-07  4.89e+03   134s
+  15   1.55640890e+10 -2.87149457e+10  1.04e-01 1.88e-07  2.84e+03   140s
+  16   1.38662558e+10 -2.23553035e+10  8.17e-02 1.50e-07  2.32e+03   146s
+  17   1.25127893e+10 -1.25580524e+10  6.51e-02 9.72e-08  1.60e+03   151s
+  18   1.09980066e+10 -6.47464979e+09  4.87e-02 6.54e-08  1.12e+03   157s
+  19   9.24642306e+09 -1.93351703e+09  3.10e-02 3.93e-08  7.13e+02   165s
+  20   7.86815792e+09  1.11665339e+09  1.84e-02 2.12e-08  4.30e+02   174s
+  21   7.02195764e+09  2.75870128e+09  1.14e-02 1.25e-08  2.71e+02   183s
+  22   6.66937444e+09  3.39414807e+09  8.75e-03 8.73e-09  2.08e+02   190s
+  23   6.50285787e+09  3.99818778e+09  7.53e-03 4.66e-09  1.59e+02   197s
+  24   6.26733146e+09  4.26799875e+09  5.86e-03 6.23e-09  1.27e+02   202s
+  25   6.06397975e+09  4.59442016e+09  4.46e-03 5.82e-09  9.34e+01   209s
+  26   5.89996398e+09  4.96054474e+09  3.44e-03 6.52e-09  5.97e+01   216s
+  27   5.72760851e+09  5.12609578e+09  2.32e-03 8.96e-09  3.82e+01   225s
+  28   5.62227790e+09  5.22628306e+09  1.61e-03 6.40e-09  2.51e+01   234s
+  29   5.56129665e+09  5.28459497e+09  1.22e-03 6.40e-09  1.76e+01   242s
+  30   5.51527962e+09  5.31795787e+09  9.28e-04 8.15e-09  1.25e+01   248s
+  31   5.50364709e+09  5.32087539e+09  8.54e-04 8.50e-09  1.16e+01   253s
+  32   5.48146336e+09  5.33257367e+09  7.11e-04 8.03e-09  9.45e+00   258s
+  33   5.45816676e+09  5.34551762e+09  5.74e-04 6.23e-09  7.15e+00   265s
+  34   5.42587671e+09  5.35192753e+09  3.80e-04 5.47e-09  4.69e+00   272s
+  35   5.40725727e+09  5.35782058e+09  2.57e-04 5.30e-09  3.14e+00   281s
+  36   5.39549051e+09  5.36250637e+09  1.78e-04 4.31e-09  2.09e+00   290s
+  37   5.38846763e+09  5.36363713e+09  1.31e-04 3.03e-09  1.58e+00   299s
+  38   5.38642585e+09  5.36422535e+09  1.18e-04 2.62e-09  1.41e+00   307s
+  39   5.38574840e+09  5.36462711e+09  1.14e-04 4.19e-09  1.34e+00   313s
+  40   5.37941508e+09  5.36553189e+09  7.32e-05 3.90e-09  8.81e-01   321s
+  41   5.37606537e+09  5.36716508e+09  5.00e-05 4.95e-09  5.65e-01   329s
+  42   5.37331774e+09  5.36770917e+09  3.21e-05 1.22e-09  3.56e-01   338s
+  43   5.37129562e+09  5.36815131e+09  1.80e-05 1.34e-09  2.00e-01   348s
+  44   5.36983485e+09  5.36838296e+09  8.12e-06 1.98e-09  9.21e-02   356s
+  45   5.36957104e+09  5.36843491e+09  6.37e-06 1.80e-09  7.21e-02   364s
+  46   5.36921399e+09  5.36847141e+09  4.03e-06 2.79e-09  4.71e-02   369s
+  47   5.36905855e+09  5.36850602e+09  3.02e-06 2.04e-09  3.51e-02   374s
+  48   5.36898139e+09  5.36851835e+09  2.53e-06 1.40e-09  2.94e-02   379s
+  49   5.36888368e+09  5.36853788e+09  1.91e-06 1.63e-09  2.19e-02   384s
+  50   5.36876701e+09  5.36854739e+09  1.32e-06 1.28e-09  1.39e-02   391s
+  51   5.36870796e+09  5.36855797e+09  1.25e-06 4.07e-10  9.52e-03   398s
+  52   5.36866273e+09  5.36856640e+09  8.40e-07 1.46e-10  6.11e-03   407s
+  53   5.36863277e+09  5.36857100e+09  6.52e-07 1.92e-09  3.92e-03   416s
+
+Barrier solved model in 53 iterations and 415.74 seconds
+Optimal objective 5.36863277e+09
+
+INFO:pypsa.linopt:No model basis stored
+INFO:pypsa.linopf:Optimization successful. Objective value: 5.37e+09
+INFO:pypsa.io:Exported network elec_s300_180_ec_lcopt_1H.nc has loads, lines, storage_units, buses, links, carriers, generators
+INFO:__main__:Maximum memory usage: (16769.1796875, 1616846645.4814587)
+[Sat Mar 27 13:19:00 2021]
+Finished job 0.
+1 of 1 steps (100%) done

@@ -1,0 +1,85 @@
+Sender: LSF System <lsfadmin@eu-ms-026-45>
+Subject: Job 167235769: </cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.xukngj2j/snakejob.solve_network.8.sh> in cluster <euler> Exited
+
+Job </cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.xukngj2j/snakejob.solve_network.8.sh> was submitted from host <eu-login-12> by user <wlaumen> in cluster <euler> at Fri Mar 26 10:53:46 2021
+Job was executed on host(s) <eu-ms-026-45>, in queue <normal.4h>, as user <wlaumen> in cluster <euler> at Fri Mar 26 10:54:01 2021
+</cluster/home/wlaumen> was used as the home directory.
+</cluster/scratch/wlaumen/pypsa-eur> was used as the working directory.
+Started at Fri Mar 26 10:54:01 2021
+Terminated at Fri Mar 26 10:56:18 2021
+Results reported at Fri Mar 26 10:56:18 2021
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.xukngj2j/snakejob.solve_network.8.sh
+------------------------------------------------------------
+
+TERM_MEMLIMIT: job killed after reaching LSF memory usage limit.
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   131.80 sec.
+    Max Memory :                                 3536 MB
+    Average Memory :                             2491.14 MB
+    Total Requested Memory :                     1024.00 MB
+    Delta Memory :                               -2512.00 MB
+    Max Swap :                                   -
+    Max Processes :                              7
+    Max Threads :                                12
+    Run time :                                   137 sec.
+    Turnaround time :                            152 sec.
+
+The output (if any) follows:
+
+Using license file /cluster/apps/nss/gurobi/9.1.1/x86_64/gurobi.lic
+Set parameter TokenServer to value lic-gurobi.ethz.ch
+No parameters matching '_test' found
+Building DAG of jobs...
+Using shell: /cluster/apps/sfos/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	solve_network
+	1
+
+[Fri Mar 26 10:54:02 2021]
+rule solve_network:
+    input: networks/elec_s300_200_ec_lcopt_1H.nc
+    output: results/networks/elec_s300_200_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_200_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_200_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_200_ec_lcopt_1H_memory.log
+    jobid: 0
+    benchmark: benchmarks/solve_network/elec_s300_200_ec_lcopt_1H
+    wildcards: simpl=300, clusters=200, ll=copt, opts=1H
+    threads: 2
+    resources: mem=147000
+
+Changing to shadow directory: /cluster/scratch/wlaumen/pypsa-eur/.snakemake/shadow/tmpjsznynqf
+INFO:pypsa.io:Imported network elec_s300_200_ec_lcopt_1H.nc has buses, carriers, generators, lines, links, loads, storage_units
+INFO:pypsa.linopf:Prepare linear problem
+INFO:pypsa.linopf:Total preparation time: 99.68s
+INFO:pypsa.linopf:Solve linear problem using Gurobi solver
+Using license file /cluster/apps/nss/gurobi/9.1.1/x86_64/gurobi.lic
+Set parameter TokenServer to value lic-gurobi.ethz.ch
+/cluster/apps/sfos/bin/bash: line 1:  8964 Killed                  /cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/bin/python3.8 /cluster/scratch/wlaumen/pypsa-eur/.snakemake/shadow/tmpjsznynqf/.snakemake/scripts/tmpm_eyqsqv.solve_network.py
+[Fri Mar 26 10:56:17 2021]
+Error in rule solve_network:
+    jobid: 0
+    output: results/networks/elec_s300_200_ec_lcopt_1H.nc
+    log: logs/solve_network/elec_s300_200_ec_lcopt_1H_solver.log, logs/solve_network/elec_s300_200_ec_lcopt_1H_python.log, logs/solve_network/elec_s300_200_ec_lcopt_1H_memory.log (check log file(s) for error message)
+
+RuleException:
+CalledProcessError in line 319 of /cluster/scratch/wlaumen/pypsa-eur/Snakefile:
+Command 'set -euo pipefail;  /cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/bin/python3.8 /cluster/scratch/wlaumen/pypsa-eur/.snakemake/shadow/tmpjsznynqf/.snakemake/scripts/tmpm_eyqsqv.solve_network.py' returned non-zero exit status 137.
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 2154, in run_wrapper
+  File "/cluster/scratch/wlaumen/pypsa-eur/Snakefile", line 319, in __rule_solve_network
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 551, in _callback
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/concurrent/futures/thread.py", line 57, in run
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 537, in cached_or_run
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/snakemake/executors/__init__.py", line 2239, in run_wrapper
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+/cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.xukngj2j/snakejob.solve_network.8.sh: line 13:  8939 Killed                  PATH='/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/bin':$PATH /cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/bin/python3.8 -m snakemake results/networks/elec_s300_200_ec_lcopt_1H.nc --snakefile /cluster/scratch/wlaumen/pypsa-eur/Snakefile --force -j --keep-target-files --keep-remote --max-inventory-time 0 --wait-for-files /cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.xukngj2j networks/elec_s300_200_ec_lcopt_1H.nc --latency-wait 5 --attempt 1 --force-use-threads --scheduler greedy --wrapper-prefix https://github.com/snakemake/snakemake-wrappers/raw/ --allowed-rules solve_network --nocolor --notemp --no-hooks --nolock --mode 2

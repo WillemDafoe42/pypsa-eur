@@ -1,0 +1,36 @@
+Sender: LSF System <lsfadmin@eu-g1-044-1>
+Subject: Job 167242630: </cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.slq9wial/snakejob.solve_network.8.sh> in cluster <euler> Exited
+
+Job </cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.slq9wial/snakejob.solve_network.8.sh> was submitted from host <eu-login-12> by user <wlaumen> in cluster <euler> at Fri Mar 26 12:49:28 2021
+Job was executed on host(s) <eu-g1-044-1>, in queue <bigmem.4h>, as user <wlaumen> in cluster <euler> at Fri Mar 26 12:52:12 2021
+</cluster/home/wlaumen> was used as the home directory.
+</cluster/scratch/wlaumen/pypsa-eur> was used as the working directory.
+Started at Fri Mar 26 12:52:12 2021
+Terminated at Fri Mar 26 12:52:13 2021
+Results reported at Fri Mar 26 12:52:13 2021
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.slq9wial/snakejob.solve_network.8.sh
+------------------------------------------------------------
+
+Exited with exit code 127.
+
+Resource usage summary:
+
+    CPU time :                                   0.09 sec.
+    Max Memory :                                 6 MB
+    Average Memory :                             -
+    Total Requested Memory :                     128000.00 MB
+    Delta Memory :                               127994.00 MB
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   21 sec.
+    Turnaround time :                            165 sec.
+
+The output (if any) follows:
+
+/cluster/shadow/.lsbatch/1616759368.167242630: line 8: /cluster/scratch/wlaumen/pypsa-eur/.snakemake/tmp.slq9wial/snakejob.solve_network.8.sh: No such file or directory

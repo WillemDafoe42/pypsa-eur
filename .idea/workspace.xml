@@ -5,6 +5,7 @@
       <change afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/PyPSA/pypsa/redispatch.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/PyPSA/pypsa/redispatch.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/PyPSA/pypsa/redispatch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/solve_redispatch_network.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.gitattributes" afterDir="false" />
@@ -22,7 +23,6 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.readthedocs.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.readthedocs.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.reuse/dep5" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/Logs.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/Snakefile" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/config.yaml" beforeDir="false" />
@@ -62,6 +62,7 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Redispatch Daten Analyse.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Stomata plot.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Time Series Clustering.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Untitled.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Untitled1.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/l_networks.pickle" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/multi_obj_all_points.p" beforeDir="false" />
@@ -73,11 +74,47 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Snakefile" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Snakefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/borg-it" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/borg-it" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/cluster.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/config.default.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/config.default.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/config.tutorial.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/config.tutorial.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/config.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/configs/config.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/Redispatch/global_power_plant_database.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/Redispatch/globalpowerplantdatabasev120.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/Redispatch/opsd-time_series-2020-10-06/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/Redispatch/opsd-time_series-2020-10-06/datapackage.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/Redispatch/redispatch_daten.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/agg_p_nom_minmax.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/NUTS_2013_UML.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_60M_2013.dbf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_60M_2013.prj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_60M_2013.sbn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_60M_2013.sbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_60M_2013.shp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_60M_2013.shp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_60M_2013.shx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_BN_60M_2013.dbf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_BN_60M_2013.dbf.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_SEPA_LI_2013.cpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_SEPA_LI_2013.dbf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_SEPA_LI_2013.prj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_SEPA_LI_2013.sbn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_SEPA_LI_2013.sbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_SEPA_LI_2013.shp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_SEPA_LI_2013.shp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/data/NUTS_SEPA_LI_2013.shx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/metadata/Metadata_NUTS_2013.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/metadata/Metadata_NUTS_2013.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/metadata/NUTS_AT_2013.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/metadata/NUTS_BN_60M_2013.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/metadata/NUTS_LB_2013.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/metadata/NUTS_RG_60M_2013.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/metadata/NUTS_RG_BN_60M_2013.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/metadata/NUTS_SEPA_LI_2013.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/readme.rtf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/NUTS_2013_60M_SH/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/ch_cantons.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/bundle/corine/clc_colortable_92.lyr" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/costs.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/custom_powerplants.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/entsoegridkit/README.md" beforeDir="false" />
@@ -91,6 +128,7 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/links_p_nom.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/links_tyndp.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/parameter_corrections.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/data/powerplant_data_location.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/doc/Makefile" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/doc/_static/theme_overrides.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/doc/cloudcomputing.rst" beforeDir="false" />
@@ -200,6 +238,7 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/envs/environment.docs.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/envs/environment.fixed.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/envs/environment.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/lsf.o167243198" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/matplotlibrc" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/matplotlibrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" />
@@ -251,9 +290,11 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/cluster_network.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/make_summary.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/plot_network.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/plot_network_spyder (1).py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/plot_p_nom_max.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/plot_summary.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/prepare_links_p_nom.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/prepare_network (1).py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/prepare_network.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/retrieve_cutout.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/retrieve_databundle.py" beforeDir="false" />
@@ -278,7 +319,6 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/.readthedocs.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/.readthedocs.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/.reuse/dep5" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/Logs.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/Snakefile" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/config.yaml" beforeDir="false" />
@@ -318,6 +358,7 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Redispatch Daten Analyse.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Stomata plot.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Time Series Clustering.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Untitled.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Untitled1.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/l_networks.pickle" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/multi_obj_all_points.p" beforeDir="false" />
@@ -329,11 +370,47 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Snakefile" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Snakefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/borg-it" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/borg-it" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/cluster.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/config.default.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/config.default.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/config.tutorial.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/config.tutorial.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/config.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/configs/config.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/Redispatch/global_power_plant_database.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/Redispatch/globalpowerplantdatabasev120.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/Redispatch/opsd-time_series-2020-10-06/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/Redispatch/opsd-time_series-2020-10-06/datapackage.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/Redispatch/redispatch_daten.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/agg_p_nom_minmax.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/NUTS_2013_UML.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_60M_2013.dbf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_60M_2013.prj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_60M_2013.sbn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_60M_2013.sbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_60M_2013.shp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_60M_2013.shp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_60M_2013.shx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_BN_60M_2013.dbf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_RG_BN_60M_2013.dbf.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_SEPA_LI_2013.cpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_SEPA_LI_2013.dbf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_SEPA_LI_2013.prj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_SEPA_LI_2013.sbn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_SEPA_LI_2013.sbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_SEPA_LI_2013.shp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_SEPA_LI_2013.shp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/data/NUTS_SEPA_LI_2013.shx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/metadata/Metadata_NUTS_2013.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/metadata/Metadata_NUTS_2013.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/metadata/NUTS_AT_2013.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/metadata/NUTS_BN_60M_2013.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/metadata/NUTS_LB_2013.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/metadata/NUTS_RG_60M_2013.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/metadata/NUTS_RG_BN_60M_2013.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/metadata/NUTS_SEPA_LI_2013.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/readme.rtf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/NUTS_2013_60M_SH/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/ch_cantons.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/bundle/corine/clc_colortable_92.lyr" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/costs.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/custom_powerplants.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/entsoegridkit/README.md" beforeDir="false" />
@@ -347,6 +424,7 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/links_p_nom.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/links_tyndp.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/parameter_corrections.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/data/powerplant_data_location.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/doc/Makefile" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/doc/_static/theme_overrides.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/doc/cloudcomputing.rst" beforeDir="false" />
@@ -456,6 +534,7 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/envs/environment.docs.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/envs/environment.fixed.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/envs/environment.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/lsf.o167243198" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/matplotlibrc" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/matplotlibrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" />
@@ -507,9 +586,11 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/cluster_network.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/make_summary.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/plot_network.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/plot_network_spyder (1).py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/plot_p_nom_max.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/plot_summary.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/prepare_links_p_nom.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/prepare_network (1).py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/prepare_network.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/retrieve_cutout.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/retrieve_databundle.py" beforeDir="false" />
@@ -519,20 +600,16 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/solve_operations_network.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/solve_redispatch_networks.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/test/config.test1.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Euler output/.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Euler+RWTH_jobscripts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Euler+RWTH_jobscripts.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter Notebook/Analysis Notebook.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter Notebook/Analysis Notebook.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter Notebook/ERA5 cdsapi test.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter Notebook/ERA5 cdsapi test.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter Notebook/Pypsa-eur analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter Notebook/Pypsa-eur analysis.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter Notebook/Time Series Clustering.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter Notebook/Time Series Clustering.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter Notebook/Untitled.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/PyPSA/pypsa/components.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyPSA/pypsa/components.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PyPSA/pypsa/opf.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyPSA/pypsa/opf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/networks_redispatch/results/dispatch/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" afterPath="$PROJECT_DIR$/networks_redispatch/results/dispatch/elec_s300_50_ec_lcopt_1H.nc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/networks_redispatch/results/redispatch/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" afterPath="$PROJECT_DIR$/networks_redispatch/results/redispatch/elec_s300_50_ec_lcopt_1H.nc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/networks_redispatch/results/redispatch/elec_s300_50_ec_lcopt_1H_bat.nc" beforeDir="false" afterPath="$PROJECT_DIR$/networks_redispatch/results/redispatch/elec_s300_50_ec_lcopt_1H_bat.nc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/prepare_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/prepare_network.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/solve_redispatch_networks.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/solve_redispatch_networks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/plot_network_spyder (1).py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/plot_network_spyder (1).py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/solve_redispatch_networks.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/solve_all_redispatch_networks.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -555,11 +632,16 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/scripts" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Willem\pypsa-eur\scripts" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -600,7 +682,9 @@
       <workItem from="1616502207133" duration="821000" />
       <workItem from="1616512686692" duration="1969000" />
       <workItem from="1616845873542" duration="7469000" />
-      <workItem from="1617031541097" duration="5022000" />
+      <workItem from="1617031541097" duration="6217000" />
+      <workItem from="1617281112046" duration="291000" />
+      <workItem from="1617443815459" duration="5570000" />
     </task>
     <servers />
   </component>

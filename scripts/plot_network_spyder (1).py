@@ -18,11 +18,12 @@ Description
 -----------
 
 """
-import os
+
+"""import os
 abspath = os.path.abspath(__file__)
 #abspath = '/Users/chiara/Documents/Universitaet/Master/MASTERARBEIT/pypsa-eur/scripts/'
 dname = os.path.dirname(abspath)
-os.chdir(dname)
+os.chdir(dname)"""
 #
 import logging
 from _helpers import (load_network_for_plots, aggregate_p, aggregate_costs,
@@ -248,8 +249,8 @@ def plot_total_cost_bar(n, ax=None):
     ax.grid(True, axis="y", color='k', linestyle='dotted')
 #%%
 from _helpers import mock_snakemake
-snakemake = mock_snakemake('plot_network', network='elec', simpl='',
-                          clusters='64', ll='copt', opts='Co2L-greenf-2H',
+snakemake = mock_snakemake('plot_network', network='elec', simpl='300',
+                          clusters='50', ll='copt', opts='1H-noex',
                           attr='p_nom', ext="pdf")
 configure_logging(snakemake)
 set_plot_style()

@@ -1,0 +1,4 @@
+  File "solve_redispatch_networks.py", line 36
+    if not n.links.empty
+                       ^
+SyntaxError: invalid syntax

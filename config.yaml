@@ -184,7 +184,7 @@ costs:
     co2: 0.
 
 solving:
-  # tmpdir: /cluster/scratch/wlaumen/pypsa-eur/tmp
+  tmpdir: /cluster/scratch/wlaumen/pypsa-eur/tmp
   options:  
     formulation: kirchhoff
     load_shedding: true
