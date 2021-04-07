@@ -14,7 +14,7 @@ summary_dir: results
 scenario:
   simpl: [300]
   ll: [copt]
-  clusters: [10,30,50,80,90,100,110,130,140,150,160,170,180,190,200]
+  clusters: [100,120,190]
   opts: [1H-noex]
 
 countries: ['DE']
@@ -216,7 +216,7 @@ solving:
 plotting:
   map:
     figsize: [7, 7]
-    boundaries: [-10.2, 29, 35,  72]
+    boundaries: [5.5, 16, 47,  55]
     p_nom:
       bus_size_factor: 5.e+4
       linewidth_factor: 3.e+3

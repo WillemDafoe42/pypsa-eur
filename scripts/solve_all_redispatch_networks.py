@@ -4,6 +4,7 @@ import pypsa
 import matplotlib.pyplot as plt
 import pandas as pd
 import gc
+import math
 import numpy as np
 import pickle as pkl
 import glob
@@ -329,6 +330,24 @@ def build_redispatch_network(network, network_dispatch):
                                    p_min_pu=(- network_dispatch.generators_t.p[generator] /
                                              network_dispatch.generators.loc[generator]["p_nom"]).tolist(),
                                    )
+
+    # add load shedding
+    bus_names = network_redispatch.buses.index.tolist()
+    print(bus_names)
+    for i in range(len(bus_names)):
+        bus_name = bus_names[i]
+        # add load shedding generator at every bus
+        network_redispatch.add("Generator",
+                               name="load_{}".format(i + 1),
+                               carrier="load",
+                               bus=bus_name,
+                               p_nom=1000000,  # in pypsa-eur: 1*10^9 KW, marginal cost auch per kW angegeben
+                               efficiency=1,
+                               marginal_cost=100000,  # non zero marginal cost to ensure unique optimization result
+                               capital_cost=0,
+                               p_nom_extendable=False,
+                               p_nom_min=0,
+                               p_nom_max=math.inf)
     network_redispatch.name = str(network_redispatch.name) + " redispatch"
     return network_redispatch
 
@@ -554,8 +573,7 @@ def solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1):
         n_optim = pypsa.Network(path_n_optim)
 
         # Run redispatch w/o batteries & export files
-        n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat",
-                                                                 c_rate=0.25, flex_share=0.1)
+        n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat", c_rate=0.25, flex_share=0.1)
         # export solved dispatch & redispatch workflow as well as objective value list
         export_path = folder + r"/results"
         n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + ".nc", export_standard_types=False, least_significant_digit=None)

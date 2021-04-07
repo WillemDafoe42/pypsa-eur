@@ -1,0 +1,2 @@
+  File "solve_redispatch_network.py", line 128
+SyntaxError: Non-ASCII character '\xc3' in file solve_redispatch_network.py on line 128, but no encoding declared; see http://www.python.org/peps/pep-0263.html for details

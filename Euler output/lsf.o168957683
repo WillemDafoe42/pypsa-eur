@@ -1,0 +1,90 @@
+elec_s300_90_ec_lcopt_1H-noex
+
+
+
+
+
+
+INFO:pypsa.io:Imported network elec_s300_90_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+INFO:pypsa.io:Imported network elec_s300_90_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+INFO:numexpr.utils:Note: detected 128 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO:numexpr.utils:Note: NumExpr detected 128 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+INFO:pypsa.linopf:Prepare linear problem
+INFO:pypsa.linopf:Total preparation time: 0.47s
+INFO:pypsa.linopf:Solve linear problem using Gurobi solver
+Using license file /cluster/apps/nss/gurobi/9.1.1/x86_64/gurobi.lic
+Set parameter TokenServer to value lic-gurobi.ethz.ch
+Read LP format model from file /scratch/168957683.tmpdir/pypsa-problem-p96enfmg.lp
+Reading time = 0.07 seconds
+obj: 35424 rows, 15865 columns, 62520 nonzeros
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (linux64)
+Thread count: 128 physical cores, 128 logical processors, using up to 32 threads
+Optimize a model with 35424 rows, 15865 columns and 62520 nonzeros
+Model fingerprint: 0x7c94fa5d
+Coefficient statistics:
+  Matrix range     [9e-01, 6e+01]
+  Objective range  [1e-02, 1e+02]
+  Bounds range     [3e+00, 2e+01]
+  RHS range        [2e-06, 2e+05]
+
+Concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Presolve removed 32904 rows and 12386 columns
+Presolve time: 0.03s
+Presolved: 2520 rows, 3479 columns, 13727 nonzeros
+
+Ordering time: 0.00s
+
+Barrier statistics:
+ AA' NZ     : 1.555e+04
+ Factor NZ  : 4.090e+04 (roughly 3 MBytes of memory)
+ Factor Ops : 7.619e+05 (less than 1 second per iteration)
+ Threads    : 1
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   6.59715015e+07 -3.36436901e+09  4.99e+03 2.27e-13  1.19e+06     0s
+   1   2.62257816e+07 -7.82862116e+08  9.94e+01 5.68e-13  1.24e+05     0s
+   2   2.25326216e+07 -3.72315263e+07  9.19e+00 1.42e-12  8.80e+03     0s
+   3   2.15083682e+07  1.67335091e+07  2.49e-01 3.41e-13  6.88e+02     0s
+   4   2.11965807e+07  2.08556670e+07  6.91e-03 2.84e-13  4.90e+01     0s
+   5   2.11369917e+07  2.11266841e+07  9.45e-05 2.31e-13  1.48e+00     0s
+   6   2.11336518e+07  2.11336312e+07  2.75e-08 1.15e-13  2.96e-03     0s
+   7   2.11336479e+07  2.11336479e+07  9.17e-09 1.15e-13  3.01e-09     0s
+
+Barrier solved model in 7 iterations and 0.06 seconds
+Optimal objective 2.11336479e+07
+
+Crossover log...
+
+      16 DPushes remaining with DInf 0.0000000e+00                 0s
+       0 DPushes remaining with DInf 0.0000000e+00                 0s
+
+      88 PPushes remaining with PInf 0.0000000e+00                 0s
+       0 PPushes remaining with PInf 0.0000000e+00                 0s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 9.9808154e-11      0s
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+     107    2.1133648e+07   0.000000e+00   0.000000e+00      0s
+
+Solved with barrier
+Solved in 107 iterations and 0.09 seconds
+Optimal objective  2.113364788e+07
+INFO:pypsa.linopf:Optimization successful. Objective value: 2.11e+07
+['DE0 0', 'DE0 1', 'DE0 10', 'DE0 11', 'DE0 12', 'DE0 13', 'DE0 14', 'DE0 15', 'DE0 16', 'DE0 17', 'DE0 18', 'DE0 19', 'DE0 2', 'DE0 20', 'DE0 21', 'DE0 22', 'DE0 23', 'DE0 24', 'DE0 25', 'DE0 26', 'DE0 27', 'DE0 28', 'DE0 29', 'DE0 3', 'DE0 30', 'DE0 31', 'DE0 32', 'DE0 33', 'DE0 34', 'DE0 35', 'DE0 36', 'DE0 37', 'DE0 38', 'DE0 39', 'DE0 4', 'DE0 40', 'DE0 41', 'DE0 42', 'DE0 43', 'DE0 44', 'DE0 45', 'DE0 46', 'DE0 47', 'DE0 48', 'DE0 49', 'DE0 5', 'DE0 50', 'DE0 51', 'DE0 52', 'DE0 53', 'DE0 54', 'DE0 55', 'DE0 56', 'DE0 57', 'DE0 58', 'DE0 59', 'DE0 6', 'DE0 60', 'DE0 61', 'DE0 62', 'DE0 63', 'DE0 64', 'DE0 65', 'DE0 66', 'DE0 67', 'DE0 68', 'DE0 69', 'DE0 7', 'DE0 70', 'DE0 71', 'DE0 72', 'DE0 73', 'DE0 74', 'DE0 75', 'DE0 76', 'DE0 77', 'DE0 78', 'DE0 79', 'DE0 8', 'DE0 80', 'DE0 81', 'DE0 82', 'DE0 83', 'DE0 84', 'DE0 85', 'DE0 86', 'DE0 87', 'DE0 88', 'DE0 89', 'DE0 9']
+Traceback (most recent call last):
+  File "solve_all_redispatch_networks.py", line 586, in <module>
+    main()
+  File "solve_all_redispatch_networks.py", line 583, in main
+    solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1)
+  File "solve_all_redispatch_networks.py", line 575, in solve_all_redispatch_workflows
+    n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat", c_rate=0.25, flex_share=0.1)
+  File "solve_all_redispatch_networks.py", line 539, in redispatch_workflow
+    n_redispatch = solve_redispatch_network(n_24, n_dispatch)
+  File "solve_all_redispatch_networks.py", line 395, in solve_redispatch_network
+    network_redispatch = build_redispatch_network(network, network_dispatch)
+  File "solve_all_redispatch_networks.py", line 349, in build_redispatch_network
+    p_nom_max=math.inf)
+NameError: name 'math' is not defined
