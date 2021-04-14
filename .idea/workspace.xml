@@ -5,9 +5,6 @@
       <change afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/PyPSA/pypsa/redispatch.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/PyPSA/pypsa/redispatch.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/PyPSA/pypsa/redispatch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/solve_redispatch_network_1d.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pypsa-eur.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pypsa-eur.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.gitattributes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.github/ISSUE_TEMPLATE/bug_report.md" beforeDir="false" />
@@ -68,6 +65,11 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/lsf.o168386897" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/lsf.o168388971" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/lsf.o168389383" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/lsf.o168833342" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/lsf.o168849320" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/lsf.o168855469" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/lsf.o168957683" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/lsf.o168958503" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/output_progress.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/output_progress.txtbjobs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/snakemake_errors.txt" beforeDir="false" />
@@ -77,8 +79,7 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Example Simple Grid.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Load Time series test.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Pypsa-eur analysis.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Pypsa-rd-analysis.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Redispatch Daten Analyse.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Pypsa-rd-analysis_backup.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Stomata plot.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Time Series Clustering.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Jupyter Notebook/Untitled1.ipynb" beforeDir="false" />
@@ -90,7 +91,9 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/LICENSES/GPL-3.0-or-later.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/PyPSA/pypsa/components.py" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/PyPSA/pypsa/components.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/PyPSA/pypsa/opf.py" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/PyPSA/pypsa/opf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Pypsa-rd-analysis.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Redispatch_Model.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Snakefile" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Snakefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/borg-it" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/borg-it" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/cluster.yaml" beforeDir="false" />
@@ -263,37 +266,13 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/results/dispatch/Old/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/results/dispatch/Old/elec_s300_16_ec_lcopt_1H.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/results/dispatch/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/results/dispatch/elec_s300_16_ec_lcopt_1H.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/results/dispatch/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/results/redispatch/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/results/redispatch/elec_s300_16_ec_lcopt_1H.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/results/redispatch/elec_s300_16_ec_lcopt_1H_bat.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/results/redispatch/elec_s300_16_ec_lcopt_1H_bat.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/results/redispatch/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/results/redispatch/elec_s300_50_ec_lcopt_1H_bat.nc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/results/redispatch/old/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/results/redispatch/old/elec_s300_16_ec_lcopt_1H.pickle" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/results/redispatch/old/elec_s300_16_ec_lcopt_1H_bat.nc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/results/redispatch/old/elec_s300_16_ec_lcopt_1H_bat.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/solved/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/solved/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/zwischenspeicher für networks/elec_s300_220.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/zwischenspeicher für networks/elec_s300_220_ec.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/zwischenspeicher für networks/elec_s300_220_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/zwischenspeicher für networks/elec_s300_240.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/zwischenspeicher für networks/elec_s300_240_ec.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/zwischenspeicher für networks/elec_s300_240_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/zwischenspeicher für networks/elec_s300_260.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/zwischenspeicher für networks/elec_s300_260_ec.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/zwischenspeicher für networks/elec_s300_260_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/zwischenspeicher für networks/elec_s300_280.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/zwischenspeicher für networks/elec_s300_280_ec.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/zwischenspeicher für networks/elec_s300_280_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/zwischenspeicher für networks/elec_s300_300.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/zwischenspeicher für networks/elec_s300_300_ec.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/networks_redispatch/zwischenspeicher für networks/elec_s300_300_ec_lcopt_1H.nc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/Example Simple Grid.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/Pypsa-rd-analysis.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/Redispatch Daten Analyse.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/_helpers.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/add_electricity.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/add_extra_components.py" beforeDir="false" />
@@ -324,6 +303,7 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/solve_network.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/solve_operations_network.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/solve_redispatch_network.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/solve_redispatch_network_1d.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/test/config.test1.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/.gitattributes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/.github/ISSUE_TEMPLATE/bug_report.md" beforeDir="false" />
@@ -384,6 +364,11 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/lsf.o168386897" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/lsf.o168388971" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/lsf.o168389383" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/lsf.o168833342" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/lsf.o168849320" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/lsf.o168855469" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/lsf.o168957683" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/lsf.o168958503" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/output_progress.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/output_progress.txtbjobs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/snakemake_errors.txt" beforeDir="false" />
@@ -393,8 +378,7 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Example Simple Grid.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Load Time series test.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Pypsa-eur analysis.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Pypsa-rd-analysis.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Redispatch Daten Analyse.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Pypsa-rd-analysis_backup.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Stomata plot.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Time Series Clustering.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Jupyter Notebook/Untitled1.ipynb" beforeDir="false" />
@@ -406,7 +390,9 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/LICENSES/GPL-3.0-or-later.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/PyPSA/pypsa/components.py" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/PyPSA/pypsa/components.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/PyPSA/pypsa/opf.py" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/PyPSA/pypsa/opf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Pypsa-rd-analysis.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Redispatch_Model.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Snakefile" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Snakefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/borg-it" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/borg-it" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/cluster.yaml" beforeDir="false" />
@@ -579,37 +565,13 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/results/dispatch/Old/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/results/dispatch/Old/elec_s300_16_ec_lcopt_1H.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/results/dispatch/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/results/dispatch/elec_s300_16_ec_lcopt_1H.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/results/dispatch/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/results/redispatch/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/results/redispatch/elec_s300_16_ec_lcopt_1H.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/results/redispatch/elec_s300_16_ec_lcopt_1H_bat.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/results/redispatch/elec_s300_16_ec_lcopt_1H_bat.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/results/redispatch/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/results/redispatch/elec_s300_50_ec_lcopt_1H_bat.nc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/results/redispatch/old/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/results/redispatch/old/elec_s300_16_ec_lcopt_1H.pickle" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/results/redispatch/old/elec_s300_16_ec_lcopt_1H_bat.nc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/results/redispatch/old/elec_s300_16_ec_lcopt_1H_bat.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/solved/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/solved/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/zwischenspeicher für networks/elec_s300_220.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/zwischenspeicher für networks/elec_s300_220_ec.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/zwischenspeicher für networks/elec_s300_220_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/zwischenspeicher für networks/elec_s300_240.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/zwischenspeicher für networks/elec_s300_240_ec.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/zwischenspeicher für networks/elec_s300_240_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/zwischenspeicher für networks/elec_s300_260.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/zwischenspeicher für networks/elec_s300_260_ec.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/zwischenspeicher für networks/elec_s300_260_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/zwischenspeicher für networks/elec_s300_280.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/zwischenspeicher für networks/elec_s300_280_ec.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/zwischenspeicher für networks/elec_s300_280_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/zwischenspeicher für networks/elec_s300_300.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/zwischenspeicher für networks/elec_s300_300_ec.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/networks_redispatch/zwischenspeicher für networks/elec_s300_300_ec_lcopt_1H.nc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/Example Simple Grid.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/Pypsa-rd-analysis.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/Redispatch Daten Analyse.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/_helpers.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/add_electricity.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/add_extra_components.py" beforeDir="false" />
@@ -640,44 +602,21 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/solve_network.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/solve_operations_network.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/solve_redispatch_network.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/solve_redispatch_network_1d.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/test/config.test1.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Euler+RWTH_jobscripts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Euler+RWTH_jobscripts.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter Notebook/Pypsa-rd-analysis.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter Notebook/Redispatch Daten Analyse.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter Notebook/Analysis Notebook.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter Notebook/Analysis Notebook.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PyPSA/pypsa/components.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyPSA/pypsa/components.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PyPSA/pypsa/opf.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyPSA/pypsa/opf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/envs/environment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/envs/environment.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/results/dispatch/Old/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" afterPath="$PROJECT_DIR$/networks_redispatch/results/dispatch/Old/elec_s300_16_ec_lcopt_1H.nc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/results/dispatch/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/results/dispatch/elec_s300_16_ec_lcopt_1H.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/results/dispatch/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/results/redispatch/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/results/redispatch/elec_s300_16_ec_lcopt_1H.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/results/redispatch/elec_s300_16_ec_lcopt_1H_bat.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/results/redispatch/elec_s300_16_ec_lcopt_1H_bat.pickle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/results/redispatch/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/results/redispatch/elec_s300_50_ec_lcopt_1H_bat.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/solved/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/solved/elec_s300_50_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/zwischenspeicher für networks/elec_s300_220.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/zwischenspeicher für networks/elec_s300_220_ec.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/zwischenspeicher für networks/elec_s300_220_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/zwischenspeicher für networks/elec_s300_240.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/zwischenspeicher für networks/elec_s300_240_ec.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/zwischenspeicher für networks/elec_s300_240_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/zwischenspeicher für networks/elec_s300_260.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/zwischenspeicher für networks/elec_s300_260_ec.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/zwischenspeicher für networks/elec_s300_260_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/zwischenspeicher für networks/elec_s300_280.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/zwischenspeicher für networks/elec_s300_280_ec.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/zwischenspeicher für networks/elec_s300_280_ec_lcopt_1H.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/zwischenspeicher für networks/elec_s300_300.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/zwischenspeicher für networks/elec_s300_300_ec.nc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networks_redispatch/zwischenspeicher für networks/elec_s300_300_ec_lcopt_1H.nc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/networks_redispatch/results/redispatch/old/elec_s300_16_ec_lcopt_1H.nc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/networks_redispatch/results/redispatch/old/elec_s300_16_ec_lcopt_1H.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/networks_redispatch/results/redispatch/old/elec_s300_16_ec_lcopt_1H_bat.nc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/networks_redispatch/results/redispatch/old/elec_s300_16_ec_lcopt_1H_bat.pickle" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/Pypsa-rd-analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Pypsa-rd-analysis.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/Redispatch Daten Analyse.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Redispatch Daten Analyse.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/solve_all_redispatch_networks.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/solve_all_redispatch_networks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/solve_redispatch_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/solve_redispatch_network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/solve_redispatch_network_1d.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -786,7 +725,14 @@
       <workItem from="1617709074806" duration="29000" />
       <workItem from="1617712309138" duration="285000" />
       <workItem from="1617713490327" duration="149000" />
-      <workItem from="1617719749098" duration="13849000" />
+      <workItem from="1617719749098" duration="14450000" />
+      <workItem from="1617992541038" duration="2132000" />
+      <workItem from="1617994703660" duration="30000" />
+      <workItem from="1617995016011" duration="33000" />
+      <workItem from="1617995073799" duration="10185000" />
+      <workItem from="1618128187373" duration="1066000" />
+      <workItem from="1618140235080" duration="22624000" />
+      <workItem from="1618397884163" duration="8121000" />
     </task>
     <servers />
   </component>

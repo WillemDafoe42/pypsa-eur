@@ -1,0 +1,87 @@
+INFO:pypsa.io:Imported network elec_s300_200_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+INFO:pypsa.io:Imported network elec_s300_200_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+INFO:numexpr.utils:Note: detected 128 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO:numexpr.utils:Note: NumExpr detected 128 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+INFO:pypsa.linopf:Prepare linear problem
+INFO:pypsa.linopf:Total preparation time: 0.91s
+INFO:pypsa.linopf:Solve linear problem using Gurobi solver
+Using license file /cluster/apps/nss/gurobi/9.1.1/x86_64/gurobi.lic
+Set parameter TokenServer to value lic-gurobi.ethz.ch
+Read LP format model from file /scratch/169387019.tmpdir/pypsa-problem-r2m78ahy.lp
+Reading time = 0.13 seconds
+obj: 60984 rows, 26857 columns, 110115 nonzeros
+Gurobi Optimizer version 9.1.1 build v9.1.1rc0 (linux64)
+Thread count: 128 physical cores, 128 logical processors, using up to 32 threads
+Optimize a model with 60984 rows, 26857 columns and 110115 nonzeros
+Model fingerprint: 0x17930120
+Coefficient statistics:
+  Matrix range     [3e-01, 5e+01]
+  Objective range  [1e-02, 1e+02]
+  Bounds range     [2e+01, 1e+02]
+  RHS range        [7e-05, 2e+05]
+
+Concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Presolve removed 56952 rows and 21779 columns
+Presolve time: 0.06s
+Presolved: 4032 rows, 5078 columns, 24401 nonzeros
+
+Ordering time: 0.00s
+
+Barrier statistics:
+ AA' NZ     : 2.991e+04
+ Factor NZ  : 6.850e+04 (roughly 4 MBytes of memory)
+ Factor Ops : 1.308e+06 (less than 1 second per iteration)
+ Threads    : 30
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   1.06474326e+08 -1.16492459e+09  5.91e+04 3.73e+01  1.57e+06     0s
+   1   3.30990641e+07 -9.09550320e+08  1.28e+04 1.71e-13  3.72e+05     0s
+   2   1.71069930e+07 -5.14625359e+08  2.70e+03 1.42e-13  9.59e+04     0s
+   3   1.26327140e+07 -1.37360388e+08  4.32e+02 1.85e-13  1.87e+04     0s
+   4   1.12342010e+07 -9.61663968e+06  5.15e+01 1.42e-13  2.30e+03     0s
+   5   1.08956333e+07  5.21259246e+06  1.29e+01 1.71e-13  5.88e+02     0s
+   6   1.06875354e+07  8.63968324e+06  3.91e+00 3.69e-13  2.06e+02     0s
+   7   1.05954878e+07  9.74090466e+06  1.30e+00 1.42e-13  8.49e+01     0s
+   8   1.05513034e+07  1.03207832e+07  2.27e-01 5.68e-14  2.28e+01     0s
+   9   1.05434413e+07  1.04580701e+07  9.21e-02 4.07e-14  8.43e+00     0s
+  10   1.05398026e+07  1.05342875e+07  2.61e-02 4.05e-14  5.49e-01     0s
+  11   1.05383257e+07  1.05380157e+07  6.87e-04 4.83e-14  3.07e-02     0s
+  12   1.05382697e+07  1.05382693e+07  1.11e-10 4.16e-14  3.21e-05     0s
+  13   1.05382696e+07  1.05382696e+07  1.40e-10 4.39e-14  3.21e-08     0s
+  14   1.05382696e+07  1.05382696e+07  5.23e-12 4.05e-14  3.21e-11     0s
+
+Barrier solved model in 14 iterations and 0.17 seconds
+Optimal objective 1.05382696e+07
+
+Crossover log...
+
+      36 DPushes remaining with DInf 0.0000000e+00                 0s
+       0 DPushes remaining with DInf 0.0000000e+00                 0s
+
+     423 PPushes remaining with PInf 0.0000000e+00                 0s
+       0 PPushes remaining with PInf 0.0000000e+00                 0s
+
+  Push phase complete: Pinf 0.0000000e+00, Dinf 1.1360868e-10      0s
+
+
+Solved with dual simplex
+Solved in 2945 iterations and 0.22 seconds
+Optimal objective  1.053826960e+07
+INFO:pypsa.linopf:Optimization successful. Objective value: 1.05e+07
+solve_redispatch_network.py:692: DeprecationWarning:
+
+The default dtype for empty Series will be 'object' instead of 'float64' in a future version. Specify a dtype explicitly to silence this warning.
+
+Traceback (most recent call last):
+  File "solve_redispatch_network.py", line 778, in <module>
+    main()
+  File "solve_redispatch_network.py", line 776, in main
+    solve_redispatch_workflow()
+  File "solve_redispatch_network.py", line 744, in solve_redispatch_workflow
+    n_d, n_rd = redispatch_workflow(network = n, network_optim = n_optim, storage_ops= storage_ops,
+  File "solve_redispatch_network.py", line 688, in redispatch_workflow
+    n_redispatch = solve_redispatch_network_with_bat(n_24 = n_24, n_dispatch = n_dispatch, network_year = network_year,
+TypeError: solve_redispatch_network_with_bat() got an unexpected keyword argument 'n_24'

@@ -1,0 +1,4 @@
+  File "solve_all_redispatch_networks.py", line 339
+    def redispatch_workflow(network, network_optim, scenario="no bat", ratio_wind, ratio_pv):
+                            ^
+SyntaxError: non-default argument follows default argument

@@ -1,0 +1,23 @@
+elec_s300_180_ec_lcopt_1H-noex
+
+
+
+
+
+
+INFO:pypsa.io:Imported network elec_s300_180_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+INFO:pypsa.io:Imported network elec_s300_180_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+INFO:numexpr.utils:Note: detected 128 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO:numexpr.utils:Note: NumExpr detected 128 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+Traceback (most recent call last):
+  File "solve_all_redispatch_networks.py", line 423, in <module>
+    main()
+  File "solve_all_redispatch_networks.py", line 420, in main
+    solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1)
+  File "solve_all_redispatch_networks.py", line 412, in solve_all_redispatch_workflows
+    n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat")
+  File "solve_all_redispatch_networks.py", line 359, in redispatch_workflow
+    network = set_parameters_from_optimized(network, network_optim)
+  File "solve_all_redispatch_networks.py", line 40, in set_parameters_from_optimized
+    display(l_shedding)
+NameError: name 'display' is not defined

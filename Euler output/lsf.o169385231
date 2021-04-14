@@ -1,0 +1,10 @@
+INFO:pypsa.io:Imported network elec_s300_200_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+INFO:pypsa.io:Imported network elec_s300_200_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+Traceback (most recent call last):
+  File "solve_redispatch_network.py", line 775, in <module>
+    main()
+  File "solve_redispatch_network.py", line 773, in main
+    solve_redispatch_workflow(c_rate=0.25)
+  File "solve_redispatch_network.py", line 745, in solve_redispatch_workflow
+    n_d, n_rd = redispatch_workflow(n, n_optim, storage_ops, flex_potential, plant_potential, scenario="no bat", c_rate=0.25)
+TypeError: redispatch_workflow() got multiple values for argument 'c_rate'

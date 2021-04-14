@@ -10,10 +10,13 @@ import pickle as pkl
 import glob
 
 
-def set_parameters_from_optimized(n, n_optim):
+def set_parameters_from_optimized(n, n_optim, ratio_wind, ratio_pv):
     '''
     Function to set optimized parameters from optimized network as nominal parameters
     of the operative network.
+
+    CHANGE IN FUNCTION: wind power allocation esp. in the north was VERY weird. Therefore: Setting p_nom of wind generators
+    to p_nom and NOT p_nom_opt
     -----
     Param:
     n: Optimized investment network.
@@ -33,6 +36,10 @@ def set_parameters_from_optimized(n, n_optim):
             n_optim.lines[attr].reindex(lines_untyped_i, fill_value=0.)
     n.lines['s_nom_extendable'] = False
 
+    l_shedding = abs(n_optim.lines_t.mu_upper.mean(axis=0).round(2)).nlargest(2).index.to_list()
+    n.lines.loc[l_shedding, "s_max_pu"] = 0.80
+    n.lines.loc[l_shedding, "num_parallel"] = 1
+
     # set link capacities to optimized (HVDC links as well as store out/inflow links)
     if not n.links.empty:
         links_dc_i = n.links.index[n.links.carrier == 'DC']
@@ -44,6 +51,20 @@ def set_parameters_from_optimized(n, n_optim):
     gen_extend_i = n.generators.index[n.generators.p_nom_extendable]
     n.generators.loc[gen_extend_i, 'p_nom'] = \
         n_optim.generators['p_nom_opt'].reindex(gen_extend_i, fill_value=0.)
+
+    # Overwrite renewables with un-optimized capacities to approximate real life better
+    gen_onwind = n.generators.index[n.generators.carrier == "onwind"]
+    gen_offwind = n.generators.index[(n.generators.carrier == "offwind-ac") | (n.generators.carrier == "offwind-ac")]
+    gen_solar = n.generators.index[n.generators.carrier == "solar"]
+    # Overwrite onwind power values with p_nom * 0.2
+    n.generators.loc[gen_onwind, 'p_nom'] = n_optim.generators['p_nom'].reindex(gen_onwind, fill_value=0.) * ratio_wind + 0.01
+    # Overwrite offwind power values with p_nom_max * 0.1
+    n.generators.loc[gen_offwind, 'p_nom'] = \
+        n_optim.generators['p_nom_max'].reindex(gen_offwind, fill_value=0.) * 0.2 + 0.01
+    # Overwrite solar power values with p_nom * 0.1
+    n.generators.loc[gen_solar, 'p_nom'] = \
+        n_optim.generators['p_nom'].reindex(gen_solar, fill_value=0.) * ratio_pv + 0.01
+
     n.generators.loc[gen_extend_i, 'p_nom_extendable'] = False
 
     # set extendable storage unit power to ooptimized
@@ -80,151 +101,6 @@ def print_lopf_insights(network):
     print(network.buses_t.marginal_price)
 
 
-def clean_batteries(network):
-    """
-    Clean up all previously saved battery components (FROM PYPSA-EUR) related to redispatch (does NOT delete the inital batteries)
-    """
-    network.mremove("StorageUnit", [name for name in network.storage_units.index.tolist()
-                                    if network.storage_units.loc[name]["carrier"] == "battery"])
-    network.mremove("Link", [name for name in network.links.index.tolist()
-                             if "BESS" in name])
-    network.mremove("Store", [name for name in network.stores.index.tolist()
-                              if "BESS" in name])
-    network.mremove("Bus", [name for name in network.buses.index.tolist()
-                            if "BESS" in name])
-
-
-def add_BESS_loadflexibility(network, network_year, flex_potential=10000, c_rate=0.25, flex_share=0.1):
-    '''
-    Adds battery storages at every node, depending on the flexibility potential of the loads allocated to this node.
-    Methodology according to Network development plan and Frontier study:
-        - Flexibility potential at load-nodes: Flexibility Potential through stationary battery storage in distribution grids
-        - Flexibility potential at power plants: Flexibility through battery installations at powerplants (by operators)
-
-    Following the assumption of x percentage of frontier flexibility potential being installed at node according to loads.
-    Flexibility potential can e.g. be aggregated powerwall capacity at the node.
-    -----
-    Param:
-    network: network from dispatch optimization
-    network_year: full time resolution network (typically 1 year)
-    flex_potential: Total flexibility potential from distribution grid (default: frontier-study potential)
-    '''
-    # Clean up all previously saved battery components
-    clean_batteries(network)
-    # get bus names
-    bus_names = network.buses.index.tolist()
-    # get mean load at every bus
-    df_loads = network_year.loads
-    df_loads["p_mean"] = network_year.loads_t.p_set.mean(axis=0)
-
-    # According to x% rule, add energy stores with energy = x% of average load at bus
-    for i in range(len(bus_names)):
-        bus_name = network.buses.index.tolist()[i]
-        battery_bus = "{}_{}".format(bus_name, "BESS")
-        # determin flexibility at bus
-        df_loads_bus = df_loads[df_loads["bus"] == bus_name]
-
-        ################
-
-        # TODO: ÄNDERN DER maximalen energie: Die speicherbare energie soll abhängig vom mittelwert der last
-        # über den GESAMTEN zeitraum sein, nicht nur vom mittelwert des aktuellen (1 day) networks!
-
-        ################
-
-        if not df_loads_bus.empty:
-            p_flex = df_loads_bus.p_mean * flex_share
-        else:
-            p_flex = 0
-
-        # add additional bus solely for representation of battery at location of previous bus
-        network.add("Bus",
-                    name=battery_bus,
-                    x=network.buses.loc[bus_name, "x"],
-                    y=network.buses.loc[bus_name, "y"],
-                    carrier="battery")
-        # add store
-        network.add("Store", name="BESS_{}".format(i), bus=battery_bus,
-                    e_nom=p_flex / c_rate, e_nom_extendable=False,
-                    e_min_pu=0, e_max_pu=1, e_initial=0.5, e_cyclic=False,
-                    p_set=p_flex, q_set=0.05, marginal_cost=0,
-                    capital_cost=0, standing_loss=0)
-        # discharge link
-        network.add("Link",
-                    name="BESS_{}_discharger".format(i + 1),
-                    bus0=battery_bus, bus1=bus_name, capital_cost=0,
-                    p_nom=p_flex, p_nom_extendable=False, p_max_pu=1, p_min_pu=0,
-                    marginal_cost=0, efficiency=0.96)
-        # charge link
-        network.add("Link",
-                    name="BESS_{}_charger".format(i + 1),
-                    bus0=bus_name, bus1=battery_bus, capital_cost=0,
-                    p_nom=p_flex, p_nom_extendable=False, p_max_pu=1, p_min_pu=0,
-                    marginal_cost=0, efficiency=0.96)
-    network.name = str(network.name) + " BESS loadflexibility"
-
-
-def add_BESS_plant(network):
-    '''
-    Adds static battery storages (fixed capacity) to the base network at locations where large central powerplants
-    are located. Battery storage capacity is added based on the generation capacity at a specific network bus. These
-    batteries are solely used for redispatch purposes. The investments in those batteries is only used for redispatch.
-
-    A battery is added to the network by combining a link for discharge, and one for charge (representing inverter operations)
-    and a store unit representing the battery capacity
-    '''
-    # Clean up all previously saved battery components
-
-    bus_names = network.buses.index.tolist()
-    for i in range(len(bus_names)):
-        bus_name = bus_names[i]
-        battery_bus = "{}_{}".format(bus_name, "BESS")
-        # add additional bus solely for representation of battery at location of previous bus
-        network.add("Bus",
-                    name=battery_bus,
-                    x=network.buses.loc[bus_name, "x"],
-                    y=network.buses.loc[bus_name, "y"],
-                    carrier="battery")
-        # discharge link
-        network.add("Link",
-                    name="Battery_{}_dCH".format(i + 1),
-                    bus0=battery_bus,
-                    bus1=bus_name,
-                    capital_cost=0,
-                    p_nom=150,
-                    p_nom_extendable=False,
-                    p_max_pu=1,
-                    p_min_pu=0,
-                    marginal_cost=0,
-                    efficiency=0.96)
-        # charge link
-        network.add("Link",
-                    name="Battery_{}_CH".format(i + 1),
-                    bus0=bus_name,
-                    bus1=battery_bus,
-                    capital_cost=0,
-                    p_nom=150,
-                    p_nom_extendable=False,
-                    p_max_pu=1,
-                    p_min_pu=0,
-                    marginal_cost=0,
-                    efficiency=0.96)
-        # add store
-        network.add("Store", name="BESS_{}".format(i),
-                    bus=battery_bus,
-                    e_nom=200,
-                    e_nom_extendable=False,
-                    e_min_pu=0,
-                    e_max_pu=1,
-                    e_initial=0.5,
-                    e_cyclic=True,
-                    p_set=100,
-                    q_set=0.05,
-                    marginal_cost=0,
-                    capital_cost=0,
-                    standing_loss=0)
-    network.name = str(network.name) + " BESS"
-
-
 def clean_generators(network):
     """
     Remove all generators from network
@@ -252,7 +128,6 @@ def build_redispatch_network(network, network_dispatch):
     l_conv_carriers = ["hard coal", "lignite", "gas", "oil", "nuclear", "OCGT", "CCGT"]
 
     for generator in l_generators:
-
         # For each conventional generator in network: Add 3 generators in network_redispatch
         if network.generators.loc[generator]["carrier"] in l_conv_carriers:
             # Base generator from network, power range is fixed by dispatch simulation results (therefore runs at 0 cost)
@@ -298,7 +173,6 @@ def build_redispatch_network(network, network_dispatch):
                                    p_min_pu=(- network_dispatch.generators_t.p[generator] /
                                              network_dispatch.generators.loc[generator]["p_nom"]).tolist(),
                                    )
-
         else:
             # For renewable sources: Only add base and negative generator, representing the curtailment of EE
             network_redispatch.add("Generator",
@@ -330,10 +204,8 @@ def build_redispatch_network(network, network_dispatch):
                                    p_min_pu=(- network_dispatch.generators_t.p[generator] /
                                              network_dispatch.generators.loc[generator]["p_nom"]).tolist(),
                                    )
-
     # add load shedding
     bus_names = network_redispatch.buses.index.tolist()
-    print(bus_names)
     for i in range(len(bus_names)):
         bus_name = bus_names[i]
         # add load shedding generator at every bus
@@ -341,13 +213,14 @@ def build_redispatch_network(network, network_dispatch):
                                name="load_{}".format(i + 1),
                                carrier="load",
                                bus=bus_name,
-                               p_nom=1000000,  # in pypsa-eur: 1*10^9 KW, marginal cost auch per kW angegeben
+                               p_nom=80000,  # in pypsa-eur: 1*10^9 KW, marginal cost auch per kW angegeben
                                efficiency=1,
-                               marginal_cost=100000,  # non zero marginal cost to ensure unique optimization result
+                               marginal_cost=8000,  # non zero marginal cost to ensure unique optimization result
                                capital_cost=0,
                                p_nom_extendable=False,
                                p_nom_min=0,
                                p_nom_max=math.inf)
+
     network_redispatch.name = str(network_redispatch.name) + " redispatch"
     return network_redispatch
 
@@ -394,42 +267,8 @@ def solve_redispatch_network(network, network_dispatch):
     network: network from dispatch optimization
     '''
     network_redispatch = build_redispatch_network(network, network_dispatch)
-    # Solve new network
     network_redispatch.lopf(solver_name="gurobi", pyomo=False, formulation="kirchhoff")
     return network_redispatch
-
-
-# Redispatch workflow with batteries
-def build_redispatch_network_with_bat(network, network_dispatch, network_year, c_rate, flex_share):
-    '''
-    Uses predefined component building functions for building the redispatch network and adds batteries.
-    -----
-    Parameters:
-    network: network from dispatch optimization
-    '''
-    network_redispatch_bat = build_redispatch_network(network, network_dispatch)
-    # Adding a battery at every node
-    add_BESS_loadflexibility(network_redispatch_bat, network_year, c_rate, flex_share)
-
-    return network_redispatch_bat
-
-
-def solve_redispatch_network_with_bat(network, network_dispatch, network_year, c_rate, flex_share):
-    '''
-    Calls redispatch building function and solves the network.
-    -----
-    Parameters:
-    network: network from dispatch optimization
-    '''
-
-    #### TODO: add extra functionality that only pos OR negative can be =! 0 during 1 snapshot
-
-    network_redispatch_bat = build_redispatch_network_with_bat(network, network_dispatch, network_year, c_rate,
-                                                               flex_share)
-    # Solve new network
-    network_redispatch_bat.lopf(solver_name="gurobi", pyomo=False, formulation="kirchhoff")
-
-    return network_redispatch_bat
 
 
 def concat_network(list_networks, ignore_standard_types=False):
@@ -494,12 +333,10 @@ def concat_network(list_networks, ignore_standard_types=False):
         if hasattr(network, 'objective'):
             obj = obj + network.objective
     nw.objective = obj
-
     return nw
 
 
-def redispatch_workflow(network, network_optim, scenario="no bat",
-                        c_rate=0.25, flex_share=0.1):
+def redispatch_workflow(network, network_optim, scenario, ratio_wind, ratio_pv):
     '''
     Function for executing the whole redispatch workflow.
 
@@ -518,7 +355,7 @@ def redispatch_workflow(network, network_optim, scenario="no bat",
     l_networks_redispatch = []
 
     # Generate operative pypsa-eur network without investment problem
-    network = set_parameters_from_optimized(network, network_optim)
+    network = set_parameters_from_optimized(n = network, n_optim = network_optim, ratio_wind = ratio_wind, ratio_pv = ratio_pv)
 
     # Only operative optimization: Capital costs set to zero
     network.generators.loc[:, "capital_cost"] = 0
@@ -538,8 +375,6 @@ def redispatch_workflow(network, network_optim, scenario="no bat",
         # ---------------
         if scenario == "no bat":
             n_redispatch = solve_redispatch_network(n_24, n_dispatch)
-        elif scenario == "bat":
-            n_redispatch = solve_redispatch_network_with_bat(n_24, n_dispatch, network_year, c_rate=0.25,flex_share=0.1)
 
         # Append networks to corresponding yearly lists
         # ---------------
@@ -573,11 +408,18 @@ def solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1):
         n_optim = pypsa.Network(path_n_optim)
 
         # Run redispatch w/o batteries & export files
-        n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat", c_rate=0.25, flex_share=0.1)
+        n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat", ratio_wind = 1, ratio_pv = 1)
         # export solved dispatch & redispatch workflow as well as objective value list
         export_path = folder + r"/results"
-        n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + ".nc", export_standard_types=False, least_significant_digit=None)
-        n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + ".nc", export_standard_types=False, least_significant_digit=None)
+        n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "_1wind1sol.nc", export_standard_types=False, least_significant_digit=None)
+        n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_1wind1sol.nc", export_standard_types=False, least_significant_digit=None)
+        gc.collect()
+
+        n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat", ratio_wind = 2.54, ratio_pv = 1.38)
+        # export solved dispatch & redispatch workflow as well as objective value list
+        export_path = folder + r"/results"
+        n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "_25wind14sol.nc", export_standard_types=False, least_significant_digit=None)
+        n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_25wind14sol.nc", export_standard_types=False, least_significant_digit=None)
         gc.collect()
 
 def main():
