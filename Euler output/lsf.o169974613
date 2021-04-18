@@ -1,0 +1,4 @@
+  File "solve_all_redispatch_networks.py", line 430
+    Run redispatch w/o batteries & export files
+        ^
+SyntaxError: invalid syntax

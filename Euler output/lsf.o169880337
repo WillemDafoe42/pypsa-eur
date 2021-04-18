@@ -1,0 +1,10 @@
+INFO:pypsa.io:Imported network elec_s300_200_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+INFO:pypsa.io:Imported network elec_s300_200_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+Traceback (most recent call last):
+  File "solve_redispatch_network.py", line 800, in <module>
+    main()
+  File "solve_redispatch_network.py", line 798, in main
+    solve_redispatch_workflow()
+  File "solve_redispatch_network.py", line 767, in solve_redispatch_workflow
+    n_d, n_rd = redispatch_workflow(network = n, network_optim = n_optim, storage_ops= "all", flex_potential = flex_potential, plant_potential = plant_potential, scenario="no bat",  c_rate=c_rate)
+TypeError: redispatch_workflow() missing 1 required positional argument: 'lcos'

@@ -489,8 +489,9 @@ def attach_OPSD_renewables(n):
     for fueltype, carrier_like in tech_map.items():
         gens = n.generators[lambda df: df.carrier.str.contains(carrier_like)]
         buses = n.buses.loc[gens.bus.unique()]
-        gens_per_bus = gens.groupby('bus').p_nom.count()
 
+        gens_per_bus = gens.groupby('bus').p_nom.count()
+        gens.index.name = "name"
         caps = map_country_bus(df.query('Fueltype == @fueltype'), buses)
         caps = caps.groupby(['bus']).Capacity.sum()
         caps = caps / gens_per_bus.reindex(caps.index, fill_value=1)

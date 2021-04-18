@@ -22,83 +22,59 @@ def set_parameters_from_optimized(n, n_optim, ratio_wind, ratio_pv):
     n: Optimized investment network.
     n_optim: Operative network for redispatch simulation.
     '''
-    # set line capacities to optimized
-    lines_typed_i = n.lines.index[n.lines.type != '']
-    n.lines.loc[lines_typed_i, 'num_parallel'] = \
-        n_optim.lines['num_parallel'].reindex(lines_typed_i, fill_value=0.)
-    n.lines.loc[lines_typed_i, 's_nom'] = (
-            np.sqrt(3) * n.lines['type'].map(n.line_types.i_nom) *
-            n.lines.bus0.map(n.buses.v_nom) * n.lines.num_parallel)
+    print("\n\n")
+    print(ratio_wind)
+    print(ratio_pv)
 
-    lines_untyped_i = n.lines.index[n.lines.type == '']
-    for attr in ('s_nom', 'r', 'x'):
-        n.lines.loc[lines_untyped_i, attr] = \
-            n_optim.lines[attr].reindex(lines_untyped_i, fill_value=0.)
+    # set line capacities to optimized
     n.lines['s_nom_extendable'] = False
 
+    # correct incorrect line capacities
+    cap_ac_type_i = 0.635
+    line_typed_i = n.lines.index[n.lines.type != '']
+    correction_factor = math.sqrt(3)*cap_ac_type_i
     l_shedding = abs(n_optim.lines_t.mu_upper.mean(axis=0).round(2)).nlargest(2).index.to_list()
-    n.lines.loc[l_shedding, "s_max_pu"] = 0.80
-    n.lines.loc[l_shedding, "num_parallel"] = 1
+    n.lines.loc[line_typed_i, "s_nom"] = n.lines["s_nom"] * correction_factor
+    n.lines.loc[l_shedding, "s_max_pu"] = 0.7 * 1/0.66
 
     # set link capacities to optimized (HVDC links as well as store out/inflow links)
     if not n.links.empty:
-        links_dc_i = n.links.index[n.links.carrier == 'DC']
-        n.links.loc[links_dc_i, 'p_nom'] = \
-            n_optim.links['p_nom_opt'].reindex(links_dc_i, fill_value=0.)
         n.links.loc[links_dc_i, 'p_nom_extendable'] = False
 
     # set extendable generators to optimized and p_nom_extendable to False
     gen_extend_i = n.generators.index[n.generators.p_nom_extendable]
-    n.generators.loc[gen_extend_i, 'p_nom'] = \
-        n_optim.generators['p_nom_opt'].reindex(gen_extend_i, fill_value=0.)
 
     # Overwrite renewables with un-optimized capacities to approximate real life better
     gen_onwind = n.generators.index[n.generators.carrier == "onwind"]
-    gen_offwind = n.generators.index[(n.generators.carrier == "offwind-ac") | (n.generators.carrier == "offwind-ac")]
+    gen_offwind = n.generators.index[(n.generators.carrier == "offwind-ac") | (n.generators.carrier == "offwind-dc")]
     gen_solar = n.generators.index[n.generators.carrier == "solar"]
-    # Overwrite onwind power values with p_nom * 0.2
-    n.generators.loc[gen_onwind, 'p_nom'] = n_optim.generators['p_nom'].reindex(gen_onwind, fill_value=0.) * ratio_wind + 0.01
-    # Overwrite offwind power values with p_nom_max * 0.1
-    n.generators.loc[gen_offwind, 'p_nom'] = \
-        n_optim.generators['p_nom_max'].reindex(gen_offwind, fill_value=0.) * 0.2 + 0.01
-    # Overwrite solar power values with p_nom * 0.1
-    n.generators.loc[gen_solar, 'p_nom'] = \
-        n_optim.generators['p_nom'].reindex(gen_solar, fill_value=0.) * ratio_pv + 0.01
+
+    # correct incorrect wind data:
+    n.generators.loc[gen_onwind, 'p_nom'] = n.generators['p_nom'].reindex(gen_onwind, fill_value=0.) * ratio_wind + 0.01
+    n.generators.loc[
+        (n.generators["carrier"] == "onwind") & (n.generators["p_nom"] < 200), "p_nom"] = n.generators.p_nom + 50
+
+    n.generators.loc[gen_offwind, 'p_nom'] = n.generators['p_nom_max'].reindex(gen_offwind, fill_value=0.) * 0.05 + 0.01
+
+    n.generators.loc[gen_solar, 'p_nom'] = n.generators['p_nom'].reindex(gen_solar, fill_value=0.) * ratio_pv + 0.01
 
     n.generators.loc[gen_extend_i, 'p_nom_extendable'] = False
 
     # set extendable storage unit power to ooptimized
-    stor_extend_i = n.storage_units.index[n.storage_units.p_nom_extendable]
-    n.storage_units.loc[stor_extend_i, 'p_nom'] = \
-        n_optim.storage_units['p_nom_opt'].reindex(stor_extend_i, fill_value=0.)
-    n.storage_units.loc[stor_extend_i, 'p_nom_extendable'] = False
+    n.storage_units['p_nom_extendable'] = False
+    # start SOC of storage_units equals state of charge at last snapshot of previous day
+    n.storage_units["cyclic_state_of_charge"] = True
+
+    # Set Marginal costs of generators to TSO data from jacob
+    n.generators.loc[n.generators["carrier"] == "OCGT", "marginal_cost"] = 79.56
+    n.generators.loc[n.generators["carrier"] == "CCGT", "marginal_cost"] = 79.56 * 47 / 58
+    n.generators.loc[n.generators["carrier"] == "coal", "marginal_cost"] = 43
+    n.generators.loc[n.generators["carrier"] == "lignite", "marginal_cost"] = 26.98
+    n.generators.loc[n.generators["carrier"] == "nuclear", "marginal_cost"] = 5
+    n.generators.loc[n.generators["carrier"] == "oil", "marginal_cost"] = 118.79
+
+
     return n
-
-
-def print_lopf_insights(network):
-    # generator power
-    print(" \nGenerator active power per snapshot:")
-    print(network.generators_t.p)
-
-    # network line flows
-    print(" \nLine active power per snapshot:")
-    print(network.lines_t.p0)
-
-    # relative line loading
-    print(" \nRelative line loading per snapshot:")
-    print(abs(network.lines_t.p0) / network.lines.s_nom)
-    max_loading = (network.lines_t.p0 / network.lines.s_nom).max(axis=0)
-    print(max_loading)
-
-    # In linear approximation, all voltage magnitudes are nominal, i.e. 1 per unit
-    print(" \nVoltage magnitude at nodes:")
-    print(network.buses_t.v_mag_pu)
-
-    # At bus 2 the price is set above any marginal generation costs in the model, because to dispatch to
-    # it from expensive generator 0, also some dispatch from cheap generator 1 has to be substituted from generator0
-    # to avoid overloading line 1.
-    print(" \nMarginal prices at nodes:")
-    print(network.buses_t.marginal_price)
 
 
 def clean_generators(network):
@@ -213,9 +189,9 @@ def build_redispatch_network(network, network_dispatch):
                                name="load_{}".format(i + 1),
                                carrier="load",
                                bus=bus_name,
-                               p_nom=80000,  # in pypsa-eur: 1*10^9 KW, marginal cost auch per kW angegeben
+                               p_nom=50000,  # in pypsa-eur: 1*10^9 KW, marginal cost auch per kW angegeben
                                efficiency=1,
-                               marginal_cost=8000,  # non zero marginal cost to ensure unique optimization result
+                               marginal_cost=5000,  # non zero marginal cost to ensure unique optimization result
                                capital_cost=0,
                                p_nom_extendable=False,
                                p_nom_min=0,
@@ -267,7 +243,7 @@ def solve_redispatch_network(network, network_dispatch):
     network: network from dispatch optimization
     '''
     network_redispatch = build_redispatch_network(network, network_dispatch)
-    network_redispatch.lopf(solver_name="gurobi", pyomo=False, formulation="kirchhoff")
+    network_redispatch.lopf(solver_name="gurobi", pyomo=True, formulation="kirchhoff")
     return network_redispatch
 
 
@@ -336,7 +312,7 @@ def concat_network(list_networks, ignore_standard_types=False):
     return nw
 
 
-def redispatch_workflow(network, network_optim, scenario, ratio_wind, ratio_pv):
+def redispatch_workflow(n, n_optim, scenario, ratio_wind, ratio_pv):
     '''
     Function for executing the whole redispatch workflow.
 
@@ -348,28 +324,35 @@ def redispatch_workflow(network, network_optim, scenario, ratio_wind, ratio_pv):
     Return:
     l_networks_list: List of solved daily dispatch and redispatch networks.
     '''
-    # create lists to save results
-    network_year = network
+
+    # Make a copy of the unsolved full year network
+    network_year = n.copy()
+    network = n.copy()
+
     l_networks_24 = []
     l_networks_dispatch = []
     l_networks_redispatch = []
+    start_hour_0 = 7848
 
     # Generate operative pypsa-eur network without investment problem
-    network = set_parameters_from_optimized(n = network, n_optim = network_optim, ratio_wind = ratio_wind, ratio_pv = ratio_pv)
+    network = set_parameters_from_optimized(n=network, n_optim=n_optim, ratio_wind=ratio_wind, ratio_pv=ratio_pv)
 
     # Only operative optimization: Capital costs set to zero
     network.generators.loc[:, "capital_cost"] = 0
 
     # Run dispatch_redispatch workflow for every day (24h batch)
-    for start_hour in range(0, len(network.snapshots), 24):
+    for start_hour in range(start_hour_0, len(network.snapshots), 24):
 
         # print(start_hour)
         n_24 = network.copy(snapshots=network.snapshots[start_hour:start_hour + 24])
 
+        # start SOC of storage_units equals state of charge at last snapshot of previous day
+        n_24.storage_units["cyclic_state_of_charge"] = True
+
         # Build market model, solve dispatch network and plot network insights
         # ---------------
         n_dispatch = build_market_model(n_24)
-        n_dispatch.lopf(solver_name="gurobi", pyomo=False, formulation="kirchhoff")
+        n_dispatch.lopf(solver_name="gurobi", pyomo=True, formulation="kirchhoff")
 
         # Call redispatch optimization and plot network insights
         # ---------------
@@ -404,22 +387,27 @@ def solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1):
         path_n = filepath
         path_n_optim = folder + "/solved/" + filename + ".nc"
         # Define network and network_optim
+
         n = pypsa.Network(path_n)
         n_optim = pypsa.Network(path_n_optim)
 
-        # Run redispatch w/o batteries & export files
-        n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat", ratio_wind = 1, ratio_pv = 1)
+        #Run redispatch w/o batteries & export files
+        n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat", ratio_wind = 2.2, ratio_pv = 1.38)
         # export solved dispatch & redispatch workflow as well as objective value list
         export_path = folder + r"/results"
-        n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "_1wind1sol.nc", export_standard_types=False, least_significant_digit=None)
-        n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_1wind1sol.nc", export_standard_types=False, least_significant_digit=None)
+        n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "22_148.nc", export_standard_types=False, least_significant_digit=None)
+        n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "22_148.nc", export_standard_types=False, least_significant_digit=None)
         gc.collect()
 
-        n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat", ratio_wind = 2.54, ratio_pv = 1.38)
+        n = pypsa.Network(path_n)
+        n_optim = pypsa.Network(path_n_optim)
+
+        #Run redispatch w/o batteries & export files
+        n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat", ratio_wind = 2.1, ratio_pv = 1.38)
         # export solved dispatch & redispatch workflow as well as objective value list
         export_path = folder + r"/results"
-        n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "_25wind14sol.nc", export_standard_types=False, least_significant_digit=None)
-        n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_25wind14sol.nc", export_standard_types=False, least_significant_digit=None)
+        n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "21_138.nc", export_standard_types=False, least_significant_digit=None)
+        n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "21_138.nc", export_standard_types=False, least_significant_digit=None)
         gc.collect()
 
 def main():
