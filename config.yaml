@@ -14,8 +14,8 @@ summary_dir: results
 scenario:
   simpl: [300]
   ll: [copt]
-  clusters: [190,200,210,220,230] # 10,50,100,110,120,130,140,150,160,170,180,190,
-  opts: [1H-noex]
+  clusters: [220] # 200,210,220,230
+  opts: [1H-Ep-noex]
 
 countries: ['DE']
 
@@ -154,7 +154,7 @@ links:
   p_max_pu: 1.0
   p_nom_max: .inf
   include_tyndp: true
-  under_construction: 'remove' # 'zero': set capacity to zero, 'remove': remove, 'keep': with full capacity
+  under_construction: 'keep' # 'zero': set capacity to zero, 'remove': remove, 'keep': with full capacity
 
 transformers:
   x: 0.1
@@ -181,7 +181,7 @@ costs:
     H2: 0.
     battery: 0.
   emission_prices: # in currency per tonne emission, only used with the option Ep
-    co2: 0.
+    co2: 20.0
 
 solving:
   tmpdir: /cluster/scratch/wlaumen/pypsa-eur/tmp

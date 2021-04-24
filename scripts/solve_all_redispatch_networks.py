@@ -73,7 +73,6 @@ def set_parameters_from_optimized(n, n_optim, ratio_wind, ratio_pv):
     n.generators.loc[n.generators["carrier"] == "nuclear", "marginal_cost"] = 5
     n.generators.loc[n.generators["carrier"] == "oil", "marginal_cost"] = 118.79
 
-
     return n
 
 
@@ -328,14 +327,15 @@ def redispatch_workflow(n, n_optim, scenario, ratio_wind, ratio_pv):
     # Make a copy of the unsolved full year network
     network_year = n.copy()
     network = n.copy()
+    network_optim = n_optim.copy()
 
     l_networks_24 = []
     l_networks_dispatch = []
     l_networks_redispatch = []
-    start_hour_0 = 7848
+    start_hour_0 = 0
 
     # Generate operative pypsa-eur network without investment problem
-    network = set_parameters_from_optimized(n=network, n_optim=n_optim, ratio_wind=ratio_wind, ratio_pv=ratio_pv)
+    network = set_parameters_from_optimized(n=network, n_optim=network_optim, ratio_wind=ratio_wind, ratio_pv=ratio_pv)
 
     # Only operative optimization: Capital costs set to zero
     network.generators.loc[:, "capital_cost"] = 0
@@ -348,6 +348,9 @@ def redispatch_workflow(n, n_optim, scenario, ratio_wind, ratio_pv):
 
         # start SOC of storage_units equals state of charge at last snapshot of previous day
         n_24.storage_units["cyclic_state_of_charge"] = True
+        print("\n\n\n")
+        print(n_24.generators.groupby("carrier").p_nom.sum())
+        print("\n\n\n")
 
         # Build market model, solve dispatch network and plot network insights
         # ---------------
@@ -388,27 +391,22 @@ def solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1):
         path_n_optim = folder + "/solved/" + filename + ".nc"
         # Define network and network_optim
 
-        n = pypsa.Network(path_n)
+        n = pypsa.Network(path_
         n_optim = pypsa.Network(path_n_optim)
 
         #Run redispatch w/o batteries & export files
         n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat", ratio_wind = 2.2, ratio_pv = 1.38)
         # export solved dispatch & redispatch workflow as well as objective value list
         export_path = folder + r"/results"
-        n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "22_148.nc", export_standard_types=False, least_significant_digit=None)
-        n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "22_148.nc", export_standard_types=False, least_significant_digit=None)
+        n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "22_138_109lines.nc", export_standard_types=False, least_significant_digit=None)
+        n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "22_138_109lines.nc", export_standard_types=False, least_significant_digit=None)
         gc.collect()
 
+        del n
         n = pypsa.Network(path_n)
         n_optim = pypsa.Network(path_n_optim)
 
-        #Run redispatch w/o batteries & export files
-        n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat", ratio_wind = 2.1, ratio_pv = 1.38)
-        # export solved dispatch & redispatch workflow as well as objective value list
-        export_path = folder + r"/results"
-        n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "21_138.nc", export_standard_types=False, least_significant_digit=None)
-        n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "21_138.nc", export_standard_types=False, least_significant_digit=None)
-        gc.collect()
+        del n
 
 def main():
     solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1)

@@ -11,7 +11,7 @@ bsub -n 16 -R "rusage[mem=8000]" -J "redispatch" -W 120:00 -N -B -u wlaumen@stud
 # Single redispatch network
 bsub -n 16 -R "rusage[mem=8000]" -J "redispatch" -W 120:00 -N -B -u wlaumen@student.ethz.ch "python -u solve_redispatch_network.py"
 
-snakemake --cluster-config cluster.yaml --cluster "bsub -n {cluster.nCPUs} -R {cluster.resources}" -j 1 results/networks/elec_s300_130_ec_lcopt_1H.nc
+snakemake --cluster-config cluster.yaml --cluster "bsub -n {cluster.nCPUs} -R {cluster.resources}" -j 1 results/networks/elec_s300_220_ec_lcopt_1H-Ep-noex.nc
 
 snakemake --cluster-config cluster.yaml --cluster "bsub -n {cluster.nCPUs} -R {cluster.resources}" -j 1 solve_all_networks
 

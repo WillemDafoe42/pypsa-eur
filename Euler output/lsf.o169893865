@@ -5417,7 +5417,7 @@ Solved with barrier
 Solved in 196 iterations and 0.89 seconds
 Optimal objective  1.542634502e+06
 INFO:pypsa.linopf:Optimization successful. Objective value: 1.54e+06
-INFO:pypsa.io:Exported network elec_s300_200_ec_lcopt_1H-noex_210wind138solar.nc has generators, carriers, lines, loads, storage_units, buses
+INFO:pypsa.io:Exported network elec_s300_200_ec_lcopt_1H-noex.nc has generators, carriers, lines, loads, storage_units, buses
 INFO:pypsa.io:Exported network elec_s300_200_ec_lcopt_1H-noex_210wind138solar.nc has generators, carriers, lines, loads, storage_units, buses
 carrier
 CCGT          18120.910000
