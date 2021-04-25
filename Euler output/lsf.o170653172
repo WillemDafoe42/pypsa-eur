@@ -1,0 +1,4 @@
+  File "solve_all_redispatch_networks.py", line 395
+    n_optim = pypsa.Network(path_n_optim)
+    ^
+SyntaxError: invalid syntax

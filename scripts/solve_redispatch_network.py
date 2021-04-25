@@ -30,19 +30,18 @@ def set_parameters_from_optimized(n, n_optim, ratio_wind, ratio_pv):
     n.lines['s_nom_extendable'] = False
 
     # correct incorrect line capacities
-    cap_ac_type_i = 0.635
+    cap_ac_type_i = 0.85
     line_typed_i = n.lines.index[n.lines.type != '']
-    correction_factor = math.sqrt(3) * cap_ac_type_i
+    correction_factor = math.sqrt(3)*cap_ac_type_i
     l_shedding = abs(n_optim.lines_t.mu_upper.mean(axis=0).round(2)).nlargest(2).index.to_list()
 
     n.lines.loc[line_typed_i, "s_nom"] = n.lines["s_nom"] * correction_factor
-
-    n.lines.loc[l_shedding, "s_max_pu"] = 0.7 * 1 / 0.66
+    n.lines.loc[l_shedding, "s_max_pu"] = 0.7 * 1/cap_ac_type_i
     n.lines.loc[l_shedding, "num_parallel"] = 1
 
     # set link capacities to optimized (HVDC links as well as store out/inflow links)
     if not n.links.empty:
-        n.links.loc[links_dc_i, 'p_nom_extendable'] = False
+        n.links['p_nom_extendable'] = False
 
     # set extendable generators to optimized and p_nom_extendable to False
     gen_extend_i = n.generators.index[n.generators.p_nom_extendable]
@@ -923,36 +922,37 @@ def solve_redispatch_workflow(c_rate = 0.25):
 
     # Run redispatch w/o batteries & export files
     export_path = folder + r"/results"
-    # n_d, n_rd = redispatch_workflow(n = n, n_optim = n_optim, c_rate=c_rate, storage_ops="none", flex_potential=flex_potential,
-    #                                 plant_potential=plant_potential, scenario="no bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
-    #
-    # # export solved dispatch & redispatch workflow as well as objective value list
-    # n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "_2018.nc", export_standard_types=False, least_significant_digit=None)
-    # n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_2018.nc", export_standard_types=False, least_significant_digit=None)
-    # gc.collect()
+    n_d, n_rd = redispatch_workflow(n = n, n_optim = n_optim, c_rate=c_rate, storage_ops="none", flex_potential=flex_potential,
+                                    plant_potential=plant_potential, scenario="no bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
 
-
-    # Redispatch batteries ALL
-    n_d_bat_all, n_rd_bat_all = redispatch_workflow(n = n, n_optim = n_optim, c_rate=c_rate, storage_ops="all", flex_potential=flex_potential,
-                                                    plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
-    print("\n\nSave bat_all_to_nc\n\n")
-    n_rd_bat_all.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_2018_bat_all.nc", export_standard_types=False, least_significant_digit=None)
+    # export solved dispatch & redispatch workflow as well as objective value list
+    n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "_2018_085.nc", export_standard_types=False, least_significant_digit=None)
+    n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_2018_085.nc", export_standard_types=False, least_significant_digit=None)
     gc.collect()
 
-    # # Redispatch batteries LOAD
-    # n_d_bat_load, n_rd_bat_load = redispatch_workflow(n = n, n_optim = n_optim, c_rate=c_rate, storage_ops="load", flex_potential=flex_potential,
-    #                                                   plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
-    # print("\n\nSave bat_load_to_nc\n\n")
-    # n_rd_bat_load.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_2018_bat_load.nc", export_standard_types=False, least_significant_digit=None)
-    # gc.collect()
+    # Redispatch batteries LOAD
+    n_d_bat_load, n_rd_bat_load = redispatch_workflow(n = n, n_optim = n_optim, c_rate=c_rate, storage_ops="load", flex_potential=flex_potential,
+                                                      plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
+    print("\n\nSave bat_load_to_nc\n\n")
+    n_rd_bat_load.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_2018_bat_load_085.nc", export_standard_types=False, least_significant_digit=None)
+    gc.collect()
 
 
     # Redispatch batteries SUPPLY
     n_d_bat_supply, n_rd_bat_supply = redispatch_workflow(n = n, n_optim = n_optim, c_rate=c_rate, storage_ops="supply", flex_potential=flex_potential,
                                                           plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
     print("\n\nSave bat_supply_to_nc\n\n")
-    n_rd_bat_supply.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_2018_bat_supply.nc", export_standard_types=False, least_significant_digit=None)
+    n_rd_bat_supply.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_2018_bat_supply_085.nc", export_standard_types=False, least_significant_digit=None)
     gc.collect()
+
+    # Redispatch batteries ALL
+    n_d_bat_all, n_rd_bat_all = redispatch_workflow(n = n, n_optim = n_optim, c_rate=c_rate, storage_ops="all", flex_potential=flex_potential,
+                                                    plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
+    print("\n\nSave bat_all_to_nc\n\n")
+    n_rd_bat_all.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_2018_bat_all_085.nc", export_standard_types=False, least_significant_digit=None)
+    gc.collect()
+
+
 
 
 def main():

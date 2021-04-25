@@ -30,16 +30,18 @@ def set_parameters_from_optimized(n, n_optim, ratio_wind, ratio_pv):
     n.lines['s_nom_extendable'] = False
 
     # correct incorrect line capacities
-    cap_ac_type_i = 0.635
+    cap_ac_type_i = 0.85
     line_typed_i = n.lines.index[n.lines.type != '']
     correction_factor = math.sqrt(3)*cap_ac_type_i
     l_shedding = abs(n_optim.lines_t.mu_upper.mean(axis=0).round(2)).nlargest(2).index.to_list()
+
     n.lines.loc[line_typed_i, "s_nom"] = n.lines["s_nom"] * correction_factor
-    n.lines.loc[l_shedding, "s_max_pu"] = 0.7 * 1/0.66
+    n.lines.loc[l_shedding, "s_max_pu"] = 0.7 * 1/cap_ac_type_i
+    n.lines.loc[l_shedding, "num_parallel"] = 1
 
     # set link capacities to optimized (HVDC links as well as store out/inflow links)
     if not n.links.empty:
-        n.links.loc[links_dc_i, 'p_nom_extendable'] = False
+        n.links['p_nom_extendable'] = False
 
     # set extendable generators to optimized and p_nom_extendable to False
     gen_extend_i = n.generators.index[n.generators.p_nom_extendable]
@@ -391,15 +393,15 @@ def solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1):
         path_n_optim = folder + "/solved/" + filename + ".nc"
         # Define network and network_optim
 
-        n = pypsa.Network(path_
+        n = pypsa.Network(path_n)
         n_optim = pypsa.Network(path_n_optim)
 
         #Run redispatch w/o batteries & export files
         n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat", ratio_wind = 2.2, ratio_pv = 1.38)
         # export solved dispatch & redispatch workflow as well as objective value list
         export_path = folder + r"/results"
-        n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "22_138_109lines.nc", export_standard_types=False, least_significant_digit=None)
-        n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "22_138_109lines.nc", export_standard_types=False, least_significant_digit=None)
+        n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "22_138_085lines_.nc", export_standard_types=False, least_significant_digit=None)
+        n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "22_138_085lines.nc", export_standard_types=False, least_significant_digit=None)
         gc.collect()
 
         del n
