@@ -5,6 +5,7 @@
       <change afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/PyPSA/pypsa/redispatch.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/PyPSA/pypsa/redispatch.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/PyPSA/pypsa/redispatch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/solve_redispatch_network_future.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.gitattributes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.github/ISSUE_TEMPLATE/bug_report.md" beforeDir="false" />
@@ -92,6 +93,7 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/lsf.o170285492" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/lsf.o170285841" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/lsf.o170561104" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/lsf.o170653172" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/output_progress.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/output_progress.txtbjobs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/Euler output/snakemake_errors.txt" beforeDir="false" />
@@ -412,6 +414,7 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/lsf.o170285492" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/lsf.o170285841" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/lsf.o170561104" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/lsf.o170653172" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/output_progress.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/output_progress.txtbjobs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/Euler output/snakemake_errors.txt" beforeDir="false" />
@@ -649,7 +652,6 @@
       <change beforePath="$PROJECT_DIR$/PyPSA/pypsa/components.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyPSA/pypsa/components.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PyPSA/pypsa/opf.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyPSA/pypsa/opf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/Build future networks + Euler test results.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Build future networks + Euler test results.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/Pypsa-rd-analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Pypsa-rd-analysis.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/solve_all_redispatch_networks.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/solve_all_redispatch_networks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/solve_redispatch_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/solve_redispatch_network.py" afterDir="false" />
     </list>
@@ -670,7 +672,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1nk6hgMTvCq6rgQ53hSxgLABeqq" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -774,6 +778,7 @@
       <workItem from="1619190580784" duration="1282000" />
       <workItem from="1619253289189" duration="7586000" />
       <workItem from="1619346862455" duration="7838000" />
+      <workItem from="1619383503021" duration="4234000" />
     </task>
     <servers />
   </component>

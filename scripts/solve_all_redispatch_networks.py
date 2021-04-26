@@ -404,12 +404,6 @@ def solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1):
         n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "22_138_085lines.nc", export_standard_types=False, least_significant_digit=None)
         gc.collect()
 
-        del n
-        n = pypsa.Network(path_n)
-        n_optim = pypsa.Network(path_n_optim)
-
-        del n
-
 def main():
     solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1)
     print("Test")
