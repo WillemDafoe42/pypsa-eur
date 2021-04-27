@@ -614,13 +614,16 @@ def redispatch_workflow_future(n_future, c_rate, flex_potential, plant_potential
     l_networks_24 = []
     l_networks_dispatch = []
     l_networks_redispatch = []
-    start_hour_0 = 7848
+    #start_hour_0 = 7848
+    start_hour_0 = 0
 
     # Only operative optimization: Capital costs set to zero
     network.generators.loc[:, "capital_cost"] = 0
 
     # Run dispatch_redispatch workflow for every day (24h batch)
-    for start_hour in range(start_hour_0, start_hour_0 + 2 * 24, 24):
+    # for start_hour in range(start_hour_0, start_hour_0 + 7*24, 24):
+
+    for start_hour in range(start_hour_0, len(network.snapshots), 24):
 
         # print(start_hour)
         n_24 = network.copy(snapshots=network.snapshots[start_hour:start_hour + 24])
@@ -696,45 +699,46 @@ def solve_redispatch_workflow_future(filename, year, c_rate=0.25):
 
 
     # Run redispatch with batteries & export files
+    export_path = folder + r"/results"
     n_d, n_rd = redispatch_workflow_future(n_future = n_future, c_rate=c_rate, storage_ops="load", flex_potential=flex_potential,
                                            plant_potential=plant_potential, scenario="no bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
     # export solved dispatch & redispatch workflow as well as objective value list
-    n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "_085.nc", export_standard_types=False, least_significant_digit=None)
-    n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_085.nc", export_standard_types=False, least_significant_digit=None)
+    n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + ".nc", export_standard_types=False, least_significant_digit=None)
+    n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + ".nc", export_standard_types=False, least_significant_digit=None)
     gc.collect()
     del n_future, n
     n = pypsa.Network(path_n)
     n_future = n.copy()
 
     # Redispatch batteries LOAD
-    n_d_bat_load, n_rd_bat_load = redispatch_workflow(n_future = n_future, c_rate=c_rate, storage_ops="load", flex_potential=flex_potential,
+    n_d_bat_load, n_rd_bat_load = redispatch_workflow_future(n_future = n_future, c_rate=c_rate, storage_ops="load", flex_potential=flex_potential,
                                                       plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
     print("\n\nSave bat_load_to_nc\n\n")
-    n_rd_bat_load.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat_load_085.nc", export_standard_types=False, least_significant_digit=None)
+    n_rd_bat_load.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat_load.nc", export_standard_types=False, least_significant_digit=None)
     gc.collect()
     del n_future, n
     n = pypsa.Network(path_n)
     n_future = n.copy()
 
     # Redispatch batteries Supply
-    n_d_bat_supply, n_rd_bat_supply = redispatch_workflow(n_future = n_future, c_rate=c_rate, storage_ops="supply", flex_potential=flex_potential,
+    n_d_bat_supply, n_rd_bat_supply = redispatch_workflow_future(n_future = n_future, c_rate=c_rate, storage_ops="supply", flex_potential=flex_potential,
                                                           plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
     print("\n\nSave bat_supply_to_nc\n\n")
-    n_rd_bat_supply.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat_supply_085.nc", export_standard_types=False, least_significant_digit=None)
+    n_rd_bat_supply.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat_supply.nc", export_standard_types=False, least_significant_digit=None)
     gc.collect()
     del n_future, n
     n = pypsa.Network(path_n)
     n_future = n.copy()
 
     # Redispatch batteries Supply
-    n_d_bat_all, n_rd_bat_all = redispatch_workflow(n_future = n_future, c_rate=c_rate, storage_ops="all", flex_potential=flex_potential,
+    n_d_bat_all, n_rd_bat_all = redispatch_workflow_future(n_future = n_future, c_rate=c_rate, storage_ops="all", flex_potential=flex_potential,
                                                     plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
     print("\n\nSave bat_supply_to_nc\n\n")
-    n_rd_bat_all.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat_all_085.nc", export_standard_types=False, least_significant_digit=None)
+    n_rd_bat_all.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat_all.nc", export_standard_types=False, least_significant_digit=None)
     gc.collect()
 
 
 def main():
-    solve_redispatch_workflow_future(filename = "elec_s300_220_ec_lcopt_1H-Ep-noex_2025_future", year=2025, c_rate=0.25)
+    solve_redispatch_workflow_future(filename = "elec_s300_220_ec_lcopt_1H-Ep-noex_2025_future_085", year=2025, c_rate=0.25)
 if __name__ == "__main__":
     main()

@@ -5,7 +5,6 @@
       <change afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/PyPSA/pypsa/redispatch.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/PyPSA/pypsa/redispatch.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/PyPSA/pypsa/redispatch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/solve_redispatch_network_future.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.gitattributes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/.github/ISSUE_TEMPLATE/bug_report.md" beforeDir="false" />
@@ -327,6 +326,7 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/solve_network.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/solve_operations_network.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/solve_redispatch_network.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/scripts/solve_redispatch_network_future.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpfgf0f2dq/test/config.test1.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/.gitattributes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/.github/ISSUE_TEMPLATE/bug_report.md" beforeDir="false" />
@@ -648,12 +648,13 @@
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/solve_network.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/solve_operations_network.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/solve_redispatch_network.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/scripts/solve_redispatch_network_future.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.snakemake/shadow/tmpp3c7pcp3/test/config.test1.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/PyPSA/pypsa/components.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyPSA/pypsa/components.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PyPSA/pypsa/opf.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyPSA/pypsa/opf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/Build future networks + Euler test results.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Build future networks + Euler test results.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/solve_all_redispatch_networks.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/solve_all_redispatch_networks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/solve_redispatch_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/solve_redispatch_network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/Pypsa-rd-analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Pypsa-rd-analysis.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/solve_redispatch_network_future.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/solve_redispatch_network_future.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -669,7 +670,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/PyPSA" />
   </component>
   <component name="ProjectId" id="1nk6hgMTvCq6rgQ53hSxgLABeqq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -779,6 +780,7 @@
       <workItem from="1619253289189" duration="7586000" />
       <workItem from="1619346862455" duration="7838000" />
       <workItem from="1619383503021" duration="4234000" />
+      <workItem from="1619505355620" duration="3990000" />
     </task>
     <servers />
   </component>

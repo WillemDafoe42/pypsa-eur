@@ -1,0 +1,187 @@
+/cluster/home/wlaumen/Euler/pypsa-eur/networks_redispatch/elec_s300_220_ec_lcopt_1H-Ep-noex_2025_future.nc
+INFO:pypsa.io:Imported network elec_s300_220_ec_lcopt_1H-Ep-noex_2025_future.nc has buses, carriers, generators, lines, loads, storage_units
+               p_nom_max  ...  ramp_limit_shut_down
+carrier                   ...                      
+CCGT                 inf  ...                  51.0
+OCGT                 inf  ...                  76.0
+biomass              inf  ...                  31.0
+coal                 inf  ...                  26.0
+lignite              inf  ...                   2.0
+offwind-ac  2.250560e+04  ...                  10.0
+offwind-dc  6.718060e+04  ...                   4.0
+oil                  inf  ...                   8.0
+onwind      4.466340e+05  ...                 209.0
+ror                  inf  ...                 118.0
+solar       3.604780e+05  ...                 210.0
+
+[11 rows x 25 columns]
+INFO:numexpr.utils:Note: detected 128 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO:numexpr.utils:Note: NumExpr detected 128 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27025_copy
+  Lower bound: 49014705.61807348
+  Upper bound: 49014705.61807348
+  Number of objectives: 1
+  Number of constraints: 23713
+  Number of variables: 27025
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27025
+  Number of nonzeros: 82081
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.2063608169555664
+  Error rc: 0
+  Time: 2.3077056407928467
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x53473_copy
+  Lower bound: 20749.764550715296
+  Upper bound: 20749.764550715296
+  Number of objectives: 1
+  Number of constraints: 23713
+  Number of variables: 53473
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 53473
+  Number of nonzeros: 108529
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.6142630577087402
+  Error rc: 0
+  Time: 1.2902069091796875
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27025_copy
+  Lower bound: 35645027.18554237
+  Upper bound: 35645027.18554237
+  Number of objectives: 1
+  Number of constraints: 23713
+  Number of variables: 27025
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27025
+  Number of nonzeros: 82081
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.21031594276428223
+  Error rc: 0
+  Time: 0.7527225017547607
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x53473_copy
+  Lower bound: 4910459.4137951555
+  Upper bound: 4910459.4137951555
+  Number of objectives: 1
+  Number of constraints: 23713
+  Number of variables: 53473
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 53473
+  Number of nonzeros: 108529
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.7930641174316406
+  Error rc: 0
+  Time: 1.4936764240264893
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+Traceback (most recent call last):
+  File "solve_redispatch_network_future.py", line 740, in <module>
+    main()
+  File "solve_redispatch_network_future.py", line 738, in main
+    solve_redispatch_workflow_future(filename = "elec_s300_220_ec_lcopt_1H-Ep-noex_2025_future", year=2025, c_rate=0.25)
+  File "solve_redispatch_network_future.py", line 702, in solve_redispatch_workflow_future
+    n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "_085.nc", export_standard_types=False, least_significant_digit=None)
+NameError: name 'export_path' is not defined
