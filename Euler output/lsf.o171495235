@@ -1,0 +1,885 @@
+/cluster/home/wlaumen/Euler/pypsa-eur/networks_redispatch/elec_s300_220_ec_lcopt_1H-Ep-noex_2030_future.nc
+INFO:pypsa.io:Imported network elec_s300_220_ec_lcopt_1H-Ep-noex_2030_future.nc has buses, carriers, generators, lines, links, loads, storage_units
+               p_nom_max  ...  ramp_limit_shut_down
+carrier                   ...                      
+CCGT                 inf  ...                  52.0
+OCGT                 inf  ...                  77.0
+biomass              inf  ...                  31.0
+coal                 inf  ...                  17.0
+lignite              inf  ...                   2.0
+offwind-ac  2.250560e+04  ...                  10.0
+offwind-dc  6.718060e+04  ...                   4.0
+oil                  inf  ...                  15.0
+onwind      4.499279e+05  ...                 210.0
+ror                  inf  ...                 119.0
+solar       3.604993e+05  ...                 211.0
+
+[11 rows x 25 columns]
+INFO:numexpr.utils:Note: detected 128 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO:numexpr.utils:Note: NumExpr detected 128 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27145_copy
+  Lower bound: 373606.30295687664
+  Upper bound: 373606.30295687664
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 27145
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27145
+  Number of nonzeros: 77161
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.17516303062438965
+  Error rc: 0
+  Time: 0.8226845264434814
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x54289_copy
+  Lower bound: 3151543.020509572
+  Upper bound: 3151543.020509572
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 54289
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 54289
+  Number of nonzeros: 104305
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.9299919605255127
+  Error rc: 0
+  Time: 1.7125134468078613
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27145_copy
+  Lower bound: 10004184.417528063
+  Upper bound: 10004184.417528063
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 27145
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27145
+  Number of nonzeros: 77161
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.49832606315612793
+  Error rc: 0
+  Time: 1.059858798980713
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x54289_copy
+  Lower bound: 7292762.060924506
+  Upper bound: 7292762.060924506
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 54289
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 54289
+  Number of nonzeros: 104305
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.9301719665527344
+  Error rc: 0
+  Time: 1.6377956867218018
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27145_copy
+  Lower bound: 23246.96973057076
+  Upper bound: 23246.96973057076
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 27145
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27145
+  Number of nonzeros: 77161
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.22095894813537598
+  Error rc: 0
+  Time: 0.7590384483337402
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x54289_copy
+  Lower bound: 3885543.4505710863
+  Upper bound: 3885543.4505710863
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 54289
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 54289
+  Number of nonzeros: 104305
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.6815059185028076
+  Error rc: 0
+  Time: 1.36220121383667
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27145_copy
+  Lower bound: 11720190.677540949
+  Upper bound: 11720190.677540949
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 27145
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27145
+  Number of nonzeros: 77161
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.5081701278686523
+  Error rc: 0
+  Time: 1.058870553970337
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x54289_copy
+  Lower bound: 1354060.4166311838
+  Upper bound: 1354060.4166311838
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 54289
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 54289
+  Number of nonzeros: 104305
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.9989631175994873
+  Error rc: 0
+  Time: 1.7125680446624756
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27145_copy
+  Lower bound: 18345289.13697876
+  Upper bound: 18345289.13697876
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 27145
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27145
+  Number of nonzeros: 77161
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.41357994079589844
+  Error rc: 0
+  Time: 0.968773365020752
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x54289_copy
+  Lower bound: 1039968.0653381736
+  Upper bound: 1039968.0653381736
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 54289
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 54289
+  Number of nonzeros: 104305
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 1.3620579242706299
+  Error rc: 0
+  Time: 2.057448387145996
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27145_copy
+  Lower bound: 29031844.02233217
+  Upper bound: 29031844.02233217
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 27145
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27145
+  Number of nonzeros: 77161
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.24166202545166016
+  Error rc: 0
+  Time: 0.811150312423706
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x54289_copy
+  Lower bound: 3883816.8226045
+  Upper bound: 3883816.8226045
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 54289
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 54289
+  Number of nonzeros: 104305
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 2.3375329971313477
+  Error rc: 0
+  Time: 3.044912099838257
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27145_copy
+  Lower bound: 13094336.577309337
+  Upper bound: 13094336.577309337
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 27145
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27145
+  Number of nonzeros: 77161
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.21590805053710938
+  Error rc: 0
+  Time: 0.790339469909668
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x54289_copy
+  Lower bound: 960514.048134211
+  Upper bound: 960514.048134211
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 54289
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 54289
+  Number of nonzeros: 104305
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 1.5031170845031738
+  Error rc: 0
+  Time: 2.243478775024414
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27145_copy
+  Lower bound: 9197546.226257136
+  Upper bound: 9197546.226257136
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 27145
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27145
+  Number of nonzeros: 77161
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.17458796501159668
+  Error rc: 0
+  Time: 0.734245777130127
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x54289_copy
+  Lower bound: 10911612.11058841
+  Upper bound: 10911612.11058841
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 54289
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 54289
+  Number of nonzeros: 104305
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.8684589862823486
+  Error rc: 0
+  Time: 1.558335781097412
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27145_copy
+  Lower bound: 12894529.46780127
+  Upper bound: 12894529.46780127
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 27145
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27145
+  Number of nonzeros: 77161
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.21605300903320312
+  Error rc: 0
+  Time: 0.7765696048736572
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x54289_copy
+  Lower bound: 13591377.516405346
+  Upper bound: 13591377.516405346
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 54289
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 54289
+  Number of nonzeros: 104305
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.9521260261535645
+  Error rc: 0
+  Time: 1.6489310264587402
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27145_copy
+  Lower bound: 47167601.802086785
+  Upper bound: 47167601.802086785
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 27145
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27145
+  Number of nonzeros: 77161
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.2825479507446289
+  Error rc: 0
+  Time: 0.8409347534179688
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x54289_copy
+  Lower bound: 1417793.481612245
+  Upper bound: 1417793.481612245
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 54289
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 54289
+  Number of nonzeros: 104305
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.9846041202545166
+  Error rc: 0
+  Time: 1.722956657409668
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+WARNING:pyomo.core:Loading a SolverResults object with a warning status into model.name="Linear Optimal Power Flow";
+  - termination condition: infeasible
+  - message from solver: Model was proven to be infeasible.
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27145
+  Lower bound: -inf
+  Upper bound: inf
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 27145
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27145
+  Number of nonzeros: 77161
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: warning
+  Return code: 0
+  Message: Model was proven to be infeasible.
+  Termination condition: infeasible
+  Termination message: Model was proven to be infeasible.
+  Wall time: 0.4540700912475586
+  Error rc: 0
+  Time: 0.8984878063201904
+ERROR:pypsa.opf:Optimisation failed with status warning and terminal condition infeasible
+Traceback (most recent call last):
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pandas/core/indexes/base.py", line 2895, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas/_libs/index.pyx", line 70, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 101, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 1675, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 1683, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'DE0 0 CCGT'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "solve_redispatch_network_future.py", line 782, in <module>
+    main()
+  File "solve_redispatch_network_future.py", line 780, in main
+    solve_redispatch_workflow_future(filename = "elec_s300_220_ec_lcopt_1H-Ep-noex_2030_future", year=2030, c_rate=0.25)
+  File "solve_redispatch_network_future.py", line 741, in solve_redispatch_workflow_future
+    n_d, n_rd = redispatch_workflow_future(n_future = n_future, c_rate=c_rate, storage_ops="none", flex_potential=flex_potential,
+  File "solve_redispatch_network_future.py", line 680, in redispatch_workflow_future
+    n_redispatch = solve_redispatch_network(n_24, n_dispatch)
+  File "solve_redispatch_network_future.py", line 519, in solve_redispatch_network
+    network_redispatch = build_redispatch_network(network, network_dispatch)
+  File "solve_redispatch_network_future.py", line 363, in build_redispatch_network
+    p_max_pu=(network_dispatch.generators_t.p[generator] /
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pandas/core/frame.py", line 2902, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pandas/core/indexes/base.py", line 2897, in get_loc
+    raise KeyError(key) from err
+KeyError: 'DE0 0 CCGT'

@@ -25,7 +25,7 @@ def clean_batteries(network):
 
 
 def add_BESS_load(network, network_dispatch, network_year, start_hour, start_hour_0, c_rate, flex_potential,
-                  s_SOC_batteries, lcos):
+                  s_SOC_batteries, lcos, n_dispatch_prev):
     '''
     Adds battery storages at every node, depending on the flexibility potential of the loads allocated to this node.
     Methodology according to Network development plan and Frontier study:
@@ -56,12 +56,25 @@ def add_BESS_load(network, network_dispatch, network_year, start_hour, start_hou
     df_loads["p_mean"] = network_year.loads_t.p_set.mean(axis=0)
     p_mean_sum = df_loads["p_mean"].sum()
 
-    # Get mean market price of last 24h
+    # Get mean market price of last 24h to estimate future DISCHARGING profit for battery operator that provides negative redispatch
+    # (has to charge energy). For positive redispatch: it is assumed that the battery operator has to recharge at market price,
+    # so he will try to charge at smallest possible price (not always possible to charge at total minimum)
     # Get mean market price of last 24h, if lcos is 0, run at no cost (no charging cost as well) for getting theoretical potential
     if lcos == 0:
         mean_price_24h = 0
+        charge_price_24h = 0
     else:
-        mean_price_24h = network_dispatch.buses_t.marginal_price.mean(axis=1).mean()
+        if type(n_dispatch_prev) != int:
+            min_today = network_dispatch.buses_t.marginal_price.mean(axis=1).nsmallest(n=4)
+            min_prev = n_dispatch_prev.buses_t.marginal_price.mean(axis=1).nsmallest(n=4)
+            min_price = pd.concat((min_today, min_prev), axis=0).nsmallest(n=4).mean()
+        else:
+            min_price = network_dispatch.buses_t.marginal_price.mean(axis=1).nsmallest(n=4).mean()
+        mean_price_24h = min(network_dispatch.buses_t.marginal_price.mean(axis=1).mean(),
+                             network_dispatch.generators[
+                                 network_dispatch.generators["carrier"] == "lignite"].marginal_cost.mean()) - 1
+        charge_price_24h = min(min_price, network_dispatch.generators[
+            network_dispatch.generators["carrier"] == "lignite"].marginal_cost.mean())
 
     # According to x% rule, add energy stores with energy = x% of average load at bus
     for i in range(len(bus_names)):
@@ -87,7 +100,7 @@ def add_BESS_load(network, network_dispatch, network_year, start_hour, start_hou
         network.add("Link", name="BESS_{}_discharger".format(i),
                     bus0=battery_bus, bus1=bus_name, capital_cost=0,
                     p_nom=p_flex, p_nom_extendable=False, p_max_pu=1, p_min_pu=0,
-                    marginal_cost=lcos + mean_price_24h, efficiency=0.96)
+                    marginal_cost=lcos + charge_price_24h, efficiency=0.96)
         # charge link: Ensure that southern batteries might be charged before northern ones, by making their marginal cost slightly cheaper
         if network.buses.loc[bus_name, "y"] < 51:
             network.add("Link", name="BESS_{}_charger".format(i),
@@ -103,10 +116,10 @@ def add_BESS_load(network, network_dispatch, network_year, start_hour, start_hou
     # If not first day: Set initial SOC of batteries to end soc of previous day.
     if start_hour != start_hour_0:
         network.stores["e_initial"] = s_SOC_batteries
-
+    return network
 
 def add_BESS_supply(network, network_dispatch, network_year, start_hour, start_hour_0, c_rate, plant_potential,
-                    s_SOC_batteries, lcos):
+                    s_SOC_batteries, lcos, n_dispatch_prev):
     '''
     Adds battery storages at every node, depending on the flexibility potential of the Powerplants allocated to this node.
     Methodology according to Network development plan and Frontier study:
@@ -128,14 +141,25 @@ def add_BESS_supply(network, network_dispatch, network_year, start_hour, start_h
     # Get mean market price of last 24h, if lcos is 0, run at no cost (no charging cost as well) for getting theoretical potential
     if lcos == 0:
         mean_price_24h = 0
+        charge_price_24h = 0
     else:
-        mean_price_24h = network_dispatch.buses_t.marginal_price.mean(axis=1).mean()
+        if type(n_dispatch_prev) != int:
+            min_today = network_dispatch.buses_t.marginal_price.mean(axis=1).nsmallest(n=4)
+            min_prev = n_dispatch_prev.buses_t.marginal_price.mean(axis=1).nsmallest(n=4)
+            min_price = pd.concat((min_today, min_prev), axis=0).nsmallest(n=4).mean()
+        else:
+            min_price = network_dispatch.buses_t.marginal_price.mean(axis=1).nsmallest(n=4).mean()
+        mean_price_24h = min(network_dispatch.buses_t.marginal_price.mean(axis=1).mean(),
+                             network_dispatch.generators[
+                                 network_dispatch.generators["carrier"] == "lignite"].marginal_cost.mean()) - 1
+        charge_price_24h = min(min_price, network_dispatch.generators[
+            network_dispatch.generators["carrier"] == "lignite"].marginal_cost.mean())
 
-    # Add supply side storage at power plants according to NDP goal (200 MW small enough to consider solar + storage plants)
+    # Add supply side storage at power plants according to NDP goal
     # ----------------
-    min_gen_size = 200
+    min_gen_size = 100
 
-    # Total large scale plant capcity (generators > 500)
+    # Total large scale plant capcity (generators > 100)
     df_gen = network_year.generators[["p_nom_max", "p_nom", "bus"]].copy()
     df_gen["flex_plant"] = df_gen["p_nom"].apply(lambda x: x if x > min_gen_size else 0)
     p_gen_sum = df_gen["flex_plant"].sum()
@@ -167,7 +191,7 @@ def add_BESS_supply(network, network_dispatch, network_year, start_hour, start_h
             network.add("Link", name="generator_BESS_{}_discharger".format(i),
                         bus0=gen_battery_bus, bus1=bus_name, capital_cost=0,
                         p_nom=p_flex_plant, p_nom_extendable=False, p_max_pu=1, p_min_pu=0,
-                        marginal_cost=lcos + mean_price_24h, efficiency=0.96)
+                        marginal_cost=lcos + charge_price_24h, efficiency=0.96)
             # charge link
             if network.buses.loc[bus_name, "y"] < 51:
                 network.add("Link", name="generator_BESS_{}_charger".format(i),
@@ -183,10 +207,10 @@ def add_BESS_supply(network, network_dispatch, network_year, start_hour, start_h
                 # If not first day: Set initial SOC of batteries to end soc of previous day.
     if start_hour != start_hour_0:
         network.stores["e_initial"] = s_SOC_batteries
-
+    return network
 
 def add_BESS_all(network, network_dispatch, network_year, start_hour, start_hour_0, c_rate,
-                 flex_potential, plant_potential, s_SOC_batteries, lcos):
+                 flex_potential, plant_potential, s_SOC_batteries, lcos, n_dispatch_prev):
     '''
     Adds battery storages at every node, depending on the flexibility potential of the loads allocated to this node.
     Methodology according to Network development plan and Frontier study:
@@ -218,8 +242,18 @@ def add_BESS_all(network, network_dispatch, network_year, start_hour, start_hour
     # Get mean market price of last 24h, if lcos is 0, run at no cost (no charging cost as well) for getting theoretical potential
     if lcos == 0:
         mean_price_24h = 0
+        charge_price_24h = 0
     else:
-        mean_price_24h = network_dispatch.buses_t.marginal_price.mean(axis=1).mean()
+        if type(n_dispatch_prev) != int:
+            min_today = network_dispatch.buses_t.marginal_price.mean(axis=1).nsmallest(n=4)
+            min_prev = n_dispatch_prev.buses_t.marginal_price.mean(axis=1).nsmallest(n=4)
+            min_price = pd.concat((min_today, min_prev), axis=0).nsmallest(n=4).mean()
+        else:
+            min_price = network_dispatch.buses_t.marginal_price.mean(axis=1).nsmallest(n=4).mean()
+        mean_price_24h = min(network_dispatch.buses_t.marginal_price.mean(axis=1).mean(),
+                             network_dispatch.generators[network_dispatch.generators["carrier"] == "lignite"].marginal_cost.mean()) - 1
+        charge_price_24h = min(min_price, network_dispatch.generators[
+            network_dispatch.generators["carrier"] == "lignite"].marginal_cost.mean())
 
     # According to x% rule, add energy stores with energy = x% of average load at bus
     for i in range(len(bus_names)):
@@ -246,7 +280,7 @@ def add_BESS_all(network, network_dispatch, network_year, start_hour, start_hour
         network.add("Link", name="BESS_{}_discharger".format(i),
                     bus0=battery_bus, bus1=bus_name, capital_cost=0,
                     p_nom=p_flex, p_nom_extendable=False, p_max_pu=1, p_min_pu=0,
-                    marginal_cost=lcos + mean_price_24h, efficiency=0.96)
+                    marginal_cost=lcos + charge_price_24h, efficiency=0.96)
         # charge link
         if network.buses.loc[bus_name, "y"] < 51:
             network.add("Link", name="BESS_{}_charger".format(i),
@@ -261,9 +295,9 @@ def add_BESS_all(network, network_dispatch, network_year, start_hour, start_hour
 
     # Add supply side storage at power plants according to NDP goal
     # ----------------
-    min_gen_size = 200
+    min_gen_size = 100
 
-    # Total large scale plant capcity (generators > 500)
+    # Total large scale plant capcity (generators > 100)
     df_gen = network_year.generators[["p_nom_max", "p_nom", "bus"]].copy()
     df_gen["flex_plant"] = df_gen["p_nom"].apply(lambda x: x if x > min_gen_size else 0)
     p_gen_sum = df_gen["flex_plant"].sum()
@@ -295,7 +329,7 @@ def add_BESS_all(network, network_dispatch, network_year, start_hour, start_hour
             network.add("Link", name="generator_BESS_{}_discharger".format(i),
                         bus0=gen_battery_bus, bus1=bus_name, capital_cost=0,
                         p_nom=p_flex_plant, p_nom_extendable=False, p_max_pu=1, p_min_pu=0,
-                        marginal_cost=lcos + mean_price_24h, efficiency=0.96)
+                        marginal_cost=lcos + charge_price_24h, efficiency=0.96)
             # charge link
             if network.buses.loc[bus_name, "y"] < 51:
                 network.add("Link", name="generator_BESS_{}_charger".format(i),
@@ -311,6 +345,7 @@ def add_BESS_all(network, network_dispatch, network_year, start_hour, start_hour
                 # If not first day: Set initial SOC of batteries to end soc of previous day.
     if start_hour != start_hour_0:
         network.stores["e_initial"] = s_SOC_batteries
+    return network
 
 
 def clean_generators(network):
@@ -337,7 +372,8 @@ def build_redispatch_network(network, network_dispatch):
 
     # Add new generators for redispatch calculation
     l_generators = network.generators.index.tolist()
-    l_conv_carriers = ["hard coal", "lignite", "gas", "oil", "nuclear", "OCGT", "CCGT"]
+    l_conv_carriers = ["coal", "lignite", "gas", "oil", "nuclear", "OCGT", "CCGT"]
+    l_fluct_renew = ["onwind", "offwind-dc", "offwind-ac", "solar"]
 
     for generator in l_generators:
         # For each conventional generator in network: Add 3 generators in network_redispatch
@@ -385,6 +421,55 @@ def build_redispatch_network(network, network_dispatch):
                                    p_min_pu=(- network_dispatch.generators_t.p[generator] /
                                              network_dispatch.generators.loc[generator]["p_nom"]).tolist(),
                                    )
+        elif network.generators.loc[generator]["carrier"] in l_fluct_renew:
+            # For renewable sources: Only add base and negative generator, representing the curtailment of EE
+            network_redispatch.add("Generator",
+                                   name="{}".format(generator),
+                                   bus=network.generators.loc[generator]["bus"],
+                                   p_nom=network.generators.loc[generator]["p_nom"],
+                                   efficiency=network.generators.loc[generator]["efficiency"],
+                                   marginal_cost=0,
+                                   capital_cost=0,
+                                   carrier=network.generators.loc[generator]["carrier"],
+                                   p_max_pu=(network_dispatch.generators_t.p[generator] /
+                                             network_dispatch.generators.loc[generator]["p_nom"]).tolist(),
+                                   p_min_pu=(network_dispatch.generators_t.p[generator] /
+                                             network_dispatch.generators.loc[generator]["p_nom"]).tolist(),
+                                   )
+            # Upwards generator (positive redispatch) ranges within the difference of the base power p_max_pu (e.g. 0.92) and p_max_pu = 1
+            network_redispatch.add("Generator",
+                                   name="{}_pos".format(generator),
+                                   bus=network.generators.loc[generator]["bus"],
+                                   p_nom=network.generators.loc[generator]["p_nom"],
+                                   efficiency=network.generators.loc[generator]["efficiency"],
+                                   marginal_cost=network.generators.loc[generator]["marginal_cost"],
+                                   capital_cost=0,
+                                   carrier=network.generators.loc[generator]["carrier"],
+                                   p_max_pu=(abs(network_dispatch.generators_t.p_max_pu[generator].round(2) - (network_dispatch.generators_t.p[generator] /
+                                               network_dispatch.generators.loc[generator]["p_nom"]).round(2))).tolist(),
+                                   p_min_pu=0,
+                                   )
+            # Downwards generator (negative redispatch): Using this generator reduces the energy feed in at specific bus,
+            # but increases costs for curtialment. Cost for curtailment = lost profit for not feeding in - savings through ramp down
+            network_redispatch.add("Generator",
+                                   name="{}_neg".format(generator),
+                                   bus=network.generators.loc[generator]["bus"],
+                                   p_nom=network.generators.loc[generator]["p_nom"],
+                                   efficiency=network.generators.loc[generator]["efficiency"],
+                                   marginal_cost=(network.generators.loc[generator]["marginal_cost"] -
+                                                  network_dispatch.buses_t.marginal_price[
+                                                      network_dispatch.generators.loc[generator]["bus"]]).tolist(),
+                                   capital_cost=0,
+                                   p_max_pu=0,
+                                   carrier=network.generators.loc[generator]["carrier"],
+                                   p_min_pu=(- network_dispatch.generators_t.p[generator] /
+                                             network_dispatch.generators.loc[generator]["p_nom"]).tolist()
+                                   )
+            # display(abs(network_dispatch.generators_t.p_max_pu[generator].round(2)))
+            # display(abs((network_dispatch.generators_t.p[generator] / network_dispatch.generators.loc[generator]["p_nom"]).round(2)))
+            # display(abs((network_dispatch.generators_t.p_max_pu[generator]-network_dispatch.generators_t.p[generator] / network_dispatch.generators.loc[generator]["p_nom"]).round(2)))
+
+
         else:
             # For renewable sources: Only add base and negative generator, representing the curtailment of EE
             network_redispatch.add("Generator",
@@ -414,8 +499,9 @@ def build_redispatch_network(network, network_dispatch):
                                    p_max_pu=0,
                                    carrier=network.generators.loc[generator]["carrier"],
                                    p_min_pu=(- network_dispatch.generators_t.p[generator] /
-                                             network_dispatch.generators.loc[generator]["p_nom"]).tolist(),
+                                             network_dispatch.generators.loc[generator]["p_nom"]).tolist()
                                    )
+
     # add load shedding
     bus_names = network_redispatch.buses.index.tolist()
     for i in range(len(bus_names)):
@@ -425,9 +511,9 @@ def build_redispatch_network(network, network_dispatch):
                                name="load_{}".format(i + 1),
                                carrier="load",
                                bus=bus_name,
-                               p_nom=500000,  # in pypsa-eur: 1*10^9 KW, marginal cost auch per kW angegeben
+                               p_nom=100000,  # in pypsa-eur: 1*10^9 KW, marginal cost auch per kW angegeben
                                efficiency=1,
-                               marginal_cost=5000,  # non zero marginal cost to ensure unique optimization result
+                               marginal_cost=1000,  # non zero marginal cost to ensure unique optimization result
                                capital_cost=0,
                                p_nom_extendable=False,
                                p_nom_min=0,
@@ -468,6 +554,20 @@ def build_market_model(network):
     network_dispatch.generators["bus"] = bus_name
     network_dispatch.stores["bus"] = bus_name
     network_dispatch.storage_units["bus"] = bus_name
+
+    # add load shedding generator at market bus
+    network_dispatch.add("Generator",
+                           name="load",
+                           carrier="load",
+                           bus=bus_name,
+                           p_nom=100000,  # in pypsa-eur: 1*10^9 KW, marginal cost auch per kW angegeben
+                           efficiency=1,
+                           marginal_cost=network_dispatch.generators[network_dispatch.generators["carrier"]=="oil"].marginal_cost.mean() + 0.1,  # non zero marginal cost to ensure unique optimization result
+                           capital_cost=0,
+                           p_nom_extendable=False,
+                           p_nom_min=0,
+                           p_nom_max=math.inf)
+
     return network_dispatch
 
 
@@ -485,7 +585,8 @@ def solve_redispatch_network(network, network_dispatch):
 
 # Redispatch workflow with batteries
 def build_redispatch_network_with_bat(network, network_dispatch, network_year, start_hour, start_hour_0,
-                                      c_rate, storage_ops, flex_potential, plant_potential, s_SOC_batteries, lcos):
+                                      c_rate, storage_ops, flex_potential, plant_potential, s_SOC_batteries,
+                                      lcos, n_dispatch_prev):
     '''
     Uses predefined component building functions for building the redispatch network and adds batteries.
     -----
@@ -494,23 +595,23 @@ def build_redispatch_network_with_bat(network, network_dispatch, network_year, s
     '''
     network_redispatch_bat = build_redispatch_network(network, network_dispatch)
     if storage_ops == "load":
-        add_BESS_load(network_redispatch_bat, network_dispatch, network_year=network_year, start_hour=start_hour,
+        network_redispatch_bat= add_BESS_load(network_redispatch_bat, network_dispatch, network_year=network_year, start_hour=start_hour,
                       start_hour_0=start_hour_0, c_rate=c_rate,
-                      flex_potential=flex_potential, s_SOC_batteries=s_SOC_batteries, lcos=lcos)
+                      flex_potential=flex_potential, s_SOC_batteries=s_SOC_batteries, lcos=lcos, n_dispatch_prev=n_dispatch_prev)
     elif storage_ops == "supply":
-        add_BESS_supply(network_redispatch_bat, network_dispatch, network_year=network_year, start_hour=start_hour,
+        network_redispatch_bat= add_BESS_supply(network_redispatch_bat, network_dispatch, network_year=network_year, start_hour=start_hour,
                         start_hour_0=start_hour_0, c_rate=c_rate,
-                        plant_potential=plant_potential, s_SOC_batteries=s_SOC_batteries, lcos=lcos)
+                        plant_potential=plant_potential, s_SOC_batteries=s_SOC_batteries, lcos=lcos, n_dispatch_prev=n_dispatch_prev)
     elif storage_ops == "all":
-        add_BESS_all(network_redispatch_bat, network_dispatch, network_year=network_year, start_hour=start_hour,
+        network_redispatch_bat= add_BESS_all(network_redispatch_bat, network_dispatch, network_year=network_year, start_hour=start_hour,
                      start_hour_0=start_hour_0, c_rate=c_rate,
                      flex_potential=flex_potential, plant_potential=plant_potential, s_SOC_batteries=s_SOC_batteries,
-                     lcos=lcos)
+                     lcos=lcos, n_dispatch_prev=n_dispatch_prev)
     return network_redispatch_bat
 
 
 def solve_redispatch_network_with_bat(network, network_dispatch, network_year, start_hour, start_hour_0,
-                                      c_rate, storage_ops, flex_potential, plant_potential, s_SOC_batteries, lcos):
+                                      c_rate, storage_ops, flex_potential, plant_potential, s_SOC_batteries, lcos, n_dispatch_prev):
     '''
     Calls redispatch building function and solves the network.
     -----
@@ -522,7 +623,8 @@ def solve_redispatch_network_with_bat(network, network_dispatch, network_year, s
                                                                start_hour_0=start_hour_0, c_rate=c_rate,
                                                                storage_ops=storage_ops, flex_potential=flex_potential,
                                                                plant_potential=plant_potential,
-                                                               s_SOC_batteries=s_SOC_batteries, lcos=lcos)
+                                                               s_SOC_batteries=s_SOC_batteries, lcos=lcos,
+                                                               n_dispatch_prev=n_dispatch_prev)
     network_redispatch_bat.lopf(solver_name="gurobi", pyomo=True, formulation="kirchhoff")
 
     return network_redispatch_bat
@@ -615,7 +717,8 @@ def redispatch_workflow_future(n_future, c_rate, flex_potential, plant_potential
     l_networks_dispatch = []
     l_networks_redispatch = []
     #start_hour_0 = 7848
-    start_hour_0 = 0
+    start_hour_0 = 6570
+    #start_hour_0 = 0
 
     # Only operative optimization: Capital costs set to zero
     network.generators.loc[:, "capital_cost"] = 0
@@ -623,7 +726,7 @@ def redispatch_workflow_future(n_future, c_rate, flex_potential, plant_potential
     # Run dispatch_redispatch workflow for every day (24h batch)
     # for start_hour in range(start_hour_0, start_hour_0 + 7*24, 24):
 
-    for start_hour in range(start_hour_0, len(network.snapshots), 24):
+    for start_hour in range(start_hour_0, len(network.snapshots), 24): # len(network.snapshots)
 
         # print(start_hour)
         n_24 = network.copy(snapshots=network.snapshots[start_hour:start_hour + 24])
@@ -633,11 +736,13 @@ def redispatch_workflow_future(n_future, c_rate, flex_potential, plant_potential
 
         # Build market model, solve dispatch network and plot network insights
         # ---------------
+        print("\n\nNow Dispatch\n\n")
         n_dispatch = build_market_model(n_24)
         n_dispatch.lopf(solver_name="gurobi", pyomo=True, formulation="kirchhoff")
 
         # Call redispatch optimization and plot network insights
         # ---------------
+        print("\n\nNow Redispatch\n\n")
         if scenario == "no bat":
             n_redispatch = solve_redispatch_network(n_24, n_dispatch)
         elif scenario == "bat" and start_hour == start_hour_0:
@@ -645,13 +750,13 @@ def redispatch_workflow_future(n_future, c_rate, flex_potential, plant_potential
                                                              start_hour=start_hour, start_hour_0=start_hour_0,
                                                              c_rate=c_rate, flex_potential=flex_potential,
                                                              plant_potential=plant_potential, storage_ops=storage_ops,
-                                                             s_SOC_batteries=pd.Series([]), lcos=lcos)
+                                                             s_SOC_batteries=pd.Series([]), lcos=lcos, n_dispatch_prev=0)
         elif scenario == "bat" and start_hour != start_hour_0:
             n_redispatch = solve_redispatch_network_with_bat(n_24, n_dispatch, network_year,
                                                              start_hour=start_hour, start_hour_0=start_hour_0,
                                                              c_rate=c_rate, flex_potential=flex_potential,
                                                              plant_potential=plant_potential, storage_ops=storage_ops,
-                                                             s_SOC_batteries=s_SOC_batteries, lcos=lcos)
+                                                             s_SOC_batteries=s_SOC_batteries, lcos=lcos, n_dispatch_prev=n_dispatch_prev)
 
         # Initialize series for passing the 24th snapshot SOC value to next day network
         # ---------------
@@ -663,6 +768,10 @@ def redispatch_workflow_future(n_future, c_rate, flex_potential, plant_potential
         l_networks_24.append(n_24)
         l_networks_dispatch.append(n_dispatch)
         l_networks_redispatch.append(n_redispatch)
+
+        # save dispatch network for next day
+        n_dispatch_prev = n_dispatch.copy()
+
 
     # For each results list: Create a network out of daily networks for dispatch & redispatch
     # ---------------
@@ -700,45 +809,106 @@ def solve_redispatch_workflow_future(filename, year, c_rate=0.25):
 
     # Run redispatch with batteries & export files
     export_path = folder + r"/results"
-    n_d, n_rd = redispatch_workflow_future(n_future = n_future, c_rate=c_rate, storage_ops="load", flex_potential=flex_potential,
+
+
+    n_d, n_rd = redispatch_workflow_future(n_future = n_future, c_rate=c_rate, storage_ops="none", flex_potential=flex_potential,
                                            plant_potential=plant_potential, scenario="no bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
     # export solved dispatch & redispatch workflow as well as objective value list
-    n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + ".nc", export_standard_types=False, least_significant_digit=None)
-    n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + ".nc", export_standard_types=False, least_significant_digit=None)
+    n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "_6570.nc", export_standard_types=False, least_significant_digit=None)
+    n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_6570.nc", export_standard_types=False, least_significant_digit=None)
     gc.collect()
+
     del n_future, n
     n = pypsa.Network(path_n)
     n_future = n.copy()
 
     # Redispatch batteries LOAD
-    n_d_bat_load, n_rd_bat_load = redispatch_workflow_future(n_future = n_future, c_rate=c_rate, storage_ops="load", flex_potential=flex_potential,
-                                                      plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
-    print("\n\nSave bat_load_to_nc\n\n")
-    n_rd_bat_load.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat_load.nc", export_standard_types=False, least_significant_digit=None)
-    gc.collect()
-    del n_future, n
-    n = pypsa.Network(path_n)
-    n_future = n.copy()
 
-    # Redispatch batteries Supply
-    n_d_bat_supply, n_rd_bat_supply = redispatch_workflow_future(n_future = n_future, c_rate=c_rate, storage_ops="supply", flex_potential=flex_potential,
-                                                          plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
-    print("\n\nSave bat_supply_to_nc\n\n")
-    n_rd_bat_supply.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat_supply.nc", export_standard_types=False, least_significant_digit=None)
-    gc.collect()
-    del n_future, n
-    n = pypsa.Network(path_n)
-    n_future = n.copy()
 
-    # Redispatch batteries Supply
+    # Redispatch batteries all
     n_d_bat_all, n_rd_bat_all = redispatch_workflow_future(n_future = n_future, c_rate=c_rate, storage_ops="all", flex_potential=flex_potential,
                                                     plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
-    print("\n\nSave bat_supply_to_nc\n\n")
-    n_rd_bat_all.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat_all.nc", export_standard_types=False, least_significant_digit=None)
+    print("\n\nSave bat_all_to_nc\n\n")
+    n_rd_bat_all.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat_all_6570.nc", export_standard_types=False, least_significant_digit=None)
+    gc.collect()
+
+    del n_future, n
+    n = pypsa.Network(path_n)
+    n_future = n.copy()
+
+    # Redispatch batteries all lcos
+    n_d_bat_all, n_rd_bat_all = redispatch_workflow_future(n_future = n_future, c_rate=c_rate, storage_ops="all", flex_potential=flex_potential,
+                                                    plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=38.58)
+    print("\n\nSave bat_all_to_nc\n\n")
+    n_rd_bat_all.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat_all_lcos_6570.nc", export_standard_types=False, least_significant_digit=None)
     gc.collect()
 
 
+
+    # del n_future, n
+    # n = pypsa.Network(path_n)
+    # n_future = n.copy()
+    #
+    # n_d_bat_load, n_rd_bat_load = redispatch_workflow_future(n_future = n_future, c_rate=c_rate, storage_ops="load", flex_potential=flex_potential,
+    #                                                   plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
+    # print("\n\nSave bat_load_to_nc\n\n")
+    # n_rd_bat_load.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat_load_price1.nc", export_standard_types=False, least_significant_digit=None)
+    # gc.collect()
+
+    # del n_future, n
+    # n = pypsa.Network(path_n)
+    # n_future = n.copy()
+
+    # # Redispatch batteries Supply
+    # n_d_bat_supply, n_rd_bat_supply = redispatch_workflow_future(n_future = n_future, c_rate=c_rate, storage_ops="supply", flex_potential=flex_potential,
+    #                                                       plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0)
+    # print("\n\nSave bat_supply_to_nc\n\n")
+    # n_rd_bat_supply.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat_supply_price1.nc", export_standard_types=False, least_significant_digit=None)
+    # gc.collect()
+    #
+    # del n_future, n
+    # n = pypsa.Network(path_n)
+    # n_future = n.copy()
+
+    #############
+    # WITH LCOS #
+    #############
+
+    # # Redispatch batteries LOAD
+    # n_d_bat_load_lcos, n_rd_bat_load_lcos = redispatch_workflow_future(n_future=n_future, c_rate=c_rate, storage_ops="load",flex_potential=flex_potential,
+    #                                                          plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=38.58)
+    # print("\n\nSave bat_load_to_nc\n\n")
+    # n_rd_bat_load_lcos.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat_load_lcos.nc",
+    #                                export_standard_types=False, least_significant_digit=None)
+    # gc.collect()
+    #
+    # del n_future, n
+    # n = pypsa.Network(path_n)
+    # n_future = n.copy()
+    #
+    # # Redispatch batteries Supply
+    # n_d_bat_supply_lcos, n_rd_bat_supply_lcos = redispatch_workflow_future(n_future=n_future, c_rate=c_rate, storage_ops="supply", flex_potential=flex_potential,
+    #                                                                        plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=38.58)
+    # print("\n\nSave bat_supply_to_nc\n\n")
+    # n_rd_bat_supply_lcos.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat_supply_lcos.nc",
+    #                                       export_standard_types=False, least_significant_digit=None)
+    # gc.collect()
+    #
+    # del n_future, n
+    # n = pypsa.Network(path_n)
+    # n_future = n.copy()
+
+    # # Redispatch batteries Supply
+    # n_d_bat_all_lcos, n_rd_bat_all_lcos = redispatch_workflow_future(n_future=n_future, c_rate=c_rate, storage_ops="all", flex_potential=flex_potential,
+    #                                                                  plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=38.58)
+    # print("\n\nSave bat_all_to_nc\n\n")
+    # n_rd_bat_all_lcos.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_bat_all_lcos.nc",
+    #                                    export_standard_types=False, least_significant_digit=None)
+    # gc.collect()
+
+#
+
 def main():
-    solve_redispatch_workflow_future(filename = "elec_s300_220_ec_lcopt_1H-Ep-noex_2025_future_085", year=2025, c_rate=0.25)
+    solve_redispatch_workflow_future(filename = "elec_s300_220_ec_lcopt_1H-Ep-noex_2030_future", year=2030, c_rate=0.25)
 if __name__ == "__main__":
     main()

@@ -1,0 +1,32 @@
+elec_s300_10_ec_lcopt_1H-noex
+
+
+
+
+
+
+INFO:pypsa.io:Imported network elec_s300_10_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+INFO:pypsa.io:Imported network elec_s300_10_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+1
+
+
+
+2.2
+1.38
+INFO:numexpr.utils:Note: detected 128 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO:numexpr.utils:Note: NumExpr detected 128 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+0.8906502452929823
+Traceback (most recent call last):
+  File "solve_all_redispatch_networks_coal.py", line 459, in <module>
+    main()
+  File "solve_all_redispatch_networks_coal.py", line 456, in main
+    solve_all_redispatch_workflows(c_rate=0.25, flex_share=0.1)
+  File "solve_all_redispatch_networks_coal.py", line 448, in solve_all_redispatch_workflows
+    n_d, n_rd = redispatch_workflow(n, n_optim, scenario="no bat", ratio_wind = 2.2, ratio_pv = 1.38, sec_margin=sec_margin)
+  File "solve_all_redispatch_networks_coal.py", line 387, in redispatch_workflow
+    network = set_parameters_from_optimized(n=network, n_optim=network_optim, ratio_wind=ratio_wind, ratio_pv=ratio_pv, sec_margin=sec_margin)
+  File "solve_all_redispatch_networks_coal.py", line 77, in set_parameters_from_optimized
+    n.generators.bus == n.buses[(n.buses.x == 8.390808) & (n.buses.y == 53.343173)].index[0]),
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pandas/core/indexes/base.py", line 4101, in __getitem__
+    return getitem(key)
+IndexError: index 0 is out of bounds for axis 0 with size 0

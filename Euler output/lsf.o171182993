@@ -1,0 +1,65 @@
+INFO:pypsa.io:Imported network elec_s300_220_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+INFO:pypsa.io:Imported network elec_s300_220_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+1
+
+
+
+2.2
+1.38
+INFO:numexpr.utils:Note: detected 128 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO:numexpr.utils:Note: NumExpr detected 128 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+0.8906502452929824
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x28201_copy
+  Lower bound: 3510598.6976486323
+  Upper bound: 3510598.6976486323
+  Number of objectives: 1
+  Number of constraints: 23425
+  Number of variables: 28201
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 28201
+  Number of nonzeros: 75817
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.18300294876098633
+  Error rc: 0
+  Time: 0.8844351768493652
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+Traceback (most recent call last):
+  File "solve_redispatch_network_coal.py", line 884, in <module>
+    main()
+  File "solve_redispatch_network_coal.py", line 882, in main
+    solve_redispatch_workflow()
+  File "solve_redispatch_network_coal.py", line 816, in solve_redispatch_workflow
+    n_d, n_rd = redispatch_workflow(n = n, n_optim = n_optim, c_rate=c_rate, storage_ops="none", flex_potential=flex_potential,
+  File "solve_redispatch_network_coal.py", line 758, in redispatch_workflow
+    n_redispatch = solve_redispatch_network(n_24, n_dispatch)
+  File "solve_redispatch_network_coal.py", line 606, in solve_redispatch_network
+    network_redispatch = build_redispatch_network(network, network_dispatch)
+  File "solve_redispatch_network_coal.py", line 488, in build_redispatch_network
+    elif network.generators.loc[generator]["carrier"] in l_fluct_renew:
+NameError: name 'l_fluct_renew' is not defined

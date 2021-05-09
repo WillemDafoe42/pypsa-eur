@@ -1,0 +1,34 @@
+/cluster/home/wlaumen/Euler/pypsa-eur/networks_redispatch/elec_s300_220_ec_lcopt_1H-Ep-noex_2030_future.nc
+INFO:pypsa.io:Imported network elec_s300_220_ec_lcopt_1H-Ep-noex_2030_future.nc has buses, carriers, generators, lines, links, loads, storage_units
+               p_nom_max  ...  ramp_limit_shut_down
+carrier                   ...                      
+CCGT                 inf  ...                  52.0
+OCGT                 inf  ...                  77.0
+biomass              inf  ...                  31.0
+coal                 inf  ...                  17.0
+lignite              inf  ...                   2.0
+offwind-ac  2.250560e+04  ...                  10.0
+offwind-dc  6.718060e+04  ...                   4.0
+oil                  inf  ...                  15.0
+onwind      4.499279e+05  ...                 210.0
+ror                  inf  ...                 119.0
+solar       3.604993e+05  ...                 211.0
+
+[11 rows x 25 columns]
+
+
+Now Dispatch
+
+
+Traceback (most recent call last):
+  File "solve_redispatch_network_future.py", line 798, in <module>
+    main()
+  File "solve_redispatch_network_future.py", line 796, in main
+    solve_redispatch_workflow_future(filename = "elec_s300_220_ec_lcopt_1H-Ep-noex_2030_future", year=2030, c_rate=0.25)
+  File "solve_redispatch_network_future.py", line 757, in solve_redispatch_workflow_future
+    n_d, n_rd = redispatch_workflow_future(n_future = n_future, c_rate=c_rate, storage_ops="none", flex_potential=flex_potential,
+  File "solve_redispatch_network_future.py", line 689, in redispatch_workflow_future
+    n_dispatch = build_market_model(n_24)
+  File "solve_redispatch_network_future.py", line 512, in build_market_model
+    name="load_{}".format(i + 1),
+NameError: name 'i' is not defined

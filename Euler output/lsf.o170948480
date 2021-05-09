@@ -1,0 +1,41 @@
+Traceback (most recent call last):
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/gribapi/bindings.py", line 29, in <module>
+    from ._bindings import ffi, lib
+ModuleNotFoundError: No module named 'gribapi._bindings'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "solve_redispatch_network.py", line 3, in <module>
+    import pypsa
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/__init__.py", line 25, in <module>
+    from . import components, descriptors
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/components.py", line 39, in <module>
+    from .io import (export_to_csv_folder, import_from_csv_folder,
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/io.py", line 36, in <module>
+    import xarray as xr
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/__init__.py", line 3, in <module>
+    from . import testing, tutorial, ufuncs
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/tutorial.py", line 14, in <module>
+    from .backends.api import open_dataset as _open_dataset
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/backends/__init__.py", line 6, in <module>
+    from .cfgrib_ import CfGribDataStore
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/backends/cfgrib_.py", line 18, in <module>
+    import cfgrib
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/cfgrib/__init__.py", line 19, in <module>
+    from .cfmessage import CfMessage
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/cfgrib/cfmessage.py", line 29, in <module>
+    from . import messages
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/cfgrib/messages.py", line 28, in <module>
+    import eccodes  # type: ignore
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/eccodes/__init__.py", line 15, in <module>
+    from .eccodes import *
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/eccodes/eccodes.py", line 12, in <module>
+    from gribapi import __version__
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/gribapi/__init__.py", line 13, in <module>
+    from .gribapi import *  # noqa
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/gribapi/gribapi.py", line 32, in <module>
+    from .bindings import ENC, ffi, lib
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/gribapi/bindings.py", line 60, in <module>
+    raise RuntimeError(f"ecCodes library not found using {LIBNAMES}")
+RuntimeError: ecCodes library not found using ['eccodes', 'libeccodes.so', 'libeccodes']

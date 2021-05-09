@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "solve_redispatch_network_future.py", line 3, in <module>
+    import pypsa
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/__init__.py", line 25, in <module>
+    from . import components, descriptors
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/components.py", line 39, in <module>
+    from .io import (export_to_csv_folder, import_from_csv_folder,
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/io.py", line 36, in <module>
+    import xarray as xr
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/__init__.py", line 1, in <module>
+    import pkg_resources
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pkg_resources/__init__.py", line 3239, in <module>
+    def _initialize_master_working_set():
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pkg_resources/__init__.py", line 3222, in _call_aside
+    f(*args, **kwargs)
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pkg_resources/__init__.py", line 3251, in _initialize_master_working_set
+    working_set = WorkingSet._build_master()
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pkg_resources/__init__.py", line 558, in _build_master
+    ws = cls()
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pkg_resources/__init__.py", line 551, in __init__
+    self.add_entry(entry)
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pkg_resources/__init__.py", line 607, in add_entry
+    for dist in find_distributions(entry, True):
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pkg_resources/__init__.py", line 2060, in find_on_path
+    for dist in factory(fullpath):
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pkg_resources/__init__.py", line 2125, in distributions_from_metadata
+    yield Distribution.from_location(
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pkg_resources/__init__.py", line 2585, in from_location
+    return cls(
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pkg_resources/__init__.py", line 2985, in _reload_version
+    md_version = self._get_version()
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pkg_resources/__init__.py", line 2767, in _get_version
+    version = _version_from_file(lines)
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pkg_resources/__init__.py", line 2551, in _version_from_file
+    line = next(iter(version_lines), '')
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pkg_resources/__init__.py", line 2762, in _get_metadata
+    for line in self.get_metadata_lines(name):
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pkg_resources/__init__.py", line 1415, in get_metadata_lines
+    return yield_lines(self.get_metadata(name))
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pkg_resources/__init__.py", line 1405, in get_metadata
+    value = self._get(path)
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pkg_resources/__init__.py", line 1610, in _get
+    return stream.read()
+KeyboardInterrupt

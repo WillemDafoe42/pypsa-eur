@@ -1,0 +1,294 @@
+/cluster/home/wlaumen/Euler/pypsa-eur/networks_redispatch/elec_s300_220_ec_lcopt_1H-Ep-noex_2030_future.nc
+INFO:pypsa.io:Imported network elec_s300_220_ec_lcopt_1H-Ep-noex_2030_future.nc has buses, carriers, generators, lines, links, loads, storage_units
+               p_nom_max  ...  ramp_limit_shut_down
+carrier                   ...                      
+CCGT                 inf  ...                  52.0
+OCGT                 inf  ...                  77.0
+biomass              inf  ...                  31.0
+coal                 inf  ...                  17.0
+lignite              inf  ...                   2.0
+offwind-ac  2.250560e+04  ...                  10.0
+offwind-dc  6.718060e+04  ...                   4.0
+oil                  inf  ...                  15.0
+onwind      4.499279e+05  ...                 210.0
+ror                  inf  ...                 119.0
+solar       3.604993e+05  ...                 211.0
+
+[11 rows x 25 columns]
+
+
+Now Dispatch
+
+
+INFO:numexpr.utils:Note: detected 128 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO:numexpr.utils:Note: NumExpr detected 128 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27169_copy
+  Lower bound: 373606.30295687646
+  Upper bound: 373606.30295687646
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 27169
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27169
+  Number of nonzeros: 77545
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.1629621982574463
+  Error rc: 0
+  Time: 0.7931122779846191
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+
+
+Now Redispatch
+
+
+solve_redispatch_network_future.py:750: DeprecationWarning:
+
+The default dtype for empty Series will be 'object' instead of 'float64' in a future version. Specify a dtype explicitly to silence this warning.
+
+
+
+all
+
+
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x106105_copy
+  Lower bound: 206658.78496421754
+  Upper bound: 206658.78496421754
+  Number of objectives: 1
+  Number of constraints: 85849
+  Number of variables: 106105
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 106105
+  Number of nonzeros: 238802
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 3.406251907348633
+  Error rc: 0
+  Time: 4.649808406829834
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+
+
+Now Dispatch
+
+
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27169_copy
+  Lower bound: 10004184.417528328
+  Upper bound: 10004184.417528328
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 27169
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27169
+  Number of nonzeros: 77545
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.2017679214477539
+  Error rc: 0
+  Time: 0.7351391315460205
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+
+
+Now Redispatch
+
+
+
+
+all
+
+
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x106105_copy
+  Lower bound: 6633237.271122561
+  Upper bound: 6633237.271122561
+  Number of objectives: 1
+  Number of constraints: 85849
+  Number of variables: 106105
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 106105
+  Number of nonzeros: 238802
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 3.8251729011535645
+  Error rc: 0
+  Time: 5.174206495285034
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+
+
+Save bat_all_to_nc
+
+
+INFO:pypsa.io:Exported network elec_s300_220_ec_lcopt_1H-Ep-noex_2030_future_bat_all.nc has loads, buses, storage_units, lines, links, carriers, generators, stores
+INFO:pypsa.io:Imported network elec_s300_220_ec_lcopt_1H-Ep-noex_2030_future.nc has buses, carriers, generators, lines, links, loads, storage_units
+
+
+Now Dispatch
+
+
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27169_copy
+  Lower bound: 373606.30295687646
+  Upper bound: 373606.30295687646
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 27169
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27169
+  Number of nonzeros: 77545
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.14464902877807617
+  Error rc: 0
+  Time: 0.6670868396759033
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+
+
+Now Redispatch
+
+
+solve_redispatch_network_future.py:750: DeprecationWarning:
+
+The default dtype for empty Series will be 'object' instead of 'float64' in a future version. Specify a dtype explicitly to silence this warning.
+
+add_BESS_load
+38.58
+
+
+Traceback (most recent call last):
+  File "solve_redispatch_network_future.py", line 891, in <module>
+    main()
+  File "solve_redispatch_network_future.py", line 889, in main
+    solve_redispatch_workflow_future(filename = "elec_s300_220_ec_lcopt_1H-Ep-noex_2030_future", year=2030, c_rate=0.25)
+  File "solve_redispatch_network_future.py", line 856, in solve_redispatch_workflow_future
+    n_d_bat_load_lcos, n_rd_bat_load_lcos = redispatch_workflow_future(n_future=n_future, c_rate=c_rate, storage_ops="load",flex_potential=flex_potential,
+  File "solve_redispatch_network_future.py", line 746, in redispatch_workflow_future
+    n_redispatch = solve_redispatch_network_with_bat(n_24, n_dispatch, network_year,
+  File "solve_redispatch_network_future.py", line 620, in solve_redispatch_network_with_bat
+    network_redispatch_bat = build_redispatch_network_with_bat(network=network, network_dispatch=network_dispatch,
+  File "solve_redispatch_network_future.py", line 597, in build_redispatch_network_with_bat
+    network_redispatch_bat= add_BESS_load(network_redispatch_bat, network_dispatch, network_year=network_year, start_hour=start_hour,
+  File "solve_redispatch_network_future.py", line 67, in add_BESS_load
+    if type(n_dispatch_prev) != int:
+NameError: name 'n_dispatch_prev' is not defined

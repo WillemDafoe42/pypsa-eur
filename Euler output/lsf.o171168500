@@ -1,0 +1,23 @@
+INFO:pypsa.io:Imported network elec_s300_220_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+INFO:pypsa.io:Imported network elec_s300_220_ec_lcopt_1H-noex.nc has buses, carriers, generators, lines, loads, storage_units
+1
+
+
+
+2.2
+1.38
+INFO:numexpr.utils:Note: detected 128 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO:numexpr.utils:Note: NumExpr detected 128 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+0.8906502452929824
+Traceback (most recent call last):
+  File "solve_redispatch_network_coal.py", line 884, in <module>
+    main()
+  File "solve_redispatch_network_coal.py", line 882, in main
+    solve_redispatch_workflow()
+  File "solve_redispatch_network_coal.py", line 816, in solve_redispatch_workflow
+    n_d, n_rd = redispatch_workflow(n = n, n_optim = n_optim, c_rate=c_rate, storage_ops="none", flex_potential=flex_potential,
+  File "solve_redispatch_network_coal.py", line 736, in redispatch_workflow
+    network = set_parameters_from_optimized(n=network, n_optim=n_optim, ratio_wind = ratio_wind, ratio_pv = ratio_pv, sec_margin=sec_margin)
+  File "solve_redispatch_network_coal.py", line 76, in set_parameters_from_optimized
+    display(n.generators[n.generators.carrier == "nuclear"])
+NameError: name 'display' is not defined

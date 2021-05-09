@@ -1,0 +1,83 @@
+/cluster/home/wlaumen/Euler/pypsa-eur/networks_redispatch/elec_s300_220_ec_lcopt_1H-Ep-noex_2030_future.nc
+INFO:pypsa.io:Imported network elec_s300_220_ec_lcopt_1H-Ep-noex_2030_future.nc has buses, carriers, generators, lines, links, loads, storage_units
+               p_nom_max  ...  ramp_limit_shut_down
+carrier                   ...                      
+CCGT                 inf  ...                  52.0
+OCGT                 inf  ...                  77.0
+biomass              inf  ...                  31.0
+coal                 inf  ...                  17.0
+lignite              inf  ...                   2.0
+offwind-ac  2.250560e+04  ...                  10.0
+offwind-dc  6.718060e+04  ...                   4.0
+oil                  inf  ...                  15.0
+onwind      4.499279e+05  ...                 210.0
+ror                  inf  ...                 119.0
+solar       3.604993e+05  ...                 211.0
+
+[11 rows x 25 columns]
+
+
+Now Dispatch
+
+
+INFO:numexpr.utils:Note: detected 72 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+INFO:numexpr.utils:Note: NumExpr detected 72 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+INFO:pypsa.opf:Performed preliminary steps
+INFO:pypsa.opf:Building pyomo model using `kirchhoff` formulation
+INFO:pypsa.opf:Solving model using gurobi
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: x27169_copy
+  Lower bound: 373606.3029568758
+  Upper bound: 373606.3029568758
+  Number of objectives: 1
+  Number of constraints: 23785
+  Number of variables: 27169
+  Number of binary variables: 0
+  Number of integer variables: 0
+  Number of continuous variables: 27169
+  Number of nonzeros: 79129
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Return code: 0
+  Message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Termination condition: optimal
+  Termination message: Model was solved to optimality (subject to tolerances), and an optimal solution is available.
+  Wall time: 0.18294596672058105
+  Error rc: 0
+  Time: 0.6735501289367676
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+INFO:pypsa.opf:Optimization successful
+
+
+Now Redispatch
+
+
+solve_redispatch_network_future.py:752: DeprecationWarning:
+
+The default dtype for empty Series will be 'object' instead of 'float64' in a future version. Specify a dtype explicitly to silence this warning.
+
+Traceback (most recent call last):
+  File "solve_redispatch_network_future.py", line 897, in <module>
+    main()
+  File "solve_redispatch_network_future.py", line 895, in main
+    solve_redispatch_workflow_future(filename = "elec_s300_220_ec_lcopt_1H-Ep-noex_2030_future", year=2030, c_rate=0.25)
+  File "solve_redispatch_network_future.py", line 847, in solve_redispatch_workflow_future
+    n_d_bat_all, n_rd_bat_all = redispatch_workflow_future(n_future = n_future, c_rate=c_rate, storage_ops="all", flex_potential=flex_potential,
+  File "solve_redispatch_network_future.py", line 752, in redispatch_workflow_future
+    s_SOC_batteries=pd.Series([]), lcos=lcos, n_dispatch_prev=n_dispatch_prev)
+UnboundLocalError: local variable 'n_dispatch_prev' referenced before assignment

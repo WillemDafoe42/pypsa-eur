@@ -228,8 +228,8 @@ plotting:
   energy_min: -10000.
   energy_threshold: 50.
 
-  vre_techs: ["onwind", "offwind-ac", "offwind-dc", "solar", "ror"]
-  conv_techs: ["OCGT", "CCGT", "Nuclear", "Coal"]
+  vre_techs: ["onwind", "offwind-ac", "offwind-dc", "solar", "ror","biomass"]
+  conv_techs: ["OCGT", "CCGT", "nuclear", "coal", "lignite"]
   storage_techs: ["hydro+PHS", "battery", "H2"]
   load_carriers: ["AC load"]
   AC_carriers: ["AC line", "AC transformer"]
@@ -292,3 +292,7 @@ plotting:
     H2: "Hydrogen Storage"
     lines: "Transmission Lines"
     ror: "Run of River"
+    biomass: "Biomass"
+    nuclear: "Nuclear"
+    coal: "Hard coal"
+    lignite: "Lignite"

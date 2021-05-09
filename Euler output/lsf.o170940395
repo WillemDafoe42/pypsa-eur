@@ -1,0 +1,36 @@
+Traceback (most recent call last):
+  File "solve_redispatch_network.py", line 3, in <module>
+    import pypsa
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/__init__.py", line 25, in <module>
+    from . import components, descriptors
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/components.py", line 39, in <module>
+    from .io import (export_to_csv_folder, import_from_csv_folder,
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/pypsa/io.py", line 36, in <module>
+    import xarray as xr
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/__init__.py", line 3, in <module>
+    from . import testing, tutorial, ufuncs
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/tutorial.py", line 14, in <module>
+    from .backends.api import open_dataset as _open_dataset
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/backends/__init__.py", line 6, in <module>
+    from .cfgrib_ import CfGribDataStore
+  File "/cluster/home/wlaumen/.local/lib/python3.8/site-packages/xarray/backends/cfgrib_.py", line 18, in <module>
+    import cfgrib
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/cfgrib/__init__.py", line 19, in <module>
+    from .cfmessage import CfMessage
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/cfgrib/cfmessage.py", line 29, in <module>
+    from . import messages
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/cfgrib/messages.py", line 28, in <module>
+    import eccodes  # type: ignore
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/eccodes/__init__.py", line 13, in <module>
+    from .eccodes import *  # noqa
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/eccodes/eccodes.py", line 12, in <module>
+    from gribapi import (
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/gribapi/__init__.py", line 13, in <module>
+    from .gribapi import *  # noqa
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/gribapi/gribapi.py", line 34, in <module>
+    from . import errors
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/gribapi/errors.py", line 16, in <module>
+    from .bindings import ENC, ffi, lib
+  File "/cluster/apps/nss/gcc-6.3.0/python/3.8.5/x86_64/lib64/python3.8/site-packages/gribapi/bindings.py", line 34, in <module>
+    raise RuntimeError("Cannot find the ecCodes library")
+RuntimeError: Cannot find the ecCodes library

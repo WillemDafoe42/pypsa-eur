@@ -2,7 +2,7 @@
 # ETH Euler Job scripts
 
 env2lmod
-module load gcc/6.3.0 python/3.8.5 hdf5/1.10.1 proj/6.3.1 geos/3.6.2 gdal/3.1.2 glpk/4.65 gurobi/9.1.1 netcdf/4.6.0
+module load gcc/6.3.0 python/3.8.5 hdf5/1.10.1 proj/6.3.1 geos/3.6.2 gdal/3.1.2 glpk/4.65 gurobi/9.1.1 netcdf/4.6.0 eccodes/2.21.0 zlib/1.2.9
 pip install --user vresutils
 
 
