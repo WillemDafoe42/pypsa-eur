@@ -12,9 +12,9 @@ logging:
 summary_dir: results
 
 scenario:
-  simpl: [300]
+  simpl: ['']
   ll: [copt]
-  clusters: [220] # 200,210,220,230
+  clusters: [300] # 200,210,220,230
   opts: [1H-Ep-noex]
 
 countries: ['DE']

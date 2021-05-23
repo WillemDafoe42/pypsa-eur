@@ -10,7 +10,7 @@ import pickle as pkl
 import glob
 
 
-def set_parameters_from_optimized(n, n_optim, ratio_wind, ratio_pv, sec_margin):
+def set_parameters_from_optimized(n, ratio_wind, ratio_pv, sec_margin):
     '''
     Function to set optimized parameters from optimized network as nominal parameters
     of the operative network.
@@ -33,11 +33,11 @@ def set_parameters_from_optimized(n, n_optim, ratio_wind, ratio_pv, sec_margin):
 
     line_typed_i = n.lines.index[n.lines.type != '']
     # cap_ac_type_i = 0.635
-    l_shedding = abs(n_optim.lines_t.mu_upper.mean(axis=0).round(2)).nlargest(2).index.to_list()
+    # l_shedding = abs(n_optim.lines_t.mu_upper.mean(axis=0).round(2)).nlargest(2).index.to_list()
 
     n.lines.loc[line_typed_i, "s_max_pu"] = sec_margin
-    n.lines.loc[l_shedding, "s_max_pu"] = 1
-    n.lines.loc[l_shedding, "num_parallel"] = 1
+    # n.lines.loc[l_shedding, "s_max_pu"] = 1
+    # n.lines.loc[l_shedding, "num_parallel"] = 1
 
     # set link capacities to optimized (HVDC links as well as store out/inflow links)
     if not n.links.empty:
@@ -710,7 +710,7 @@ def concat_network(list_networks, ignore_standard_types=False):
     return nw
 
 
-def redispatch_workflow(n, n_optim, c_rate, flex_potential, plant_potential, storage_ops, scenario,
+def redispatch_workflow(n, c_rate, flex_potential, plant_potential, storage_ops, scenario,
                         ratio_wind, ratio_pv, lcos, sec_margin):
     '''
     Function for executing the whole redispatch workflow.
@@ -733,7 +733,7 @@ def redispatch_workflow(n, n_optim, c_rate, flex_potential, plant_potential, sto
     start_hour_0 = 0
 
     # Generate operative pypsa-eur network without investment problem
-    network = set_parameters_from_optimized(n=network, n_optim=n_optim, ratio_wind = ratio_wind, ratio_pv = ratio_pv, sec_margin=sec_margin)
+    network = set_parameters_from_optimized(n=network, ratio_wind = ratio_wind, ratio_pv = ratio_pv, sec_margin=sec_margin)
 
     # Only operative optimization: Capital costs set to zero
     network.generators.loc[:, "capital_cost"] = 0
@@ -801,10 +801,10 @@ def solve_redispatch_workflow(c_rate = 0.25):
     filename = "elec_s300_220_ec_lcopt_1H-noex"
 
     path_n = folder + "/" + filename + ".nc"
-    path_n_optim = folder + "/solved/" + filename + ".nc"
+    #path_n_optim = folder + "/solved/" + filename + ".nc"
     # Define network and network_optim
     n = pypsa.Network(path_n)
-    n_optim = pypsa.Network(path_n_optim)
+    #n_optim = pypsa.Network(path_n_optim)
 
     # Scenario parameters
     flex_potential = 300
@@ -813,13 +813,13 @@ def solve_redispatch_workflow(c_rate = 0.25):
     export_path = folder + r"/results"
 
     # Run redispatch w/o batteries & export files
-    # n_d, n_rd = redispatch_workflow(n = n, n_optim = n_optim, c_rate=c_rate, storage_ops="none", flex_potential=flex_potential,
-    #                                 plant_potential=plant_potential, scenario="no bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0, sec_margin=0.7)
-    #
-    # # export solved dispatch & redispatch workflow as well as objective value list
-    # n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "_2018_07_coal_50wind.nc", export_standard_types=False, least_significant_digit=None)
-    # n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_2018_07_coal_50wind.nc", export_standard_types=False, least_significant_digit=None)
-    # gc.collect()
+    n_d, n_rd = redispatch_workflow(n = n, c_rate=c_rate, storage_ops="none", flex_potential=flex_potential,
+                                    plant_potential=plant_potential, scenario="no bat", ratio_wind=2.2, ratio_pv=1.38, lcos=0, sec_margin=0.7)
+
+    # export solved dispatch & redispatch workflow as well as objective value list
+    n_d.export_to_netcdf(path=export_path + r"/dispatch/" + filename + "_2018_coal_50wind_300.nc", export_standard_types=False, least_significant_digit=None)
+    n_rd.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_2018_coal_50wind_300.nc", export_standard_types=False, least_significant_digit=None)
+    gc.collect()
 
 
     # # Redispatch batteries LOAD
@@ -849,27 +849,27 @@ def solve_redispatch_workflow(c_rate = 0.25):
 
 
 
-    # Redispatch batteries LOAD
-    n_d_bat_load, n_rd_bat_load = redispatch_workflow(n = n, n_optim = n_optim, c_rate=c_rate, storage_ops="load", flex_potential=flex_potential,
-                                                      plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=67.29, sec_margin=sec_margin)
-    print("\n\nSave bat_load_to_nc\n\n")
-    n_rd_bat_load.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_2018_1_coal_50wind_bat_load_LCOS.nc", export_standard_types=False, least_significant_digit=None)
-    gc.collect()
-
-
-    # Redispatch batteries SUPPLY
-    n_d_bat_supply, n_rd_bat_supply = redispatch_workflow(n = n, n_optim = n_optim, c_rate=c_rate, storage_ops="supply", flex_potential=flex_potential,
-                                                          plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=67.29, sec_margin=sec_margin)
-    print("\n\nSave bat_supply_to_nc\n\n")
-    n_rd_bat_supply.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_2018_1_coal_50wind_bat_supply_LCOS.nc", export_standard_types=False, least_significant_digit=None)
-    gc.collect()
-
-    # Redispatch batteries ALL
-    n_d_bat_all, n_rd_bat_all = redispatch_workflow(n = n, n_optim = n_optim, c_rate=c_rate, storage_ops="all", flex_potential=flex_potential,
-                                                    plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=67.29, sec_margin=sec_margin)
-    print("\n\nSave bat_all_to_nc\n\n")
-    n_rd_bat_all.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_2018_1_coal_50wind_bat_all_LCOS.nc", export_standard_types=False, least_significant_digit=None)
-    gc.collect()
+    # # Redispatch batteries LOAD
+    # n_d_bat_load, n_rd_bat_load = redispatch_workflow(n = n, n_optim = n_optim, c_rate=c_rate, storage_ops="load", flex_potential=flex_potential,
+    #                                                   plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=67.29, sec_margin=sec_margin)
+    # print("\n\nSave bat_load_to_nc\n\n")
+    # n_rd_bat_load.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_2018_1_coal_50wind_bat_load_LCOS.nc", export_standard_types=False, least_significant_digit=None)
+    # gc.collect()
+    #
+    #
+    # # Redispatch batteries SUPPLY
+    # n_d_bat_supply, n_rd_bat_supply = redispatch_workflow(n = n, n_optim = n_optim, c_rate=c_rate, storage_ops="supply", flex_potential=flex_potential,
+    #                                                       plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=67.29, sec_margin=sec_margin)
+    # print("\n\nSave bat_supply_to_nc\n\n")
+    # n_rd_bat_supply.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_2018_1_coal_50wind_bat_supply_LCOS.nc", export_standard_types=False, least_significant_digit=None)
+    # gc.collect()
+    #
+    # # Redispatch batteries ALL
+    # n_d_bat_all, n_rd_bat_all = redispatch_workflow(n = n, n_optim = n_optim, c_rate=c_rate, storage_ops="all", flex_potential=flex_potential,
+    #                                                 plant_potential=plant_potential, scenario="bat", ratio_wind=2.2, ratio_pv=1.38, lcos=67.29, sec_margin=sec_margin)
+    # print("\n\nSave bat_all_to_nc\n\n")
+    # n_rd_bat_all.export_to_netcdf(path=export_path + r"/redispatch/" + filename + "_2018_1_coal_50wind_bat_all_LCOS.nc", export_standard_types=False, least_significant_digit=None)
+    # gc.collect()
 
 
 
